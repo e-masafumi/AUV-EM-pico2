@@ -39,23 +39,23 @@ Idx Name          Size      VMA       LMA       File off  Algn
                   CONTENTS, READONLY
  17 .comment      00000026  00000000  00000000  0001ad88  2**0
                   CONTENTS, READONLY
- 18 .debug_info   000777fa  00000000  00000000  0001adae  2**0
+ 18 .debug_info   000777f7  00000000  00000000  0001adae  2**0
                   CONTENTS, READONLY, DEBUGGING, OCTETS
- 19 .debug_abbrev 00012f55  00000000  00000000  000925a8  2**0
+ 19 .debug_abbrev 00012f72  00000000  00000000  000925a5  2**0
                   CONTENTS, READONLY, DEBUGGING, OCTETS
- 20 .debug_loclists 00041fdc  00000000  00000000  000a54fd  2**0
+ 20 .debug_loclists 00041fdc  00000000  00000000  000a5517  2**0
                   CONTENTS, READONLY, DEBUGGING, OCTETS
- 21 .debug_aranges 000023c0  00000000  00000000  000e74e0  2**3
+ 21 .debug_aranges 000023c0  00000000  00000000  000e74f8  2**3
                   CONTENTS, READONLY, DEBUGGING, OCTETS
- 22 .debug_rnglists 00007609  00000000  00000000  000e98a0  2**0
+ 22 .debug_rnglists 00007609  00000000  00000000  000e98b8  2**0
                   CONTENTS, READONLY, DEBUGGING, OCTETS
- 23 .debug_line   0004b8ca  00000000  00000000  000f0ea9  2**0
+ 23 .debug_line   0004b8c8  00000000  00000000  000f0ec1  2**0
                   CONTENTS, READONLY, DEBUGGING, OCTETS
- 24 .debug_str    00016244  00000000  00000000  0013c773  2**0
+ 24 .debug_str    00016250  00000000  00000000  0013c789  2**0
                   CONTENTS, READONLY, DEBUGGING, OCTETS
- 25 .debug_frame  00005570  00000000  00000000  001529b8  2**2
+ 25 .debug_frame  00005570  00000000  00000000  001529dc  2**2
                   CONTENTS, READONLY, DEBUGGING, OCTETS
- 26 .debug_line_str 000002e4  00000000  00000000  00157f28  2**0
+ 26 .debug_line_str 000002e4  00000000  00000000  00157f4c  2**0
                   CONTENTS, READONLY, DEBUGGING, OCTETS
 
 /home/raven/pico/works/AUV-EM/build/main.elf:     file format elf32-littlearm
