@@ -6,7 +6,7 @@
 #include "hardware/irq.h"
 #include "func-uart.h"
 
-const uint UART0_TX_PIN = 0; 
+const uint UART0_TX_PIN = 0;
 const uint UART0_RX_PIN = 1;
 const uint UART1_TX_PIN = 4;
 const uint UART1_RX_PIN = 5;

@@ -11,6 +11,8 @@ file(REMOVE_RECURSE
   "CMakeFiles/main.dir/func-pwm.cpp.o.d"
   "CMakeFiles/main.dir/func-uart.cpp.o"
   "CMakeFiles/main.dir/func-uart.cpp.o.d"
+  "CMakeFiles/main.dir/func-usbuart.cpp.o"
+  "CMakeFiles/main.dir/func-usbuart.cpp.o.d"
   "CMakeFiles/main.dir/home/raven/pico/pico-sdk/lib/tinyusb/src/class/audio/audio_device.c.o"
   "CMakeFiles/main.dir/home/raven/pico/pico-sdk/lib/tinyusb/src/class/audio/audio_device.c.o.d"
   "CMakeFiles/main.dir/home/raven/pico/pico-sdk/lib/tinyusb/src/class/cdc/cdc_device.c.o"

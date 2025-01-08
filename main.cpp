@@ -1,7 +1,9 @@
+#include <iostream>
 #include <bits/stdc++.h>
 #include <stdint.h>
 #include <string>
 #include <vector>
+#include <algorithm>
 #include "pico/stdlib.h"
 #include "pico/multicore.h"
 #include "hardware/gpio.h"
@@ -15,6 +17,7 @@
 #include "func-pwm.h"
 #include "func-i2c.h"
 #include "func-uart.h"
+#include "func-usbuart.h"
 #include "func-MS5837-02BA.h"
 #include "func-BNO055.h"
 #include "func-INA228.h"
@@ -29,7 +32,17 @@
 #define DO_COMMAND  (1)
 #define EXIT_LOOP   (2)
 
-#define TARGET_DEPTH_M (1.00)
+#define DEFAULT_TARGET_DEPTH_M (0.50)
+#define EXE_FREC (10.00)	//Hz
+
+#define LEFT_VERTICAL 0
+#define LEFT_HORIZONTAL 1
+#define RIGHT_VERTICAL 2
+#define RIGHT_HORIZONTAL 3
+
+#define VOLTAGE_LOWER_LIMIT 
+
+using namespace std;
 
 const uint I2C0_SDA_PIN = 8;
 const uint I2C0_SCL_PIN = 9;
@@ -42,6 +55,7 @@ struct repeating_timer st_timer;
 pico_pwm pwm;
 pico_i2c i2c;
 pico_uart uart;
+pico_usbuart usbuart;
 MS5837_02BA MS5837;
 BNO055 BNO055;
 INA228 INA228;
@@ -49,7 +63,12 @@ static semaphore_t sem;
 bool nmeaDecodedFlag = false;
 bool logWriteFlag = false;
 bool onBoardLED = true;
+bool inputAccept = true;
 
+const double kp=0.5;
+const double ki=0.0;
+const double kd=0.0;
+double depthError=0.0;
 
 FRESULT fr;
 FATFS fs;
@@ -57,11 +76,11 @@ FIL fil;
 int ret;
 char buf[100];
 char filename[] = "log.txt";
-
+double thrusterOutput[4] = {0.5, 0.5, 0.5, 0.5};
+double targetDepth = DEFAULT_TARGET_DEPTH_M;
 
 struct str_sensorsData logData;
 struct str_NMEA decodedNMEA;
-
 
 bool reserved_addr(uint8_t addr){
     return (addr & 0x78) == 0 || (addr & 0x78) == 0x78;
@@ -77,6 +96,7 @@ bool repeating_timer_callback(struct repeating_timer *t) {
 }
 
 void core1_main(void){
+
 
   if (!sd_init_driver()) {
 		printf("ERROR: Could not initialize SD card\r\n");
@@ -157,6 +177,9 @@ void core1_main(void){
 	
 	while(1){
 		
+		static uint32_t core1preTime;
+		static uint32_t core1postTime;
+
 		uint32_t logWriteCom = multicore_fifo_pop_blocking();
 		if(!(logWriteCom == LOG_WRITE_COM)){
 			continue;
@@ -165,6 +188,7 @@ void core1_main(void){
 			logWriteFlag = true;
 		}
 		if(logWriteFlag){
+			core1preTime = time_us_32();
 			// Open file for writing ()
 			fr = f_open(&fil, filename, FA_WRITE | FA_OPEN_ALWAYS);
 			if (fr != FR_OK) {
@@ -186,7 +210,13 @@ void core1_main(void){
 				while (true);
 			}
 			logWriteFlag = false;
+			core1postTime = time_us_32();
+//			printf("Pre(core1)[ms]: %lf\n", (double)core1preTime/1000);
+//			printf("Post(core1)[ms]: %lf\n", (double)core1postTime/1000);
+//			printf("dt(core1)[ms]: %lf\n\n", ((double)core1postTime-(double)core1preTime)/1000);
+			
 		}
+	
 	}
 }
 
@@ -247,7 +277,19 @@ int main(){
 	printf("uint32_t: %lu\n", sizeof(logData.timeBuff_64));
 	printf("double: %lu\n", sizeof(logData.outTemp));
 	printf("logData: %lu\n", sizeof(logData));
-	MS5837.readTempPress(i2c1, &tempSurface, &pSurface);
+	
+	double pSurfaceSum = 0;
+	double tempSurfaceSum = 0;
+	int MS5837initCnt = 0;
+	for(int i=0;i<100;i++){
+		MS5837.readTempPress(i2c1, &tempSurface, &pSurface);
+		pSurfaceSum += pSurface;
+		tempSurfaceSum += tempSurface;
+		MS5837initCnt++;
+	}
+	pSurface = pSurfaceSum/MS5837initCnt;
+	tempSurface = tempSurfaceSum/MS5837initCnt;
+	
 	printf("SurfaceTemp = %f [C]\n", tempSurface);
 	printf("SurfacePress = %f [mbar]\n", pSurface);
 
@@ -262,7 +304,7 @@ int main(){
 	printf("UART actual baudrate,core1 0: %d, 1: %d\n", actualBaudrate[0], actualBaudrate[1]);
 
 
-	add_repeating_timer_us(200*1000, repeating_timer_callback, NULL, &st_timer);
+	add_repeating_timer_us(1000/EXE_FREC*1000, repeating_timer_callback, NULL, &st_timer);
 
 
 	uint32_t f_pll_sys = frequency_count_khz(CLOCKS_FC0_SRC_VALUE_PLL_SYS_CLKSRC_PRIMARY);
@@ -292,8 +334,12 @@ int main(){
 		sleep_ms(500);
 	}
 
-	double targetPress = (TARGET_DEPTH_M*1013*10)+pSurface;
+	double targetPress = (DEFAULT_TARGET_DEPTH_M*1013*10)+pSurface;
+	double currentDepth = 0;
+	static uint32_t preTime = time_us_32();
+	static uint32_t nowTime = time_us_32();
 	while(1) {
+
 		if(messageFinishFlag == true){
 			messageFinishFlag = false;
 			onBoardLED = !onBoardLED;
@@ -325,20 +371,44 @@ int main(){
 			continue;
 		}
 		
+		nowTime = time_us_32();
+//		printf("Now[ms]: %lf\n", (double)nowTime/1000);
+//		printf("dt[ms]: %lf\n\n", ((double)nowTime - (double)preTime)/1000);
+		preTime = time_us_32();
+
 		logData.timeBuff_64 = time_us_64();
 		MS5837.readTempPress(i2c1, &logData.outTemp, &logData.outPress);
 		BNO055.readAccel(i2c1, &logData.xAccel, &logData.yAccel, &logData.zAccel);
 		BNO055.readMag(i2c1, &logData.xMag, &logData.yMag, &logData.zMag);
 		INA228.readCurVolPow(i2c0, &logData.mainCur, &logData.mainVol, &logData.mainPow);
-		printf("GPS Time: %lf \n", decodedNMEA.time);
-		printf("Main Voltage: %lf [V] \n", logData.mainVol/1e6);
-		printf("Main Current: %lf [A] \n", logData.mainCur/1e6);
-		printf("Outer Pressure: %lf [hPa] \n", logData.outPress);
-		printf("Outer Temp: %lf [Deg.C.] \n", logData.outTemp);
-		printf("\n");
-		
-		if(logData.outPress >= targetPress){
+//		printf("GPS Time: %lf \n", decodedNMEA.time);
+//		printf("Main Voltage: %lf [V] \n", logData.mainVol/1e6);
+//		printf("Main Current: %lf [A] \n", logData.mainCur/1e6);
+//		printf("Outer Pressure: %lf [hPa] \n", logData.outPress);
+//		printf("Outer Temp: %lf [Deg.C.] \n", logData.outTemp);
+//		printf("\n");
+
+		if(inputAccept){
+			targetDepth = usbuart.receive_usbuart_data();
 		}
+		else{
+			targetDepth = DEFAULT_TARGET_DEPTH_M;
+		}	
+		
+		
+		currentDepth = (logData.outPress-pSurface)/1013.0*10;
+		depthError = targetDepth - logData.outPress;
+		thrusterOutput[0] = depthError * kp;
+		thrusterOutput[2] = depthError * kp;
+		thrusterOutput[0] = clamp<double>(thrusterOutput[0], 0.0f, 1.0f);
+		thrusterOutput[2] = clamp<double>(thrusterOutput[2], 0.0f, 1.0f);
+
+		for(int i=0;i<4;i++){
+			pwm.duty(i, pwm.dutyFit(thrusterOutput[i], 0.55, 0.95));
+		}
+
+		printf("Target Depth[cm]: %lf\n", targetDepth*100);
+		printf("Depth[cm]: %lf\n\n", currentDepth*100);
 
 		multicore_fifo_push_blocking(LOG_WRITE_COM);
 		exeFlag = false;

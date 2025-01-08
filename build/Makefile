@@ -338,6 +338,30 @@ func-uart.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/main.dir/build.make CMakeFiles/main.dir/func-uart.cpp.s
 .PHONY : func-uart.cpp.s
 
+func-usbuart.o: func-usbuart.cpp.o
+.PHONY : func-usbuart.o
+
+# target to build an object file
+func-usbuart.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/main.dir/build.make CMakeFiles/main.dir/func-usbuart.cpp.o
+.PHONY : func-usbuart.cpp.o
+
+func-usbuart.i: func-usbuart.cpp.i
+.PHONY : func-usbuart.i
+
+# target to preprocess a source file
+func-usbuart.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/main.dir/build.make CMakeFiles/main.dir/func-usbuart.cpp.i
+.PHONY : func-usbuart.cpp.i
+
+func-usbuart.s: func-usbuart.cpp.s
+.PHONY : func-usbuart.s
+
+# target to generate assembly for a file
+func-usbuart.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/main.dir/build.make CMakeFiles/main.dir/func-usbuart.cpp.s
+.PHONY : func-usbuart.cpp.s
+
 home/raven/pico/pico-sdk/lib/tinyusb/src/class/audio/audio_device.o: home/raven/pico/pico-sdk/lib/tinyusb/src/class/audio/audio_device.c.o
 .PHONY : home/raven/pico/pico-sdk/lib/tinyusb/src/class/audio/audio_device.o
 
@@ -2594,6 +2618,9 @@ help:
 	@echo "... func-uart.o"
 	@echo "... func-uart.i"
 	@echo "... func-uart.s"
+	@echo "... func-usbuart.o"
+	@echo "... func-usbuart.i"
+	@echo "... func-usbuart.s"
 	@echo "... home/raven/pico/pico-sdk/lib/tinyusb/src/class/audio/audio_device.o"
 	@echo "... home/raven/pico/pico-sdk/lib/tinyusb/src/class/audio/audio_device.i"
 	@echo "... home/raven/pico/pico-sdk/lib/tinyusb/src/class/audio/audio_device.s"
