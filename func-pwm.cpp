@@ -1,6 +1,7 @@
 #include "func-pwm.h"
 
-static int sysClk = 125000000; 
+//static int sysClk = 125000000; 
+static int sysClk = 150000000; 
 static int pwmPin[4] = {2, 3, 6, 7};
 		
 static int pwmFreq[2] = {5000, 5000};

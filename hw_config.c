@@ -38,8 +38,7 @@ socket, which SPI it is driven by, and how it is wired.
 // Hardware Configuration of SPI "objects"
 // Note: multiple SD cards can be driven by one SPI if they use different slave
 // selects.
-static spi_t spis[] = {  // One for each SPI.
-    {
+static spi_t spi = {  // One for each SPI.
 //        .hw_inst = spi1,  // SPI component
         .hw_inst = spi0,  // SPI component
 //        .miso_gpio = 12, // GPIO number (not pin number)
@@ -51,33 +50,42 @@ static spi_t spis[] = {  // One for each SPI.
 //        .baud_rate = 12500 * 1000,  
 //        .baud_rate = 115200,  
 //        .baud_rate = 25 * 1000 * 1000, // Actual frequency: 20833333. 
-        .baud_rate = 10 * 1000 * 1000, 
-    }
+        .baud_rate = 10 * 1000 * 1000
+//        .baud_rate = 125 * 1000 * 1000 /4
+};
+
+static sd_spi_if_t spi_if = {
+				.spi = &spi,
+				.ss_gpio = 17
 };
 
 // Hardware Configuration of the SD Card "objects"
-static sd_card_t sd_cards[] = {  // One for each SD card
-    {
-        .pcName = "0:",   // Name used to mount device
-        .spi = &spis[0],  // Pointer to the SPI driving this card
+static sd_card_t sd_card = {  // One for each SD card
+				.type = SD_IF_SPI,
+//        .pcName = "0:",   // Name used to mount device
+				.spi_if_p = &spi_if
+//        .spi = &spis[0],  // Pointer to the SPI driving this card
 //        .ss_gpio = 9,    // The SPI slave select GPIO for this SD card
-        .ss_gpio = 17,    // The SPI slave select GPIO for this SD card
-        .use_card_detect = true,
+//        .ss_gpio = 17,    // The SPI slave select GPIO for this SD card
+ //       .use_card_detect = true,
 //        .card_detect_gpio = 13,   // Card detect
-        .card_detect_gpio = 20,   // Card detect
-        .card_detected_true = 1  // What the GPIO read returns when a card is
+ //       .card_detect_gpio = 20,   // Card detect
+//        .card_detected_true = 1  // What the GPIO read returns when a card is
                                  // present. Use -1 if there is no card detect.
-    }};
+};
 
 /* ********************************************************************** */
-size_t sd_get_num() { return count_of(sd_cards); }
+//size_t sd_get_num() { return count_of(sd_cards); }
+size_t sd_get_num() { return 1; }
+
 sd_card_t *sd_get_by_num(size_t num) {
-    if (num <= sd_get_num()) {
-        return &sd_cards[num];
+    if (0 == num) {
+        return &sd_card;
     } else {
         return NULL;
     }
 }
+/*
 size_t spi_get_num() { return count_of(spis); }
 spi_t *spi_get_by_num(size_t num) {
     if (num <= sd_get_num()) {
@@ -86,5 +94,5 @@ spi_t *spi_get_by_num(size_t num) {
         return NULL;
     }
 }
-
+*/
 /* [] END OF FILE */

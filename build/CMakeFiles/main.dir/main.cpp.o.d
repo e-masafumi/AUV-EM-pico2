@@ -1,9 +1,10 @@
-CMakeFiles/main.dir/main.cpp.o: /home/raven/pico/works/AUV-EM/main.cpp \
+CMakeFiles/main.dir/main.cpp.o: \
+ /home/raven/pico/works/AUV-EM-pico2/main.cpp \
  /usr/include/newlib/c++/13.2.1/iostream \
  /usr/include/newlib/c++/13.2.1/bits/requires_hosted.h \
- /usr/include/newlib/c++/13.2.1/arm-none-eabi/thumb/v6-m/nofp/bits/c++config.h \
- /usr/include/newlib/c++/13.2.1/arm-none-eabi/thumb/v6-m/nofp/bits/os_defines.h \
- /usr/include/newlib/c++/13.2.1/arm-none-eabi/thumb/v6-m/nofp/bits/cpu_defines.h \
+ /usr/include/newlib/c++/13.2.1/arm-none-eabi/thumb/v8-m.main+fp/softfp/bits/c++config.h \
+ /usr/include/newlib/c++/13.2.1/arm-none-eabi/thumb/v8-m.main+fp/softfp/bits/os_defines.h \
+ /usr/include/newlib/c++/13.2.1/arm-none-eabi/thumb/v8-m.main+fp/softfp/bits/cpu_defines.h \
  /usr/include/newlib/c++/13.2.1/pstl/pstl_config.h \
  /usr/include/newlib/c++/13.2.1/ostream \
  /usr/include/newlib/c++/13.2.1/ios /usr/include/newlib/c++/13.2.1/iosfwd \
@@ -35,19 +36,19 @@ CMakeFiles/main.dir/main.cpp.o: /home/raven/pico/works/AUV-EM/main.cpp \
  /usr/include/newlib/c++/13.2.1/bits/nested_exception.h \
  /usr/include/newlib/c++/13.2.1/bits/char_traits.h \
  /usr/include/newlib/c++/13.2.1/bits/localefwd.h \
- /usr/include/newlib/c++/13.2.1/arm-none-eabi/thumb/v6-m/nofp/bits/c++locale.h \
+ /usr/include/newlib/c++/13.2.1/arm-none-eabi/thumb/v8-m.main+fp/softfp/bits/c++locale.h \
  /usr/include/newlib/c++/13.2.1/clocale /usr/include/newlib/locale.h \
  /usr/include/newlib/_ansi.h /usr/include/newlib/c++/13.2.1/cctype \
  /usr/include/newlib/ctype.h \
  /usr/include/newlib/c++/13.2.1/bits/ios_base.h \
  /usr/include/newlib/c++/13.2.1/ext/atomicity.h \
- /usr/include/newlib/c++/13.2.1/arm-none-eabi/thumb/v6-m/nofp/bits/gthr.h \
- /usr/include/newlib/c++/13.2.1/arm-none-eabi/thumb/v6-m/nofp/bits/gthr-default.h \
- /usr/include/newlib/c++/13.2.1/arm-none-eabi/thumb/v6-m/nofp/bits/atomic_word.h \
+ /usr/include/newlib/c++/13.2.1/arm-none-eabi/thumb/v8-m.main+fp/softfp/bits/gthr.h \
+ /usr/include/newlib/c++/13.2.1/arm-none-eabi/thumb/v8-m.main+fp/softfp/bits/gthr-default.h \
+ /usr/include/newlib/c++/13.2.1/arm-none-eabi/thumb/v8-m.main+fp/softfp/bits/atomic_word.h \
  /usr/include/newlib/c++/13.2.1/bits/locale_classes.h \
  /usr/include/newlib/c++/13.2.1/string \
  /usr/include/newlib/c++/13.2.1/bits/allocator.h \
- /usr/include/newlib/c++/13.2.1/arm-none-eabi/thumb/v6-m/nofp/bits/c++allocator.h \
+ /usr/include/newlib/c++/13.2.1/arm-none-eabi/thumb/v8-m.main+fp/softfp/bits/c++allocator.h \
  /usr/include/newlib/c++/13.2.1/bits/new_allocator.h \
  /usr/include/newlib/c++/13.2.1/bits/functexcept.h \
  /usr/include/newlib/c++/13.2.1/bits/cpp_type_traits.h \
@@ -97,22 +98,22 @@ CMakeFiles/main.dir/main.cpp.o: /home/raven/pico/works/AUV-EM/main.cpp \
  /usr/include/newlib/c++/13.2.1/tuple \
  /usr/include/newlib/c++/13.2.1/bits/locale_classes.tcc \
  /usr/include/newlib/c++/13.2.1/system_error \
- /usr/include/newlib/c++/13.2.1/arm-none-eabi/thumb/v6-m/nofp/bits/error_constants.h \
+ /usr/include/newlib/c++/13.2.1/arm-none-eabi/thumb/v8-m.main+fp/softfp/bits/error_constants.h \
  /usr/include/newlib/c++/13.2.1/stdexcept \
  /usr/include/newlib/c++/13.2.1/streambuf \
  /usr/include/newlib/c++/13.2.1/bits/streambuf.tcc \
  /usr/include/newlib/c++/13.2.1/bits/basic_ios.h \
  /usr/include/newlib/c++/13.2.1/bits/locale_facets.h \
  /usr/include/newlib/c++/13.2.1/cwctype /usr/include/newlib/wctype.h \
- /usr/include/newlib/c++/13.2.1/arm-none-eabi/thumb/v6-m/nofp/bits/ctype_base.h \
+ /usr/include/newlib/c++/13.2.1/arm-none-eabi/thumb/v8-m.main+fp/softfp/bits/ctype_base.h \
  /usr/include/newlib/c++/13.2.1/bits/streambuf_iterator.h \
- /usr/include/newlib/c++/13.2.1/arm-none-eabi/thumb/v6-m/nofp/bits/ctype_inline.h \
+ /usr/include/newlib/c++/13.2.1/arm-none-eabi/thumb/v8-m.main+fp/softfp/bits/ctype_inline.h \
  /usr/include/newlib/c++/13.2.1/bits/locale_facets.tcc \
  /usr/include/newlib/c++/13.2.1/bits/basic_ios.tcc \
  /usr/include/newlib/c++/13.2.1/bits/ostream.tcc \
  /usr/include/newlib/c++/13.2.1/istream \
  /usr/include/newlib/c++/13.2.1/bits/istream.tcc \
- /usr/include/newlib/c++/13.2.1/arm-none-eabi/thumb/v6-m/nofp/bits/stdc++.h \
+ /usr/include/newlib/c++/13.2.1/arm-none-eabi/thumb/v8-m.main+fp/softfp/bits/stdc++.h \
  /usr/include/newlib/c++/13.2.1/cassert /usr/include/newlib/assert.h \
  /usr/include/newlib/c++/13.2.1/cfloat \
  /usr/lib/gcc/arm-none-eabi/13.2.1/include/float.h \
@@ -225,14 +226,14 @@ CMakeFiles/main.dir/main.cpp.o: /home/raven/pico/works/AUV-EM/main.cpp \
  /usr/include/newlib/c++/13.2.1/bits/deque.tcc \
  /usr/include/newlib/c++/13.2.1/fstream \
  /usr/include/newlib/c++/13.2.1/bits/codecvt.h \
- /usr/include/newlib/c++/13.2.1/arm-none-eabi/thumb/v6-m/nofp/bits/basic_file.h \
- /usr/include/newlib/c++/13.2.1/arm-none-eabi/thumb/v6-m/nofp/bits/c++io.h \
+ /usr/include/newlib/c++/13.2.1/arm-none-eabi/thumb/v8-m.main+fp/softfp/bits/basic_file.h \
+ /usr/include/newlib/c++/13.2.1/arm-none-eabi/thumb/v8-m.main+fp/softfp/bits/c++io.h \
  /usr/include/newlib/c++/13.2.1/bits/fstream.tcc \
  /usr/include/newlib/c++/13.2.1/iomanip \
  /usr/include/newlib/c++/13.2.1/locale \
  /usr/include/newlib/c++/13.2.1/bits/locale_facets_nonio.h \
- /usr/include/newlib/c++/13.2.1/arm-none-eabi/thumb/v6-m/nofp/bits/time_members.h \
- /usr/include/newlib/c++/13.2.1/arm-none-eabi/thumb/v6-m/nofp/bits/messages_members.h \
+ /usr/include/newlib/c++/13.2.1/arm-none-eabi/thumb/v8-m.main+fp/softfp/bits/time_members.h \
+ /usr/include/newlib/c++/13.2.1/arm-none-eabi/thumb/v8-m.main+fp/softfp/bits/messages_members.h \
  /usr/include/newlib/c++/13.2.1/bits/locale_facets_nonio.tcc \
  /usr/include/newlib/c++/13.2.1/bits/locale_conv.h \
  /usr/include/newlib/c++/13.2.1/bits/quoted_string.h \
@@ -275,7 +276,7 @@ CMakeFiles/main.dir/main.cpp.o: /home/raven/pico/works/AUV-EM/main.cpp \
  /usr/include/newlib/c++/13.2.1/bits/std_thread.h \
  /usr/include/newlib/c++/13.2.1/random \
  /usr/include/newlib/c++/13.2.1/bits/random.h \
- /usr/include/newlib/c++/13.2.1/arm-none-eabi/thumb/v6-m/nofp/bits/opt_random.h \
+ /usr/include/newlib/c++/13.2.1/arm-none-eabi/thumb/v8-m.main+fp/softfp/bits/opt_random.h \
  /usr/include/newlib/c++/13.2.1/bits/random.tcc \
  /usr/include/newlib/c++/13.2.1/regex \
  /usr/include/newlib/c++/13.2.1/bits/regex_constants.h \
@@ -306,47 +307,50 @@ CMakeFiles/main.dir/main.cpp.o: /home/raven/pico/works/AUV-EM/main.cpp \
  /home/raven/pico/pico-sdk/src/common/pico_base_headers/include/pico.h \
  /home/raven/pico/pico-sdk/src/common/pico_base_headers/include/pico/types.h \
  /home/raven/pico/pico-sdk/src/common/pico_base_headers/include/pico/assert.h \
- /home/raven/pico/works/AUV-EM/build/generated/pico_base/pico/version.h \
+ /home/raven/pico/works/AUV-EM-pico2/build/generated/pico_base/pico/version.h \
  /home/raven/pico/pico-sdk/src/common/pico_base_headers/include/pico/config.h \
- /home/raven/pico/works/AUV-EM/build/generated/pico_base/pico/config_autogen.h \
- /home/raven/pico/pico-sdk/src/boards/include/boards/pico.h \
+ /home/raven/pico/works/AUV-EM-pico2/build/generated/pico_base/pico/config_autogen.h \
+ /home/raven/pico/pico-sdk/src/boards/include/boards/pico2.h \
  /home/raven/pico/pico-sdk/src/rp2_common/cmsis/include/cmsis/rename_exceptions.h \
- /home/raven/pico/pico-sdk/src/rp2040/pico_platform/include/pico/platform.h \
+ /home/raven/pico/pico-sdk/src/rp2350/pico_platform/include/pico/platform.h \
  /home/raven/pico/pico-sdk/src/rp2_common/pico_platform_compiler/include/pico/platform/compiler.h \
- /home/raven/pico/pico-sdk/src/rp2040/hardware_regs/include/hardware/platform_defs.h \
+ /home/raven/pico/pico-sdk/src/rp2350/hardware_regs/include/hardware/platform_defs.h \
  /home/raven/pico/pico-sdk/src/common/pico_base_headers/include/pico/types.h \
  /home/raven/pico/pico-sdk/src/rp2_common/pico_platform_sections/include/pico/platform/sections.h \
  /home/raven/pico/pico-sdk/src/rp2_common/pico_platform_panic/include/pico/platform/panic.h \
- /home/raven/pico/pico-sdk/src/rp2040/hardware_regs/include/hardware/regs/addressmap.h \
- /home/raven/pico/pico-sdk/src/rp2040/hardware_regs/include/hardware/regs/sio.h \
+ /home/raven/pico/pico-sdk/src/rp2350/hardware_regs/include/hardware/regs/addressmap.h \
+ /home/raven/pico/pico-sdk/src/rp2350/hardware_regs/include/hardware/regs/sio.h \
  /home/raven/pico/pico-sdk/src/common/pico_base_headers/include/pico/error.h \
  /home/raven/pico/pico-sdk/src/rp2_common/pico_stdio/include/pico/stdio.h \
  /home/raven/pico/pico-sdk/src/common/pico_time/include/pico/time.h \
  /home/raven/pico/pico-sdk/src/rp2_common/hardware_timer/include/hardware/timer.h \
- /home/raven/pico/pico-sdk/src/rp2040/hardware_structs/include/hardware/structs/timer.h \
+ /home/raven/pico/pico-sdk/src/rp2350/hardware_structs/include/hardware/structs/timer.h \
  /home/raven/pico/pico-sdk/src/rp2_common/hardware_base/include/hardware/address_mapped.h \
- /home/raven/pico/pico-sdk/src/rp2040/hardware_regs/include/hardware/regs/timer.h \
- /home/raven/pico/pico-sdk/src/rp2040/hardware_regs/include/hardware/regs/intctrl.h \
+ /home/raven/pico/pico-sdk/src/rp2350/hardware_structs/include/hardware/structs/accessctrl.h \
+ /home/raven/pico/pico-sdk/src/rp2350/hardware_regs/include/hardware/regs/accessctrl.h \
+ /home/raven/pico/pico-sdk/src/rp2350/hardware_regs/include/hardware/regs/timer.h \
+ /home/raven/pico/pico-sdk/src/rp2350/hardware_regs/include/hardware/regs/intctrl.h \
  /home/raven/pico/pico-sdk/src/rp2_common/hardware_gpio/include/hardware/gpio.h \
- /home/raven/pico/pico-sdk/src/rp2040/hardware_structs/include/hardware/structs/sio.h \
- /home/raven/pico/pico-sdk/src/rp2040/hardware_structs/include/hardware/structs/interp.h \
- /home/raven/pico/pico-sdk/src/rp2040/hardware_structs/include/hardware/structs/pads_bank0.h \
- /home/raven/pico/pico-sdk/src/rp2040/hardware_regs/include/hardware/regs/pads_bank0.h \
- /home/raven/pico/pico-sdk/src/rp2040/hardware_structs/include/hardware/structs/io_bank0.h \
- /home/raven/pico/pico-sdk/src/rp2040/hardware_regs/include/hardware/regs/io_bank0.h \
+ /home/raven/pico/pico-sdk/src/rp2350/hardware_structs/include/hardware/structs/sio.h \
+ /home/raven/pico/pico-sdk/src/rp2350/hardware_structs/include/hardware/structs/interp.h \
+ /home/raven/pico/pico-sdk/src/rp2350/hardware_structs/include/hardware/structs/pads_bank0.h \
+ /home/raven/pico/pico-sdk/src/rp2350/hardware_regs/include/hardware/regs/pads_bank0.h \
+ /home/raven/pico/pico-sdk/src/rp2350/hardware_structs/include/hardware/structs/io_bank0.h \
+ /home/raven/pico/pico-sdk/src/rp2350/hardware_regs/include/hardware/regs/io_bank0.h \
  /home/raven/pico/pico-sdk/src/rp2_common/hardware_irq/include/hardware/irq.h \
- /home/raven/pico/pico-sdk/src/rp2040/pico_platform/include/pico/platform/cpu_regs.h \
- /home/raven/pico/pico-sdk/src/rp2040/hardware_regs/include/hardware/regs/m0plus.h \
- /home/raven/pico/pico-sdk/src/rp2040/hardware_structs/include/hardware/structs/m0plus.h \
- /home/raven/pico/pico-sdk/src/rp2040/hardware_structs/include/hardware/structs/nvic.h \
- /home/raven/pico/pico-sdk/src/rp2040/hardware_structs/include/hardware/structs/scb.h \
+ /home/raven/pico/pico-sdk/src/rp2350/pico_platform/include/pico/platform/cpu_regs.h \
+ /home/raven/pico/pico-sdk/src/rp2350/hardware_regs/include/hardware/regs/m33.h \
+ /home/raven/pico/pico-sdk/src/rp2350/hardware_structs/include/hardware/structs/m33.h \
+ /home/raven/pico/pico-sdk/src/rp2350/hardware_structs/include/hardware/structs/nvic.h \
+ /home/raven/pico/pico-sdk/src/rp2350/hardware_structs/include/hardware/structs/scb.h \
+ /home/raven/pico/pico-sdk/src/rp2_common/hardware_gpio/include/hardware/gpio_coproc.h \
  /home/raven/pico/pico-sdk/src/rp2_common/hardware_uart/include/hardware/uart.h \
- /home/raven/pico/pico-sdk/src/rp2040/hardware_structs/include/hardware/structs/uart.h \
- /home/raven/pico/pico-sdk/src/rp2040/hardware_regs/include/hardware/regs/uart.h \
- /home/raven/pico/pico-sdk/src/rp2040/hardware_regs/include/hardware/regs/dreq.h \
+ /home/raven/pico/pico-sdk/src/rp2350/hardware_structs/include/hardware/structs/uart.h \
+ /home/raven/pico/pico-sdk/src/rp2350/hardware_regs/include/hardware/regs/uart.h \
+ /home/raven/pico/pico-sdk/src/rp2350/hardware_regs/include/hardware/regs/dreq.h \
  /home/raven/pico/pico-sdk/src/rp2_common/hardware_resets/include/hardware/resets.h \
- /home/raven/pico/pico-sdk/src/rp2040/hardware_structs/include/hardware/structs/resets.h \
- /home/raven/pico/pico-sdk/src/rp2040/hardware_regs/include/hardware/regs/resets.h \
+ /home/raven/pico/pico-sdk/src/rp2350/hardware_structs/include/hardware/structs/resets.h \
+ /home/raven/pico/pico-sdk/src/rp2350/hardware_regs/include/hardware/regs/resets.h \
  /home/raven/pico/pico-sdk/src/rp2_common/pico_stdio_usb/include/pico/stdio_usb.h \
  /home/raven/pico/pico-sdk/src/rp2_common/pico_multicore/include/pico/multicore.h \
  /home/raven/pico/pico-sdk/src/common/pico_sync/include/pico/sync.h \
@@ -357,35 +361,48 @@ CMakeFiles/main.dir/main.cpp.o: /home/raven/pico/works/AUV-EM/main.cpp \
  /home/raven/pico/pico-sdk/src/common/pico_sync/include/pico/mutex.h \
  /home/raven/pico/pico-sdk/src/common/pico_sync/include/pico/critical_section.h \
  /home/raven/pico/pico-sdk/src/rp2_common/hardware_pwm/include/hardware/pwm.h \
- /home/raven/pico/pico-sdk/src/rp2040/hardware_structs/include/hardware/structs/pwm.h \
- /home/raven/pico/pico-sdk/src/rp2040/hardware_regs/include/hardware/regs/pwm.h \
+ /home/raven/pico/pico-sdk/src/rp2350/hardware_structs/include/hardware/structs/pwm.h \
+ /home/raven/pico/pico-sdk/src/rp2350/hardware_regs/include/hardware/regs/pwm.h \
  /home/raven/pico/pico-sdk/src/rp2_common/hardware_clocks/include/hardware/clocks.h \
- /home/raven/pico/pico-sdk/src/rp2040/hardware_structs/include/hardware/structs/clocks.h \
- /home/raven/pico/pico-sdk/src/rp2040/hardware_regs/include/hardware/regs/clocks.h \
+ /home/raven/pico/pico-sdk/src/rp2350/hardware_structs/include/hardware/structs/clocks.h \
+ /home/raven/pico/pico-sdk/src/rp2350/hardware_regs/include/hardware/regs/clocks.h \
  /home/raven/pico/pico-sdk/src/common/pico_binary_info/include/pico/binary_info.h \
  /home/raven/pico/pico-sdk/src/common/pico_binary_info/include/pico/binary_info/defs.h \
  /home/raven/pico/pico-sdk/src/common/pico_binary_info/include/pico/binary_info/structure.h \
  /home/raven/pico/pico-sdk/src/common/pico_binary_info/include/pico/binary_info/code.h \
- /home/raven/pico/works/AUV-EM/extern.h \
- /home/raven/pico/works/AUV-EM/struct.h \
- /home/raven/pico/works/AUV-EM/func-pwm.h \
- /home/raven/pico/works/AUV-EM/func-i2c.h \
+ /home/raven/pico/works/AUV-EM-pico2/extern.h \
+ /home/raven/pico/works/AUV-EM-pico2/struct.h \
+ /home/raven/pico/works/AUV-EM-pico2/func-pwm.h \
+ /home/raven/pico/works/AUV-EM-pico2/func-i2c.h \
  /home/raven/pico/pico-sdk/src/rp2_common/hardware_i2c/include/hardware/i2c.h \
- /home/raven/pico/pico-sdk/src/rp2040/hardware_structs/include/hardware/structs/i2c.h \
- /home/raven/pico/pico-sdk/src/rp2040/hardware_regs/include/hardware/regs/i2c.h \
- /home/raven/pico/works/AUV-EM/func-uart.h \
- /home/raven/pico/works/AUV-EM/func-usbuart.h \
- /home/raven/pico/works/AUV-EM/func-MS5837-02BA.h \
- /home/raven/pico/works/AUV-EM/func-BNO055.h \
- /home/raven/pico/works/AUV-EM/func-INA228.h \
- /home/raven/pico/works/AUV-EM/lib/no-OS-FatFS-SD-SPI-RPi-Pico/FatFs_SPI/ff15/source/ff.h \
- /home/raven/pico/works/AUV-EM/lib/no-OS-FatFS-SD-SPI-RPi-Pico/FatFs_SPI/ff15/source/ffconf.h \
- /home/raven/pico/works/AUV-EM/lib/no-OS-FatFS-SD-SPI-RPi-Pico/FatFs_SPI/sd_driver/sd_card.h \
- /home/raven/pico/works/AUV-EM/lib/no-OS-FatFS-SD-SPI-RPi-Pico/FatFs_SPI/sd_driver/spi.h \
+ /home/raven/pico/pico-sdk/src/rp2350/hardware_structs/include/hardware/structs/i2c.h \
+ /home/raven/pico/pico-sdk/src/rp2350/hardware_regs/include/hardware/regs/i2c.h \
+ /home/raven/pico/works/AUV-EM-pico2/func-uart.h \
+ /home/raven/pico/works/AUV-EM-pico2/func-usbuart.h \
+ /home/raven/pico/works/AUV-EM-pico2/func-MS5837-02BA.h \
+ /home/raven/pico/works/AUV-EM-pico2/func-BNO055.h \
+ /home/raven/pico/works/AUV-EM-pico2/func-INA228.h \
+ /home/raven/pico/works/AUV-EM-pico2/lib/no-OS-FatFs/src/ff15/source/ff.h \
+ /home/raven/pico/works/AUV-EM-pico2/lib/no-OS-FatFs/src/include/ffconf.h \
+ /home/raven/pico/works/AUV-EM-pico2/lib/no-OS-FatFs/src/sd_driver/sd_card.h \
+ /home/raven/pico/pico-sdk/src/rp2_common/hardware_pio/include/hardware/pio.h \
+ /home/raven/pico/pico-sdk/src/rp2350/hardware_structs/include/hardware/structs/pio.h \
+ /home/raven/pico/pico-sdk/src/rp2350/hardware_regs/include/hardware/regs/pio.h \
+ /home/raven/pico/pico-sdk/src/rp2_common/hardware_pio/include/hardware/pio_instructions.h \
+ /home/raven/pico/works/AUV-EM-pico2/lib/no-OS-FatFs/src/sd_driver/SDIO/rp2040_sdio.h \
+ /home/raven/pico/works/AUV-EM-pico2/lib/no-OS-FatFs/src/sd_driver/SPI/my_spi.h \
  /home/raven/pico/pico-sdk/src/rp2_common/hardware_dma/include/hardware/dma.h \
- /home/raven/pico/pico-sdk/src/rp2040/hardware_structs/include/hardware/structs/dma.h \
- /home/raven/pico/pico-sdk/src/rp2040/hardware_regs/include/hardware/regs/dma.h \
- /home/raven/pico/pico-sdk/src/rp2040/hardware_structs/include/hardware/structs/dma_debug.h \
+ /home/raven/pico/pico-sdk/src/rp2350/hardware_structs/include/hardware/structs/dma.h \
+ /home/raven/pico/pico-sdk/src/rp2350/hardware_regs/include/hardware/regs/dma.h \
+ /home/raven/pico/pico-sdk/src/rp2350/hardware_structs/include/hardware/structs/dma_debug.h \
  /home/raven/pico/pico-sdk/src/rp2_common/hardware_spi/include/hardware/spi.h \
- /home/raven/pico/pico-sdk/src/rp2040/hardware_structs/include/hardware/structs/spi.h \
- /home/raven/pico/pico-sdk/src/rp2040/hardware_regs/include/hardware/regs/spi.h
+ /home/raven/pico/pico-sdk/src/rp2350/hardware_structs/include/hardware/structs/spi.h \
+ /home/raven/pico/pico-sdk/src/rp2350/hardware_regs/include/hardware/regs/spi.h \
+ /home/raven/pico/works/AUV-EM-pico2/lib/no-OS-FatFs/src/include/my_debug.h \
+ /home/raven/pico/works/AUV-EM-pico2/lib/no-OS-FatFs/src/include/sd_timeouts.h \
+ /home/raven/pico/works/AUV-EM-pico2/lib/no-OS-FatFs/src/sd_driver/SPI/sd_card_spi.h \
+ /home/raven/pico/works/AUV-EM-pico2/lib/no-OS-FatFs/src/ff15/source/diskio.h \
+ /home/raven/pico/works/AUV-EM-pico2/lib/no-OS-FatFs/src/ff15/source/ff.h \
+ /home/raven/pico/works/AUV-EM-pico2/lib/no-OS-FatFs/src/sd_driver/sd_card_constants.h \
+ /home/raven/pico/works/AUV-EM-pico2/lib/no-OS-FatFs/src/sd_driver/sd_regs.h \
+ /home/raven/pico/works/AUV-EM-pico2/lib/no-OS-FatFs/src/include/util.h

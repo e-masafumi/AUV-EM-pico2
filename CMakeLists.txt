@@ -19,11 +19,11 @@ add_executable(main
 	hw_config.c
 )
 
-add_subdirectory(lib/no-OS-FatFS-SD-SPI-RPi-Pico/FatFs_SPI)
+add_subdirectory(lib/no-OS-FatFs/src)
 
 pico_enable_stdio_usb(main 1)
 pico_enable_stdio_uart(main 0)
 
 pico_add_extra_outputs(main)
 
-target_link_libraries(main pico_stdlib pico_multicore hardware_pwm hardware_i2c FatFs_SPI hardware_uart)  
+target_link_libraries(main pico_stdlib pico_multicore hardware_pwm hardware_i2c no-OS-FatFS-SD-SDIO-SPI-RPi-Pico hardware_uart)  

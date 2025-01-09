@@ -57,10 +57,10 @@ RM = /usr/bin/cmake -E rm -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /home/raven/pico/works/AUV-EM
+CMAKE_SOURCE_DIR = /home/raven/pico/works/AUV-EM-pico2
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /home/raven/pico/works/AUV-EM/build
+CMAKE_BINARY_DIR = /home/raven/pico/works/AUV-EM-pico2/build
 
 #=============================================================================
 # Targets provided globally by CMake.
@@ -87,9 +87,9 @@ rebuild_cache/fast: rebuild_cache
 
 # The main all target
 all: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/raven/pico/works/AUV-EM/build/CMakeFiles /home/raven/pico/works/AUV-EM/build//CMakeFiles/progress.marks
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/raven/pico/works/AUV-EM-pico2/build/CMakeFiles /home/raven/pico/works/AUV-EM-pico2/build//CMakeFiles/progress.marks
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 all
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/raven/pico/works/AUV-EM/build/CMakeFiles 0
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/raven/pico/works/AUV-EM-pico2/build/CMakeFiles 0
 .PHONY : all
 
 # The main clean target
@@ -139,7 +139,7 @@ bs2_default: cmake_check_build_system
 
 # fast build rule for target.
 bs2_default/fast:
-	$(MAKE) $(MAKESILENT) -f pico-sdk/src/rp2040/boot_stage2/CMakeFiles/bs2_default.dir/build.make pico-sdk/src/rp2040/boot_stage2/CMakeFiles/bs2_default.dir/build
+	$(MAKE) $(MAKESILENT) -f pico-sdk/src/rp2350/boot_stage2/CMakeFiles/bs2_default.dir/build.make pico-sdk/src/rp2350/boot_stage2/CMakeFiles/bs2_default.dir/build
 .PHONY : bs2_default/fast
 
 #=============================================================================
@@ -152,7 +152,7 @@ bs2_default_bin: cmake_check_build_system
 
 # fast build rule for target.
 bs2_default_bin/fast:
-	$(MAKE) $(MAKESILENT) -f pico-sdk/src/rp2040/boot_stage2/CMakeFiles/bs2_default_bin.dir/build.make pico-sdk/src/rp2040/boot_stage2/CMakeFiles/bs2_default_bin.dir/build
+	$(MAKE) $(MAKESILENT) -f pico-sdk/src/rp2350/boot_stage2/CMakeFiles/bs2_default_bin.dir/build.make pico-sdk/src/rp2350/boot_stage2/CMakeFiles/bs2_default_bin.dir/build
 .PHONY : bs2_default_bin/fast
 
 #=============================================================================
@@ -165,7 +165,7 @@ bs2_default_library: cmake_check_build_system
 
 # fast build rule for target.
 bs2_default_library/fast:
-	$(MAKE) $(MAKESILENT) -f pico-sdk/src/rp2040/boot_stage2/CMakeFiles/bs2_default_library.dir/build.make pico-sdk/src/rp2040/boot_stage2/CMakeFiles/bs2_default_library.dir/build
+	$(MAKE) $(MAKESILENT) -f pico-sdk/src/rp2350/boot_stage2/CMakeFiles/bs2_default_library.dir/build.make pico-sdk/src/rp2350/boot_stage2/CMakeFiles/bs2_default_library.dir/build
 .PHONY : bs2_default_library/fast
 
 #=============================================================================
@@ -193,6 +193,19 @@ cyw43_driver_picow_cyw43_bus_pio_spi_pio_h: cmake_check_build_system
 cyw43_driver_picow_cyw43_bus_pio_spi_pio_h/fast:
 	$(MAKE) $(MAKESILENT) -f pico-sdk/src/rp2_common/pico_cyw43_driver/CMakeFiles/cyw43_driver_picow_cyw43_bus_pio_spi_pio_h.dir/build.make pico-sdk/src/rp2_common/pico_cyw43_driver/CMakeFiles/cyw43_driver_picow_cyw43_bus_pio_spi_pio_h.dir/build
 .PHONY : cyw43_driver_picow_cyw43_bus_pio_spi_pio_h/fast
+
+#=============================================================================
+# Target rules for targets named no-OS-FatFS-SD-SDIO-SPI-RPi-Pico_rp2040_sdio_pio_h
+
+# Build rule for target.
+no-OS-FatFS-SD-SDIO-SPI-RPi-Pico_rp2040_sdio_pio_h: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 no-OS-FatFS-SD-SDIO-SPI-RPi-Pico_rp2040_sdio_pio_h
+.PHONY : no-OS-FatFS-SD-SDIO-SPI-RPi-Pico_rp2040_sdio_pio_h
+
+# fast build rule for target.
+no-OS-FatFS-SD-SDIO-SPI-RPi-Pico_rp2040_sdio_pio_h/fast:
+	$(MAKE) $(MAKESILENT) -f lib/no-OS-FatFs/src/CMakeFiles/no-OS-FatFS-SD-SDIO-SPI-RPi-Pico_rp2040_sdio_pio_h.dir/build.make lib/no-OS-FatFs/src/CMakeFiles/no-OS-FatFS-SD-SDIO-SPI-RPi-Pico_rp2040_sdio_pio_h.dir/build
+.PHONY : no-OS-FatFS-SD-SDIO-SPI-RPi-Pico_rp2040_sdio_pio_h/fast
 
 func-BNO055.o: func-BNO055.cpp.o
 .PHONY : func-BNO055.o
@@ -1034,29 +1047,53 @@ home/raven/pico/pico-sdk/src/common/pico_util/queue.c.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/main.dir/build.make CMakeFiles/main.dir/home/raven/pico/pico-sdk/src/common/pico_util/queue.c.s
 .PHONY : home/raven/pico/pico-sdk/src/common/pico_util/queue.c.s
 
-home/raven/pico/pico-sdk/src/rp2040/pico_platform/platform.o: home/raven/pico/pico-sdk/src/rp2040/pico_platform/platform.c.o
-.PHONY : home/raven/pico/pico-sdk/src/rp2040/pico_platform/platform.o
+home/raven/pico/pico-sdk/src/rp2350/pico_platform/platform.o: home/raven/pico/pico-sdk/src/rp2350/pico_platform/platform.c.o
+.PHONY : home/raven/pico/pico-sdk/src/rp2350/pico_platform/platform.o
 
 # target to build an object file
-home/raven/pico/pico-sdk/src/rp2040/pico_platform/platform.c.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/main.dir/build.make CMakeFiles/main.dir/home/raven/pico/pico-sdk/src/rp2040/pico_platform/platform.c.o
-.PHONY : home/raven/pico/pico-sdk/src/rp2040/pico_platform/platform.c.o
+home/raven/pico/pico-sdk/src/rp2350/pico_platform/platform.c.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/main.dir/build.make CMakeFiles/main.dir/home/raven/pico/pico-sdk/src/rp2350/pico_platform/platform.c.o
+.PHONY : home/raven/pico/pico-sdk/src/rp2350/pico_platform/platform.c.o
 
-home/raven/pico/pico-sdk/src/rp2040/pico_platform/platform.i: home/raven/pico/pico-sdk/src/rp2040/pico_platform/platform.c.i
-.PHONY : home/raven/pico/pico-sdk/src/rp2040/pico_platform/platform.i
+home/raven/pico/pico-sdk/src/rp2350/pico_platform/platform.i: home/raven/pico/pico-sdk/src/rp2350/pico_platform/platform.c.i
+.PHONY : home/raven/pico/pico-sdk/src/rp2350/pico_platform/platform.i
 
 # target to preprocess a source file
-home/raven/pico/pico-sdk/src/rp2040/pico_platform/platform.c.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/main.dir/build.make CMakeFiles/main.dir/home/raven/pico/pico-sdk/src/rp2040/pico_platform/platform.c.i
-.PHONY : home/raven/pico/pico-sdk/src/rp2040/pico_platform/platform.c.i
+home/raven/pico/pico-sdk/src/rp2350/pico_platform/platform.c.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/main.dir/build.make CMakeFiles/main.dir/home/raven/pico/pico-sdk/src/rp2350/pico_platform/platform.c.i
+.PHONY : home/raven/pico/pico-sdk/src/rp2350/pico_platform/platform.c.i
 
-home/raven/pico/pico-sdk/src/rp2040/pico_platform/platform.s: home/raven/pico/pico-sdk/src/rp2040/pico_platform/platform.c.s
-.PHONY : home/raven/pico/pico-sdk/src/rp2040/pico_platform/platform.s
+home/raven/pico/pico-sdk/src/rp2350/pico_platform/platform.s: home/raven/pico/pico-sdk/src/rp2350/pico_platform/platform.c.s
+.PHONY : home/raven/pico/pico-sdk/src/rp2350/pico_platform/platform.s
 
 # target to generate assembly for a file
-home/raven/pico/pico-sdk/src/rp2040/pico_platform/platform.c.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/main.dir/build.make CMakeFiles/main.dir/home/raven/pico/pico-sdk/src/rp2040/pico_platform/platform.c.s
-.PHONY : home/raven/pico/pico-sdk/src/rp2040/pico_platform/platform.c.s
+home/raven/pico/pico-sdk/src/rp2350/pico_platform/platform.c.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/main.dir/build.make CMakeFiles/main.dir/home/raven/pico/pico-sdk/src/rp2350/pico_platform/platform.c.s
+.PHONY : home/raven/pico/pico-sdk/src/rp2350/pico_platform/platform.c.s
+
+home/raven/pico/pico-sdk/src/rp2_common/cmsis/stub/CMSIS/Device/RP2350/Source/system_RP2350.o: home/raven/pico/pico-sdk/src/rp2_common/cmsis/stub/CMSIS/Device/RP2350/Source/system_RP2350.c.o
+.PHONY : home/raven/pico/pico-sdk/src/rp2_common/cmsis/stub/CMSIS/Device/RP2350/Source/system_RP2350.o
+
+# target to build an object file
+home/raven/pico/pico-sdk/src/rp2_common/cmsis/stub/CMSIS/Device/RP2350/Source/system_RP2350.c.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/main.dir/build.make CMakeFiles/main.dir/home/raven/pico/pico-sdk/src/rp2_common/cmsis/stub/CMSIS/Device/RP2350/Source/system_RP2350.c.o
+.PHONY : home/raven/pico/pico-sdk/src/rp2_common/cmsis/stub/CMSIS/Device/RP2350/Source/system_RP2350.c.o
+
+home/raven/pico/pico-sdk/src/rp2_common/cmsis/stub/CMSIS/Device/RP2350/Source/system_RP2350.i: home/raven/pico/pico-sdk/src/rp2_common/cmsis/stub/CMSIS/Device/RP2350/Source/system_RP2350.c.i
+.PHONY : home/raven/pico/pico-sdk/src/rp2_common/cmsis/stub/CMSIS/Device/RP2350/Source/system_RP2350.i
+
+# target to preprocess a source file
+home/raven/pico/pico-sdk/src/rp2_common/cmsis/stub/CMSIS/Device/RP2350/Source/system_RP2350.c.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/main.dir/build.make CMakeFiles/main.dir/home/raven/pico/pico-sdk/src/rp2_common/cmsis/stub/CMSIS/Device/RP2350/Source/system_RP2350.c.i
+.PHONY : home/raven/pico/pico-sdk/src/rp2_common/cmsis/stub/CMSIS/Device/RP2350/Source/system_RP2350.c.i
+
+home/raven/pico/pico-sdk/src/rp2_common/cmsis/stub/CMSIS/Device/RP2350/Source/system_RP2350.s: home/raven/pico/pico-sdk/src/rp2_common/cmsis/stub/CMSIS/Device/RP2350/Source/system_RP2350.c.s
+.PHONY : home/raven/pico/pico-sdk/src/rp2_common/cmsis/stub/CMSIS/Device/RP2350/Source/system_RP2350.s
+
+# target to generate assembly for a file
+home/raven/pico/pico-sdk/src/rp2_common/cmsis/stub/CMSIS/Device/RP2350/Source/system_RP2350.c.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/main.dir/build.make CMakeFiles/main.dir/home/raven/pico/pico-sdk/src/rp2_common/cmsis/stub/CMSIS/Device/RP2350/Source/system_RP2350.c.s
+.PHONY : home/raven/pico/pico-sdk/src/rp2_common/cmsis/stub/CMSIS/Device/RP2350/Source/system_RP2350.c.s
 
 home/raven/pico/pico-sdk/src/rp2_common/hardware_boot_lock/boot_lock.o: home/raven/pico/pico-sdk/src/rp2_common/hardware_boot_lock/boot_lock.c.o
 .PHONY : home/raven/pico/pico-sdk/src/rp2_common/hardware_boot_lock/boot_lock.o
@@ -1106,13 +1143,29 @@ home/raven/pico/pico-sdk/src/rp2_common/hardware_clocks/clocks.c.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/main.dir/build.make CMakeFiles/main.dir/home/raven/pico/pico-sdk/src/rp2_common/hardware_clocks/clocks.c.s
 .PHONY : home/raven/pico/pico-sdk/src/rp2_common/hardware_clocks/clocks.c.s
 
-home/raven/pico/pico-sdk/src/rp2_common/hardware_divider/divider.o: home/raven/pico/pico-sdk/src/rp2_common/hardware_divider/divider.S.o
+home/raven/pico/pico-sdk/src/rp2_common/hardware_divider/divider.o: home/raven/pico/pico-sdk/src/rp2_common/hardware_divider/divider.c.o
 .PHONY : home/raven/pico/pico-sdk/src/rp2_common/hardware_divider/divider.o
 
 # target to build an object file
-home/raven/pico/pico-sdk/src/rp2_common/hardware_divider/divider.S.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/main.dir/build.make CMakeFiles/main.dir/home/raven/pico/pico-sdk/src/rp2_common/hardware_divider/divider.S.o
-.PHONY : home/raven/pico/pico-sdk/src/rp2_common/hardware_divider/divider.S.o
+home/raven/pico/pico-sdk/src/rp2_common/hardware_divider/divider.c.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/main.dir/build.make CMakeFiles/main.dir/home/raven/pico/pico-sdk/src/rp2_common/hardware_divider/divider.c.o
+.PHONY : home/raven/pico/pico-sdk/src/rp2_common/hardware_divider/divider.c.o
+
+home/raven/pico/pico-sdk/src/rp2_common/hardware_divider/divider.i: home/raven/pico/pico-sdk/src/rp2_common/hardware_divider/divider.c.i
+.PHONY : home/raven/pico/pico-sdk/src/rp2_common/hardware_divider/divider.i
+
+# target to preprocess a source file
+home/raven/pico/pico-sdk/src/rp2_common/hardware_divider/divider.c.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/main.dir/build.make CMakeFiles/main.dir/home/raven/pico/pico-sdk/src/rp2_common/hardware_divider/divider.c.i
+.PHONY : home/raven/pico/pico-sdk/src/rp2_common/hardware_divider/divider.c.i
+
+home/raven/pico/pico-sdk/src/rp2_common/hardware_divider/divider.s: home/raven/pico/pico-sdk/src/rp2_common/hardware_divider/divider.c.s
+.PHONY : home/raven/pico/pico-sdk/src/rp2_common/hardware_divider/divider.s
+
+# target to generate assembly for a file
+home/raven/pico/pico-sdk/src/rp2_common/hardware_divider/divider.c.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/main.dir/build.make CMakeFiles/main.dir/home/raven/pico/pico-sdk/src/rp2_common/hardware_divider/divider.c.s
+.PHONY : home/raven/pico/pico-sdk/src/rp2_common/hardware_divider/divider.c.s
 
 home/raven/pico/pico-sdk/src/rp2_common/hardware_dma/dma.o: home/raven/pico/pico-sdk/src/rp2_common/hardware_dma/dma.c.o
 .PHONY : home/raven/pico/pico-sdk/src/rp2_common/hardware_dma/dma.o
@@ -1242,6 +1295,30 @@ home/raven/pico/pico-sdk/src/rp2_common/hardware_irq/irq_handler_chain.S.o:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/main.dir/build.make CMakeFiles/main.dir/home/raven/pico/pico-sdk/src/rp2_common/hardware_irq/irq_handler_chain.S.o
 .PHONY : home/raven/pico/pico-sdk/src/rp2_common/hardware_irq/irq_handler_chain.S.o
 
+home/raven/pico/pico-sdk/src/rp2_common/hardware_pio/pio.o: home/raven/pico/pico-sdk/src/rp2_common/hardware_pio/pio.c.o
+.PHONY : home/raven/pico/pico-sdk/src/rp2_common/hardware_pio/pio.o
+
+# target to build an object file
+home/raven/pico/pico-sdk/src/rp2_common/hardware_pio/pio.c.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/main.dir/build.make CMakeFiles/main.dir/home/raven/pico/pico-sdk/src/rp2_common/hardware_pio/pio.c.o
+.PHONY : home/raven/pico/pico-sdk/src/rp2_common/hardware_pio/pio.c.o
+
+home/raven/pico/pico-sdk/src/rp2_common/hardware_pio/pio.i: home/raven/pico/pico-sdk/src/rp2_common/hardware_pio/pio.c.i
+.PHONY : home/raven/pico/pico-sdk/src/rp2_common/hardware_pio/pio.i
+
+# target to preprocess a source file
+home/raven/pico/pico-sdk/src/rp2_common/hardware_pio/pio.c.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/main.dir/build.make CMakeFiles/main.dir/home/raven/pico/pico-sdk/src/rp2_common/hardware_pio/pio.c.i
+.PHONY : home/raven/pico/pico-sdk/src/rp2_common/hardware_pio/pio.c.i
+
+home/raven/pico/pico-sdk/src/rp2_common/hardware_pio/pio.s: home/raven/pico/pico-sdk/src/rp2_common/hardware_pio/pio.c.s
+.PHONY : home/raven/pico/pico-sdk/src/rp2_common/hardware_pio/pio.s
+
+# target to generate assembly for a file
+home/raven/pico/pico-sdk/src/rp2_common/hardware_pio/pio.c.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/main.dir/build.make CMakeFiles/main.dir/home/raven/pico/pico-sdk/src/rp2_common/hardware_pio/pio.c.s
+.PHONY : home/raven/pico/pico-sdk/src/rp2_common/hardware_pio/pio.c.s
+
 home/raven/pico/pico-sdk/src/rp2_common/hardware_pll/pll.o: home/raven/pico/pico-sdk/src/rp2_common/hardware_pll/pll.c.o
 .PHONY : home/raven/pico/pico-sdk/src/rp2_common/hardware_pll/pll.o
 
@@ -1266,29 +1343,29 @@ home/raven/pico/pico-sdk/src/rp2_common/hardware_pll/pll.c.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/main.dir/build.make CMakeFiles/main.dir/home/raven/pico/pico-sdk/src/rp2_common/hardware_pll/pll.c.s
 .PHONY : home/raven/pico/pico-sdk/src/rp2_common/hardware_pll/pll.c.s
 
-home/raven/pico/pico-sdk/src/rp2_common/hardware_rtc/rtc.o: home/raven/pico/pico-sdk/src/rp2_common/hardware_rtc/rtc.c.o
-.PHONY : home/raven/pico/pico-sdk/src/rp2_common/hardware_rtc/rtc.o
+home/raven/pico/pico-sdk/src/rp2_common/hardware_powman/powman.o: home/raven/pico/pico-sdk/src/rp2_common/hardware_powman/powman.c.o
+.PHONY : home/raven/pico/pico-sdk/src/rp2_common/hardware_powman/powman.o
 
 # target to build an object file
-home/raven/pico/pico-sdk/src/rp2_common/hardware_rtc/rtc.c.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/main.dir/build.make CMakeFiles/main.dir/home/raven/pico/pico-sdk/src/rp2_common/hardware_rtc/rtc.c.o
-.PHONY : home/raven/pico/pico-sdk/src/rp2_common/hardware_rtc/rtc.c.o
+home/raven/pico/pico-sdk/src/rp2_common/hardware_powman/powman.c.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/main.dir/build.make CMakeFiles/main.dir/home/raven/pico/pico-sdk/src/rp2_common/hardware_powman/powman.c.o
+.PHONY : home/raven/pico/pico-sdk/src/rp2_common/hardware_powman/powman.c.o
 
-home/raven/pico/pico-sdk/src/rp2_common/hardware_rtc/rtc.i: home/raven/pico/pico-sdk/src/rp2_common/hardware_rtc/rtc.c.i
-.PHONY : home/raven/pico/pico-sdk/src/rp2_common/hardware_rtc/rtc.i
+home/raven/pico/pico-sdk/src/rp2_common/hardware_powman/powman.i: home/raven/pico/pico-sdk/src/rp2_common/hardware_powman/powman.c.i
+.PHONY : home/raven/pico/pico-sdk/src/rp2_common/hardware_powman/powman.i
 
 # target to preprocess a source file
-home/raven/pico/pico-sdk/src/rp2_common/hardware_rtc/rtc.c.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/main.dir/build.make CMakeFiles/main.dir/home/raven/pico/pico-sdk/src/rp2_common/hardware_rtc/rtc.c.i
-.PHONY : home/raven/pico/pico-sdk/src/rp2_common/hardware_rtc/rtc.c.i
+home/raven/pico/pico-sdk/src/rp2_common/hardware_powman/powman.c.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/main.dir/build.make CMakeFiles/main.dir/home/raven/pico/pico-sdk/src/rp2_common/hardware_powman/powman.c.i
+.PHONY : home/raven/pico/pico-sdk/src/rp2_common/hardware_powman/powman.c.i
 
-home/raven/pico/pico-sdk/src/rp2_common/hardware_rtc/rtc.s: home/raven/pico/pico-sdk/src/rp2_common/hardware_rtc/rtc.c.s
-.PHONY : home/raven/pico/pico-sdk/src/rp2_common/hardware_rtc/rtc.s
+home/raven/pico/pico-sdk/src/rp2_common/hardware_powman/powman.s: home/raven/pico/pico-sdk/src/rp2_common/hardware_powman/powman.c.s
+.PHONY : home/raven/pico/pico-sdk/src/rp2_common/hardware_powman/powman.s
 
 # target to generate assembly for a file
-home/raven/pico/pico-sdk/src/rp2_common/hardware_rtc/rtc.c.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/main.dir/build.make CMakeFiles/main.dir/home/raven/pico/pico-sdk/src/rp2_common/hardware_rtc/rtc.c.s
-.PHONY : home/raven/pico/pico-sdk/src/rp2_common/hardware_rtc/rtc.c.s
+home/raven/pico/pico-sdk/src/rp2_common/hardware_powman/powman.c.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/main.dir/build.make CMakeFiles/main.dir/home/raven/pico/pico-sdk/src/rp2_common/hardware_powman/powman.c.s
+.PHONY : home/raven/pico/pico-sdk/src/rp2_common/hardware_powman/powman.c.s
 
 home/raven/pico/pico-sdk/src/rp2_common/hardware_spi/spi.o: home/raven/pico/pico-sdk/src/rp2_common/hardware_spi/spi.c.o
 .PHONY : home/raven/pico/pico-sdk/src/rp2_common/hardware_spi/spi.o
@@ -1530,6 +1607,30 @@ home/raven/pico/pico-sdk/src/rp2_common/hardware_xosc/xosc.c.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/main.dir/build.make CMakeFiles/main.dir/home/raven/pico/pico-sdk/src/rp2_common/hardware_xosc/xosc.c.s
 .PHONY : home/raven/pico/pico-sdk/src/rp2_common/hardware_xosc/xosc.c.s
 
+home/raven/pico/pico-sdk/src/rp2_common/pico_aon_timer/aon_timer.o: home/raven/pico/pico-sdk/src/rp2_common/pico_aon_timer/aon_timer.c.o
+.PHONY : home/raven/pico/pico-sdk/src/rp2_common/pico_aon_timer/aon_timer.o
+
+# target to build an object file
+home/raven/pico/pico-sdk/src/rp2_common/pico_aon_timer/aon_timer.c.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/main.dir/build.make CMakeFiles/main.dir/home/raven/pico/pico-sdk/src/rp2_common/pico_aon_timer/aon_timer.c.o
+.PHONY : home/raven/pico/pico-sdk/src/rp2_common/pico_aon_timer/aon_timer.c.o
+
+home/raven/pico/pico-sdk/src/rp2_common/pico_aon_timer/aon_timer.i: home/raven/pico/pico-sdk/src/rp2_common/pico_aon_timer/aon_timer.c.i
+.PHONY : home/raven/pico/pico-sdk/src/rp2_common/pico_aon_timer/aon_timer.i
+
+# target to preprocess a source file
+home/raven/pico/pico-sdk/src/rp2_common/pico_aon_timer/aon_timer.c.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/main.dir/build.make CMakeFiles/main.dir/home/raven/pico/pico-sdk/src/rp2_common/pico_aon_timer/aon_timer.c.i
+.PHONY : home/raven/pico/pico-sdk/src/rp2_common/pico_aon_timer/aon_timer.c.i
+
+home/raven/pico/pico-sdk/src/rp2_common/pico_aon_timer/aon_timer.s: home/raven/pico/pico-sdk/src/rp2_common/pico_aon_timer/aon_timer.c.s
+.PHONY : home/raven/pico/pico-sdk/src/rp2_common/pico_aon_timer/aon_timer.s
+
+# target to generate assembly for a file
+home/raven/pico/pico-sdk/src/rp2_common/pico_aon_timer/aon_timer.c.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/main.dir/build.make CMakeFiles/main.dir/home/raven/pico/pico-sdk/src/rp2_common/pico_aon_timer/aon_timer.c.s
+.PHONY : home/raven/pico/pico-sdk/src/rp2_common/pico_aon_timer/aon_timer.c.s
+
 home/raven/pico/pico-sdk/src/rp2_common/pico_atomic/atomic.o: home/raven/pico/pico-sdk/src/rp2_common/pico_atomic/atomic.c.o
 .PHONY : home/raven/pico/pico-sdk/src/rp2_common/pico_atomic/atomic.o
 
@@ -1666,45 +1767,53 @@ home/raven/pico/pico-sdk/src/rp2_common/pico_cxx_options/new_delete.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/main.dir/build.make CMakeFiles/main.dir/home/raven/pico/pico-sdk/src/rp2_common/pico_cxx_options/new_delete.cpp.s
 .PHONY : home/raven/pico/pico-sdk/src/rp2_common/pico_cxx_options/new_delete.cpp.s
 
-home/raven/pico/pico-sdk/src/rp2_common/pico_divider/divider_hardware.o: home/raven/pico/pico-sdk/src/rp2_common/pico_divider/divider_hardware.S.o
-.PHONY : home/raven/pico/pico-sdk/src/rp2_common/pico_divider/divider_hardware.o
+home/raven/pico/pico-sdk/src/rp2_common/pico_divider/divider_compiler.o: home/raven/pico/pico-sdk/src/rp2_common/pico_divider/divider_compiler.c.o
+.PHONY : home/raven/pico/pico-sdk/src/rp2_common/pico_divider/divider_compiler.o
 
 # target to build an object file
-home/raven/pico/pico-sdk/src/rp2_common/pico_divider/divider_hardware.S.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/main.dir/build.make CMakeFiles/main.dir/home/raven/pico/pico-sdk/src/rp2_common/pico_divider/divider_hardware.S.o
-.PHONY : home/raven/pico/pico-sdk/src/rp2_common/pico_divider/divider_hardware.S.o
+home/raven/pico/pico-sdk/src/rp2_common/pico_divider/divider_compiler.c.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/main.dir/build.make CMakeFiles/main.dir/home/raven/pico/pico-sdk/src/rp2_common/pico_divider/divider_compiler.c.o
+.PHONY : home/raven/pico/pico-sdk/src/rp2_common/pico_divider/divider_compiler.c.o
 
-home/raven/pico/pico-sdk/src/rp2_common/pico_double/double_aeabi_rp2040.o: home/raven/pico/pico-sdk/src/rp2_common/pico_double/double_aeabi_rp2040.S.o
-.PHONY : home/raven/pico/pico-sdk/src/rp2_common/pico_double/double_aeabi_rp2040.o
-
-# target to build an object file
-home/raven/pico/pico-sdk/src/rp2_common/pico_double/double_aeabi_rp2040.S.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/main.dir/build.make CMakeFiles/main.dir/home/raven/pico/pico-sdk/src/rp2_common/pico_double/double_aeabi_rp2040.S.o
-.PHONY : home/raven/pico/pico-sdk/src/rp2_common/pico_double/double_aeabi_rp2040.S.o
-
-home/raven/pico/pico-sdk/src/rp2_common/pico_double/double_init_rom_rp2040.o: home/raven/pico/pico-sdk/src/rp2_common/pico_double/double_init_rom_rp2040.c.o
-.PHONY : home/raven/pico/pico-sdk/src/rp2_common/pico_double/double_init_rom_rp2040.o
-
-# target to build an object file
-home/raven/pico/pico-sdk/src/rp2_common/pico_double/double_init_rom_rp2040.c.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/main.dir/build.make CMakeFiles/main.dir/home/raven/pico/pico-sdk/src/rp2_common/pico_double/double_init_rom_rp2040.c.o
-.PHONY : home/raven/pico/pico-sdk/src/rp2_common/pico_double/double_init_rom_rp2040.c.o
-
-home/raven/pico/pico-sdk/src/rp2_common/pico_double/double_init_rom_rp2040.i: home/raven/pico/pico-sdk/src/rp2_common/pico_double/double_init_rom_rp2040.c.i
-.PHONY : home/raven/pico/pico-sdk/src/rp2_common/pico_double/double_init_rom_rp2040.i
+home/raven/pico/pico-sdk/src/rp2_common/pico_divider/divider_compiler.i: home/raven/pico/pico-sdk/src/rp2_common/pico_divider/divider_compiler.c.i
+.PHONY : home/raven/pico/pico-sdk/src/rp2_common/pico_divider/divider_compiler.i
 
 # target to preprocess a source file
-home/raven/pico/pico-sdk/src/rp2_common/pico_double/double_init_rom_rp2040.c.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/main.dir/build.make CMakeFiles/main.dir/home/raven/pico/pico-sdk/src/rp2_common/pico_double/double_init_rom_rp2040.c.i
-.PHONY : home/raven/pico/pico-sdk/src/rp2_common/pico_double/double_init_rom_rp2040.c.i
+home/raven/pico/pico-sdk/src/rp2_common/pico_divider/divider_compiler.c.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/main.dir/build.make CMakeFiles/main.dir/home/raven/pico/pico-sdk/src/rp2_common/pico_divider/divider_compiler.c.i
+.PHONY : home/raven/pico/pico-sdk/src/rp2_common/pico_divider/divider_compiler.c.i
 
-home/raven/pico/pico-sdk/src/rp2_common/pico_double/double_init_rom_rp2040.s: home/raven/pico/pico-sdk/src/rp2_common/pico_double/double_init_rom_rp2040.c.s
-.PHONY : home/raven/pico/pico-sdk/src/rp2_common/pico_double/double_init_rom_rp2040.s
+home/raven/pico/pico-sdk/src/rp2_common/pico_divider/divider_compiler.s: home/raven/pico/pico-sdk/src/rp2_common/pico_divider/divider_compiler.c.s
+.PHONY : home/raven/pico/pico-sdk/src/rp2_common/pico_divider/divider_compiler.s
 
 # target to generate assembly for a file
-home/raven/pico/pico-sdk/src/rp2_common/pico_double/double_init_rom_rp2040.c.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/main.dir/build.make CMakeFiles/main.dir/home/raven/pico/pico-sdk/src/rp2_common/pico_double/double_init_rom_rp2040.c.s
-.PHONY : home/raven/pico/pico-sdk/src/rp2_common/pico_double/double_init_rom_rp2040.c.s
+home/raven/pico/pico-sdk/src/rp2_common/pico_divider/divider_compiler.c.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/main.dir/build.make CMakeFiles/main.dir/home/raven/pico/pico-sdk/src/rp2_common/pico_divider/divider_compiler.c.s
+.PHONY : home/raven/pico/pico-sdk/src/rp2_common/pico_divider/divider_compiler.c.s
+
+home/raven/pico/pico-sdk/src/rp2_common/pico_double/double_aeabi_dcp.o: home/raven/pico/pico-sdk/src/rp2_common/pico_double/double_aeabi_dcp.S.o
+.PHONY : home/raven/pico/pico-sdk/src/rp2_common/pico_double/double_aeabi_dcp.o
+
+# target to build an object file
+home/raven/pico/pico-sdk/src/rp2_common/pico_double/double_aeabi_dcp.S.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/main.dir/build.make CMakeFiles/main.dir/home/raven/pico/pico-sdk/src/rp2_common/pico_double/double_aeabi_dcp.S.o
+.PHONY : home/raven/pico/pico-sdk/src/rp2_common/pico_double/double_aeabi_dcp.S.o
+
+home/raven/pico/pico-sdk/src/rp2_common/pico_double/double_conv_m33.o: home/raven/pico/pico-sdk/src/rp2_common/pico_double/double_conv_m33.S.o
+.PHONY : home/raven/pico/pico-sdk/src/rp2_common/pico_double/double_conv_m33.o
+
+# target to build an object file
+home/raven/pico/pico-sdk/src/rp2_common/pico_double/double_conv_m33.S.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/main.dir/build.make CMakeFiles/main.dir/home/raven/pico/pico-sdk/src/rp2_common/pico_double/double_conv_m33.S.o
+.PHONY : home/raven/pico/pico-sdk/src/rp2_common/pico_double/double_conv_m33.S.o
+
+home/raven/pico/pico-sdk/src/rp2_common/pico_double/double_fma_dcp.o: home/raven/pico/pico-sdk/src/rp2_common/pico_double/double_fma_dcp.S.o
+.PHONY : home/raven/pico/pico-sdk/src/rp2_common/pico_double/double_fma_dcp.o
+
+# target to build an object file
+home/raven/pico/pico-sdk/src/rp2_common/pico_double/double_fma_dcp.S.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/main.dir/build.make CMakeFiles/main.dir/home/raven/pico/pico-sdk/src/rp2_common/pico_double/double_fma_dcp.S.o
+.PHONY : home/raven/pico/pico-sdk/src/rp2_common/pico_double/double_fma_dcp.S.o
 
 home/raven/pico/pico-sdk/src/rp2_common/pico_double/double_math.o: home/raven/pico/pico-sdk/src/rp2_common/pico_double/double_math.c.o
 .PHONY : home/raven/pico/pico-sdk/src/rp2_common/pico_double/double_math.o
@@ -1730,13 +1839,13 @@ home/raven/pico/pico-sdk/src/rp2_common/pico_double/double_math.c.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/main.dir/build.make CMakeFiles/main.dir/home/raven/pico/pico-sdk/src/rp2_common/pico_double/double_math.c.s
 .PHONY : home/raven/pico/pico-sdk/src/rp2_common/pico_double/double_math.c.s
 
-home/raven/pico/pico-sdk/src/rp2_common/pico_double/double_v1_rom_shim_rp2040.o: home/raven/pico/pico-sdk/src/rp2_common/pico_double/double_v1_rom_shim_rp2040.S.o
-.PHONY : home/raven/pico/pico-sdk/src/rp2_common/pico_double/double_v1_rom_shim_rp2040.o
+home/raven/pico/pico-sdk/src/rp2_common/pico_double/double_sci_m33.o: home/raven/pico/pico-sdk/src/rp2_common/pico_double/double_sci_m33.S.o
+.PHONY : home/raven/pico/pico-sdk/src/rp2_common/pico_double/double_sci_m33.o
 
 # target to build an object file
-home/raven/pico/pico-sdk/src/rp2_common/pico_double/double_v1_rom_shim_rp2040.S.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/main.dir/build.make CMakeFiles/main.dir/home/raven/pico/pico-sdk/src/rp2_common/pico_double/double_v1_rom_shim_rp2040.S.o
-.PHONY : home/raven/pico/pico-sdk/src/rp2_common/pico_double/double_v1_rom_shim_rp2040.S.o
+home/raven/pico/pico-sdk/src/rp2_common/pico_double/double_sci_m33.S.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/main.dir/build.make CMakeFiles/main.dir/home/raven/pico/pico-sdk/src/rp2_common/pico_double/double_sci_m33.S.o
+.PHONY : home/raven/pico/pico-sdk/src/rp2_common/pico_double/double_sci_m33.S.o
 
 home/raven/pico/pico-sdk/src/rp2_common/pico_fix/rp2040_usb_device_enumeration/rp2040_usb_device_enumeration.o: home/raven/pico/pico-sdk/src/rp2_common/pico_fix/rp2040_usb_device_enumeration/rp2040_usb_device_enumeration.c.o
 .PHONY : home/raven/pico/pico-sdk/src/rp2_common/pico_fix/rp2040_usb_device_enumeration/rp2040_usb_device_enumeration.o
@@ -1786,37 +1895,13 @@ home/raven/pico/pico-sdk/src/rp2_common/pico_flash/flash.c.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/main.dir/build.make CMakeFiles/main.dir/home/raven/pico/pico-sdk/src/rp2_common/pico_flash/flash.c.s
 .PHONY : home/raven/pico/pico-sdk/src/rp2_common/pico_flash/flash.c.s
 
-home/raven/pico/pico-sdk/src/rp2_common/pico_float/float_aeabi_rp2040.o: home/raven/pico/pico-sdk/src/rp2_common/pico_float/float_aeabi_rp2040.S.o
-.PHONY : home/raven/pico/pico-sdk/src/rp2_common/pico_float/float_aeabi_rp2040.o
+home/raven/pico/pico-sdk/src/rp2_common/pico_float/float_conv_m33.o: home/raven/pico/pico-sdk/src/rp2_common/pico_float/float_conv_m33.S.o
+.PHONY : home/raven/pico/pico-sdk/src/rp2_common/pico_float/float_conv_m33.o
 
 # target to build an object file
-home/raven/pico/pico-sdk/src/rp2_common/pico_float/float_aeabi_rp2040.S.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/main.dir/build.make CMakeFiles/main.dir/home/raven/pico/pico-sdk/src/rp2_common/pico_float/float_aeabi_rp2040.S.o
-.PHONY : home/raven/pico/pico-sdk/src/rp2_common/pico_float/float_aeabi_rp2040.S.o
-
-home/raven/pico/pico-sdk/src/rp2_common/pico_float/float_init_rom_rp2040.o: home/raven/pico/pico-sdk/src/rp2_common/pico_float/float_init_rom_rp2040.c.o
-.PHONY : home/raven/pico/pico-sdk/src/rp2_common/pico_float/float_init_rom_rp2040.o
-
-# target to build an object file
-home/raven/pico/pico-sdk/src/rp2_common/pico_float/float_init_rom_rp2040.c.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/main.dir/build.make CMakeFiles/main.dir/home/raven/pico/pico-sdk/src/rp2_common/pico_float/float_init_rom_rp2040.c.o
-.PHONY : home/raven/pico/pico-sdk/src/rp2_common/pico_float/float_init_rom_rp2040.c.o
-
-home/raven/pico/pico-sdk/src/rp2_common/pico_float/float_init_rom_rp2040.i: home/raven/pico/pico-sdk/src/rp2_common/pico_float/float_init_rom_rp2040.c.i
-.PHONY : home/raven/pico/pico-sdk/src/rp2_common/pico_float/float_init_rom_rp2040.i
-
-# target to preprocess a source file
-home/raven/pico/pico-sdk/src/rp2_common/pico_float/float_init_rom_rp2040.c.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/main.dir/build.make CMakeFiles/main.dir/home/raven/pico/pico-sdk/src/rp2_common/pico_float/float_init_rom_rp2040.c.i
-.PHONY : home/raven/pico/pico-sdk/src/rp2_common/pico_float/float_init_rom_rp2040.c.i
-
-home/raven/pico/pico-sdk/src/rp2_common/pico_float/float_init_rom_rp2040.s: home/raven/pico/pico-sdk/src/rp2_common/pico_float/float_init_rom_rp2040.c.s
-.PHONY : home/raven/pico/pico-sdk/src/rp2_common/pico_float/float_init_rom_rp2040.s
-
-# target to generate assembly for a file
-home/raven/pico/pico-sdk/src/rp2_common/pico_float/float_init_rom_rp2040.c.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/main.dir/build.make CMakeFiles/main.dir/home/raven/pico/pico-sdk/src/rp2_common/pico_float/float_init_rom_rp2040.c.s
-.PHONY : home/raven/pico/pico-sdk/src/rp2_common/pico_float/float_init_rom_rp2040.c.s
+home/raven/pico/pico-sdk/src/rp2_common/pico_float/float_conv_m33.S.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/main.dir/build.make CMakeFiles/main.dir/home/raven/pico/pico-sdk/src/rp2_common/pico_float/float_conv_m33.S.o
+.PHONY : home/raven/pico/pico-sdk/src/rp2_common/pico_float/float_conv_m33.S.o
 
 home/raven/pico/pico-sdk/src/rp2_common/pico_float/float_math.o: home/raven/pico/pico-sdk/src/rp2_common/pico_float/float_math.c.o
 .PHONY : home/raven/pico/pico-sdk/src/rp2_common/pico_float/float_math.o
@@ -1842,21 +1927,13 @@ home/raven/pico/pico-sdk/src/rp2_common/pico_float/float_math.c.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/main.dir/build.make CMakeFiles/main.dir/home/raven/pico/pico-sdk/src/rp2_common/pico_float/float_math.c.s
 .PHONY : home/raven/pico/pico-sdk/src/rp2_common/pico_float/float_math.c.s
 
-home/raven/pico/pico-sdk/src/rp2_common/pico_float/float_v1_rom_shim_rp2040.o: home/raven/pico/pico-sdk/src/rp2_common/pico_float/float_v1_rom_shim_rp2040.S.o
-.PHONY : home/raven/pico/pico-sdk/src/rp2_common/pico_float/float_v1_rom_shim_rp2040.o
+home/raven/pico/pico-sdk/src/rp2_common/pico_float/float_sci_m33_vfp.o: home/raven/pico/pico-sdk/src/rp2_common/pico_float/float_sci_m33_vfp.S.o
+.PHONY : home/raven/pico/pico-sdk/src/rp2_common/pico_float/float_sci_m33_vfp.o
 
 # target to build an object file
-home/raven/pico/pico-sdk/src/rp2_common/pico_float/float_v1_rom_shim_rp2040.S.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/main.dir/build.make CMakeFiles/main.dir/home/raven/pico/pico-sdk/src/rp2_common/pico_float/float_v1_rom_shim_rp2040.S.o
-.PHONY : home/raven/pico/pico-sdk/src/rp2_common/pico_float/float_v1_rom_shim_rp2040.S.o
-
-home/raven/pico/pico-sdk/src/rp2_common/pico_int64_ops/pico_int64_ops_aeabi.o: home/raven/pico/pico-sdk/src/rp2_common/pico_int64_ops/pico_int64_ops_aeabi.S.o
-.PHONY : home/raven/pico/pico-sdk/src/rp2_common/pico_int64_ops/pico_int64_ops_aeabi.o
-
-# target to build an object file
-home/raven/pico/pico-sdk/src/rp2_common/pico_int64_ops/pico_int64_ops_aeabi.S.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/main.dir/build.make CMakeFiles/main.dir/home/raven/pico/pico-sdk/src/rp2_common/pico_int64_ops/pico_int64_ops_aeabi.S.o
-.PHONY : home/raven/pico/pico-sdk/src/rp2_common/pico_int64_ops/pico_int64_ops_aeabi.S.o
+home/raven/pico/pico-sdk/src/rp2_common/pico_float/float_sci_m33_vfp.S.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/main.dir/build.make CMakeFiles/main.dir/home/raven/pico/pico-sdk/src/rp2_common/pico_float/float_sci_m33_vfp.S.o
+.PHONY : home/raven/pico/pico-sdk/src/rp2_common/pico_float/float_sci_m33_vfp.S.o
 
 home/raven/pico/pico-sdk/src/rp2_common/pico_malloc/malloc.o: home/raven/pico/pico-sdk/src/rp2_common/pico_malloc/malloc.c.o
 .PHONY : home/raven/pico/pico-sdk/src/rp2_common/pico_malloc/malloc.o
@@ -1881,14 +1958,6 @@ home/raven/pico/pico-sdk/src/rp2_common/pico_malloc/malloc.s: home/raven/pico/pi
 home/raven/pico/pico-sdk/src/rp2_common/pico_malloc/malloc.c.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/main.dir/build.make CMakeFiles/main.dir/home/raven/pico/pico-sdk/src/rp2_common/pico_malloc/malloc.c.s
 .PHONY : home/raven/pico/pico-sdk/src/rp2_common/pico_malloc/malloc.c.s
-
-home/raven/pico/pico-sdk/src/rp2_common/pico_mem_ops/mem_ops_aeabi.o: home/raven/pico/pico-sdk/src/rp2_common/pico_mem_ops/mem_ops_aeabi.S.o
-.PHONY : home/raven/pico/pico-sdk/src/rp2_common/pico_mem_ops/mem_ops_aeabi.o
-
-# target to build an object file
-home/raven/pico/pico-sdk/src/rp2_common/pico_mem_ops/mem_ops_aeabi.S.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/main.dir/build.make CMakeFiles/main.dir/home/raven/pico/pico-sdk/src/rp2_common/pico_mem_ops/mem_ops_aeabi.S.o
-.PHONY : home/raven/pico/pico-sdk/src/rp2_common/pico_mem_ops/mem_ops_aeabi.S.o
 
 home/raven/pico/pico-sdk/src/rp2_common/pico_multicore/multicore.o: home/raven/pico/pico-sdk/src/rp2_common/pico_multicore/multicore.c.o
 .PHONY : home/raven/pico/pico-sdk/src/rp2_common/pico_multicore/multicore.o
@@ -2250,317 +2319,485 @@ hw_config.c.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/main.dir/build.make CMakeFiles/main.dir/hw_config.c.s
 .PHONY : hw_config.c.s
 
-lib/no-OS-FatFS-SD-SPI-RPi-Pico/FatFs_SPI/ff15/source/ff.o: lib/no-OS-FatFS-SD-SPI-RPi-Pico/FatFs_SPI/ff15/source/ff.c.o
-.PHONY : lib/no-OS-FatFS-SD-SPI-RPi-Pico/FatFs_SPI/ff15/source/ff.o
+lib/no-OS-FatFs/src/ff15/source/ff.o: lib/no-OS-FatFs/src/ff15/source/ff.c.o
+.PHONY : lib/no-OS-FatFs/src/ff15/source/ff.o
 
 # target to build an object file
-lib/no-OS-FatFS-SD-SPI-RPi-Pico/FatFs_SPI/ff15/source/ff.c.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/main.dir/build.make CMakeFiles/main.dir/lib/no-OS-FatFS-SD-SPI-RPi-Pico/FatFs_SPI/ff15/source/ff.c.o
-.PHONY : lib/no-OS-FatFS-SD-SPI-RPi-Pico/FatFs_SPI/ff15/source/ff.c.o
+lib/no-OS-FatFs/src/ff15/source/ff.c.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/main.dir/build.make CMakeFiles/main.dir/lib/no-OS-FatFs/src/ff15/source/ff.c.o
+.PHONY : lib/no-OS-FatFs/src/ff15/source/ff.c.o
 
-lib/no-OS-FatFS-SD-SPI-RPi-Pico/FatFs_SPI/ff15/source/ff.i: lib/no-OS-FatFS-SD-SPI-RPi-Pico/FatFs_SPI/ff15/source/ff.c.i
-.PHONY : lib/no-OS-FatFS-SD-SPI-RPi-Pico/FatFs_SPI/ff15/source/ff.i
+lib/no-OS-FatFs/src/ff15/source/ff.i: lib/no-OS-FatFs/src/ff15/source/ff.c.i
+.PHONY : lib/no-OS-FatFs/src/ff15/source/ff.i
 
 # target to preprocess a source file
-lib/no-OS-FatFS-SD-SPI-RPi-Pico/FatFs_SPI/ff15/source/ff.c.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/main.dir/build.make CMakeFiles/main.dir/lib/no-OS-FatFS-SD-SPI-RPi-Pico/FatFs_SPI/ff15/source/ff.c.i
-.PHONY : lib/no-OS-FatFS-SD-SPI-RPi-Pico/FatFs_SPI/ff15/source/ff.c.i
+lib/no-OS-FatFs/src/ff15/source/ff.c.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/main.dir/build.make CMakeFiles/main.dir/lib/no-OS-FatFs/src/ff15/source/ff.c.i
+.PHONY : lib/no-OS-FatFs/src/ff15/source/ff.c.i
 
-lib/no-OS-FatFS-SD-SPI-RPi-Pico/FatFs_SPI/ff15/source/ff.s: lib/no-OS-FatFS-SD-SPI-RPi-Pico/FatFs_SPI/ff15/source/ff.c.s
-.PHONY : lib/no-OS-FatFS-SD-SPI-RPi-Pico/FatFs_SPI/ff15/source/ff.s
+lib/no-OS-FatFs/src/ff15/source/ff.s: lib/no-OS-FatFs/src/ff15/source/ff.c.s
+.PHONY : lib/no-OS-FatFs/src/ff15/source/ff.s
 
 # target to generate assembly for a file
-lib/no-OS-FatFS-SD-SPI-RPi-Pico/FatFs_SPI/ff15/source/ff.c.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/main.dir/build.make CMakeFiles/main.dir/lib/no-OS-FatFS-SD-SPI-RPi-Pico/FatFs_SPI/ff15/source/ff.c.s
-.PHONY : lib/no-OS-FatFS-SD-SPI-RPi-Pico/FatFs_SPI/ff15/source/ff.c.s
+lib/no-OS-FatFs/src/ff15/source/ff.c.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/main.dir/build.make CMakeFiles/main.dir/lib/no-OS-FatFs/src/ff15/source/ff.c.s
+.PHONY : lib/no-OS-FatFs/src/ff15/source/ff.c.s
 
-lib/no-OS-FatFS-SD-SPI-RPi-Pico/FatFs_SPI/ff15/source/ffsystem.o: lib/no-OS-FatFS-SD-SPI-RPi-Pico/FatFs_SPI/ff15/source/ffsystem.c.o
-.PHONY : lib/no-OS-FatFS-SD-SPI-RPi-Pico/FatFs_SPI/ff15/source/ffsystem.o
+lib/no-OS-FatFs/src/ff15/source/ffsystem.o: lib/no-OS-FatFs/src/ff15/source/ffsystem.c.o
+.PHONY : lib/no-OS-FatFs/src/ff15/source/ffsystem.o
 
 # target to build an object file
-lib/no-OS-FatFS-SD-SPI-RPi-Pico/FatFs_SPI/ff15/source/ffsystem.c.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/main.dir/build.make CMakeFiles/main.dir/lib/no-OS-FatFS-SD-SPI-RPi-Pico/FatFs_SPI/ff15/source/ffsystem.c.o
-.PHONY : lib/no-OS-FatFS-SD-SPI-RPi-Pico/FatFs_SPI/ff15/source/ffsystem.c.o
+lib/no-OS-FatFs/src/ff15/source/ffsystem.c.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/main.dir/build.make CMakeFiles/main.dir/lib/no-OS-FatFs/src/ff15/source/ffsystem.c.o
+.PHONY : lib/no-OS-FatFs/src/ff15/source/ffsystem.c.o
 
-lib/no-OS-FatFS-SD-SPI-RPi-Pico/FatFs_SPI/ff15/source/ffsystem.i: lib/no-OS-FatFS-SD-SPI-RPi-Pico/FatFs_SPI/ff15/source/ffsystem.c.i
-.PHONY : lib/no-OS-FatFS-SD-SPI-RPi-Pico/FatFs_SPI/ff15/source/ffsystem.i
+lib/no-OS-FatFs/src/ff15/source/ffsystem.i: lib/no-OS-FatFs/src/ff15/source/ffsystem.c.i
+.PHONY : lib/no-OS-FatFs/src/ff15/source/ffsystem.i
 
 # target to preprocess a source file
-lib/no-OS-FatFS-SD-SPI-RPi-Pico/FatFs_SPI/ff15/source/ffsystem.c.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/main.dir/build.make CMakeFiles/main.dir/lib/no-OS-FatFS-SD-SPI-RPi-Pico/FatFs_SPI/ff15/source/ffsystem.c.i
-.PHONY : lib/no-OS-FatFS-SD-SPI-RPi-Pico/FatFs_SPI/ff15/source/ffsystem.c.i
+lib/no-OS-FatFs/src/ff15/source/ffsystem.c.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/main.dir/build.make CMakeFiles/main.dir/lib/no-OS-FatFs/src/ff15/source/ffsystem.c.i
+.PHONY : lib/no-OS-FatFs/src/ff15/source/ffsystem.c.i
 
-lib/no-OS-FatFS-SD-SPI-RPi-Pico/FatFs_SPI/ff15/source/ffsystem.s: lib/no-OS-FatFS-SD-SPI-RPi-Pico/FatFs_SPI/ff15/source/ffsystem.c.s
-.PHONY : lib/no-OS-FatFS-SD-SPI-RPi-Pico/FatFs_SPI/ff15/source/ffsystem.s
+lib/no-OS-FatFs/src/ff15/source/ffsystem.s: lib/no-OS-FatFs/src/ff15/source/ffsystem.c.s
+.PHONY : lib/no-OS-FatFs/src/ff15/source/ffsystem.s
 
 # target to generate assembly for a file
-lib/no-OS-FatFS-SD-SPI-RPi-Pico/FatFs_SPI/ff15/source/ffsystem.c.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/main.dir/build.make CMakeFiles/main.dir/lib/no-OS-FatFS-SD-SPI-RPi-Pico/FatFs_SPI/ff15/source/ffsystem.c.s
-.PHONY : lib/no-OS-FatFS-SD-SPI-RPi-Pico/FatFs_SPI/ff15/source/ffsystem.c.s
+lib/no-OS-FatFs/src/ff15/source/ffsystem.c.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/main.dir/build.make CMakeFiles/main.dir/lib/no-OS-FatFs/src/ff15/source/ffsystem.c.s
+.PHONY : lib/no-OS-FatFs/src/ff15/source/ffsystem.c.s
 
-lib/no-OS-FatFS-SD-SPI-RPi-Pico/FatFs_SPI/ff15/source/ffunicode.o: lib/no-OS-FatFS-SD-SPI-RPi-Pico/FatFs_SPI/ff15/source/ffunicode.c.o
-.PHONY : lib/no-OS-FatFS-SD-SPI-RPi-Pico/FatFs_SPI/ff15/source/ffunicode.o
+lib/no-OS-FatFs/src/ff15/source/ffunicode.o: lib/no-OS-FatFs/src/ff15/source/ffunicode.c.o
+.PHONY : lib/no-OS-FatFs/src/ff15/source/ffunicode.o
 
 # target to build an object file
-lib/no-OS-FatFS-SD-SPI-RPi-Pico/FatFs_SPI/ff15/source/ffunicode.c.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/main.dir/build.make CMakeFiles/main.dir/lib/no-OS-FatFS-SD-SPI-RPi-Pico/FatFs_SPI/ff15/source/ffunicode.c.o
-.PHONY : lib/no-OS-FatFS-SD-SPI-RPi-Pico/FatFs_SPI/ff15/source/ffunicode.c.o
+lib/no-OS-FatFs/src/ff15/source/ffunicode.c.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/main.dir/build.make CMakeFiles/main.dir/lib/no-OS-FatFs/src/ff15/source/ffunicode.c.o
+.PHONY : lib/no-OS-FatFs/src/ff15/source/ffunicode.c.o
 
-lib/no-OS-FatFS-SD-SPI-RPi-Pico/FatFs_SPI/ff15/source/ffunicode.i: lib/no-OS-FatFS-SD-SPI-RPi-Pico/FatFs_SPI/ff15/source/ffunicode.c.i
-.PHONY : lib/no-OS-FatFS-SD-SPI-RPi-Pico/FatFs_SPI/ff15/source/ffunicode.i
+lib/no-OS-FatFs/src/ff15/source/ffunicode.i: lib/no-OS-FatFs/src/ff15/source/ffunicode.c.i
+.PHONY : lib/no-OS-FatFs/src/ff15/source/ffunicode.i
 
 # target to preprocess a source file
-lib/no-OS-FatFS-SD-SPI-RPi-Pico/FatFs_SPI/ff15/source/ffunicode.c.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/main.dir/build.make CMakeFiles/main.dir/lib/no-OS-FatFS-SD-SPI-RPi-Pico/FatFs_SPI/ff15/source/ffunicode.c.i
-.PHONY : lib/no-OS-FatFS-SD-SPI-RPi-Pico/FatFs_SPI/ff15/source/ffunicode.c.i
+lib/no-OS-FatFs/src/ff15/source/ffunicode.c.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/main.dir/build.make CMakeFiles/main.dir/lib/no-OS-FatFs/src/ff15/source/ffunicode.c.i
+.PHONY : lib/no-OS-FatFs/src/ff15/source/ffunicode.c.i
 
-lib/no-OS-FatFS-SD-SPI-RPi-Pico/FatFs_SPI/ff15/source/ffunicode.s: lib/no-OS-FatFS-SD-SPI-RPi-Pico/FatFs_SPI/ff15/source/ffunicode.c.s
-.PHONY : lib/no-OS-FatFS-SD-SPI-RPi-Pico/FatFs_SPI/ff15/source/ffunicode.s
+lib/no-OS-FatFs/src/ff15/source/ffunicode.s: lib/no-OS-FatFs/src/ff15/source/ffunicode.c.s
+.PHONY : lib/no-OS-FatFs/src/ff15/source/ffunicode.s
 
 # target to generate assembly for a file
-lib/no-OS-FatFS-SD-SPI-RPi-Pico/FatFs_SPI/ff15/source/ffunicode.c.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/main.dir/build.make CMakeFiles/main.dir/lib/no-OS-FatFS-SD-SPI-RPi-Pico/FatFs_SPI/ff15/source/ffunicode.c.s
-.PHONY : lib/no-OS-FatFS-SD-SPI-RPi-Pico/FatFs_SPI/ff15/source/ffunicode.c.s
+lib/no-OS-FatFs/src/ff15/source/ffunicode.c.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/main.dir/build.make CMakeFiles/main.dir/lib/no-OS-FatFs/src/ff15/source/ffunicode.c.s
+.PHONY : lib/no-OS-FatFs/src/ff15/source/ffunicode.c.s
 
-lib/no-OS-FatFS-SD-SPI-RPi-Pico/FatFs_SPI/sd_driver/crc.o: lib/no-OS-FatFS-SD-SPI-RPi-Pico/FatFs_SPI/sd_driver/crc.c.o
-.PHONY : lib/no-OS-FatFS-SD-SPI-RPi-Pico/FatFs_SPI/sd_driver/crc.o
+lib/no-OS-FatFs/src/sd_driver/SDIO/rp2040_sdio.o: lib/no-OS-FatFs/src/sd_driver/SDIO/rp2040_sdio.c.o
+.PHONY : lib/no-OS-FatFs/src/sd_driver/SDIO/rp2040_sdio.o
 
 # target to build an object file
-lib/no-OS-FatFS-SD-SPI-RPi-Pico/FatFs_SPI/sd_driver/crc.c.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/main.dir/build.make CMakeFiles/main.dir/lib/no-OS-FatFS-SD-SPI-RPi-Pico/FatFs_SPI/sd_driver/crc.c.o
-.PHONY : lib/no-OS-FatFS-SD-SPI-RPi-Pico/FatFs_SPI/sd_driver/crc.c.o
+lib/no-OS-FatFs/src/sd_driver/SDIO/rp2040_sdio.c.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/main.dir/build.make CMakeFiles/main.dir/lib/no-OS-FatFs/src/sd_driver/SDIO/rp2040_sdio.c.o
+.PHONY : lib/no-OS-FatFs/src/sd_driver/SDIO/rp2040_sdio.c.o
 
-lib/no-OS-FatFS-SD-SPI-RPi-Pico/FatFs_SPI/sd_driver/crc.i: lib/no-OS-FatFS-SD-SPI-RPi-Pico/FatFs_SPI/sd_driver/crc.c.i
-.PHONY : lib/no-OS-FatFS-SD-SPI-RPi-Pico/FatFs_SPI/sd_driver/crc.i
+lib/no-OS-FatFs/src/sd_driver/SDIO/rp2040_sdio.i: lib/no-OS-FatFs/src/sd_driver/SDIO/rp2040_sdio.c.i
+.PHONY : lib/no-OS-FatFs/src/sd_driver/SDIO/rp2040_sdio.i
 
 # target to preprocess a source file
-lib/no-OS-FatFS-SD-SPI-RPi-Pico/FatFs_SPI/sd_driver/crc.c.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/main.dir/build.make CMakeFiles/main.dir/lib/no-OS-FatFS-SD-SPI-RPi-Pico/FatFs_SPI/sd_driver/crc.c.i
-.PHONY : lib/no-OS-FatFS-SD-SPI-RPi-Pico/FatFs_SPI/sd_driver/crc.c.i
+lib/no-OS-FatFs/src/sd_driver/SDIO/rp2040_sdio.c.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/main.dir/build.make CMakeFiles/main.dir/lib/no-OS-FatFs/src/sd_driver/SDIO/rp2040_sdio.c.i
+.PHONY : lib/no-OS-FatFs/src/sd_driver/SDIO/rp2040_sdio.c.i
 
-lib/no-OS-FatFS-SD-SPI-RPi-Pico/FatFs_SPI/sd_driver/crc.s: lib/no-OS-FatFS-SD-SPI-RPi-Pico/FatFs_SPI/sd_driver/crc.c.s
-.PHONY : lib/no-OS-FatFS-SD-SPI-RPi-Pico/FatFs_SPI/sd_driver/crc.s
+lib/no-OS-FatFs/src/sd_driver/SDIO/rp2040_sdio.s: lib/no-OS-FatFs/src/sd_driver/SDIO/rp2040_sdio.c.s
+.PHONY : lib/no-OS-FatFs/src/sd_driver/SDIO/rp2040_sdio.s
 
 # target to generate assembly for a file
-lib/no-OS-FatFS-SD-SPI-RPi-Pico/FatFs_SPI/sd_driver/crc.c.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/main.dir/build.make CMakeFiles/main.dir/lib/no-OS-FatFS-SD-SPI-RPi-Pico/FatFs_SPI/sd_driver/crc.c.s
-.PHONY : lib/no-OS-FatFS-SD-SPI-RPi-Pico/FatFs_SPI/sd_driver/crc.c.s
+lib/no-OS-FatFs/src/sd_driver/SDIO/rp2040_sdio.c.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/main.dir/build.make CMakeFiles/main.dir/lib/no-OS-FatFs/src/sd_driver/SDIO/rp2040_sdio.c.s
+.PHONY : lib/no-OS-FatFs/src/sd_driver/SDIO/rp2040_sdio.c.s
 
-lib/no-OS-FatFS-SD-SPI-RPi-Pico/FatFs_SPI/sd_driver/demo_logging.o: lib/no-OS-FatFS-SD-SPI-RPi-Pico/FatFs_SPI/sd_driver/demo_logging.c.o
-.PHONY : lib/no-OS-FatFS-SD-SPI-RPi-Pico/FatFs_SPI/sd_driver/demo_logging.o
+lib/no-OS-FatFs/src/sd_driver/SDIO/sd_card_sdio.o: lib/no-OS-FatFs/src/sd_driver/SDIO/sd_card_sdio.c.o
+.PHONY : lib/no-OS-FatFs/src/sd_driver/SDIO/sd_card_sdio.o
 
 # target to build an object file
-lib/no-OS-FatFS-SD-SPI-RPi-Pico/FatFs_SPI/sd_driver/demo_logging.c.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/main.dir/build.make CMakeFiles/main.dir/lib/no-OS-FatFS-SD-SPI-RPi-Pico/FatFs_SPI/sd_driver/demo_logging.c.o
-.PHONY : lib/no-OS-FatFS-SD-SPI-RPi-Pico/FatFs_SPI/sd_driver/demo_logging.c.o
+lib/no-OS-FatFs/src/sd_driver/SDIO/sd_card_sdio.c.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/main.dir/build.make CMakeFiles/main.dir/lib/no-OS-FatFs/src/sd_driver/SDIO/sd_card_sdio.c.o
+.PHONY : lib/no-OS-FatFs/src/sd_driver/SDIO/sd_card_sdio.c.o
 
-lib/no-OS-FatFS-SD-SPI-RPi-Pico/FatFs_SPI/sd_driver/demo_logging.i: lib/no-OS-FatFS-SD-SPI-RPi-Pico/FatFs_SPI/sd_driver/demo_logging.c.i
-.PHONY : lib/no-OS-FatFS-SD-SPI-RPi-Pico/FatFs_SPI/sd_driver/demo_logging.i
+lib/no-OS-FatFs/src/sd_driver/SDIO/sd_card_sdio.i: lib/no-OS-FatFs/src/sd_driver/SDIO/sd_card_sdio.c.i
+.PHONY : lib/no-OS-FatFs/src/sd_driver/SDIO/sd_card_sdio.i
 
 # target to preprocess a source file
-lib/no-OS-FatFS-SD-SPI-RPi-Pico/FatFs_SPI/sd_driver/demo_logging.c.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/main.dir/build.make CMakeFiles/main.dir/lib/no-OS-FatFS-SD-SPI-RPi-Pico/FatFs_SPI/sd_driver/demo_logging.c.i
-.PHONY : lib/no-OS-FatFS-SD-SPI-RPi-Pico/FatFs_SPI/sd_driver/demo_logging.c.i
+lib/no-OS-FatFs/src/sd_driver/SDIO/sd_card_sdio.c.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/main.dir/build.make CMakeFiles/main.dir/lib/no-OS-FatFs/src/sd_driver/SDIO/sd_card_sdio.c.i
+.PHONY : lib/no-OS-FatFs/src/sd_driver/SDIO/sd_card_sdio.c.i
 
-lib/no-OS-FatFS-SD-SPI-RPi-Pico/FatFs_SPI/sd_driver/demo_logging.s: lib/no-OS-FatFS-SD-SPI-RPi-Pico/FatFs_SPI/sd_driver/demo_logging.c.s
-.PHONY : lib/no-OS-FatFS-SD-SPI-RPi-Pico/FatFs_SPI/sd_driver/demo_logging.s
+lib/no-OS-FatFs/src/sd_driver/SDIO/sd_card_sdio.s: lib/no-OS-FatFs/src/sd_driver/SDIO/sd_card_sdio.c.s
+.PHONY : lib/no-OS-FatFs/src/sd_driver/SDIO/sd_card_sdio.s
 
 # target to generate assembly for a file
-lib/no-OS-FatFS-SD-SPI-RPi-Pico/FatFs_SPI/sd_driver/demo_logging.c.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/main.dir/build.make CMakeFiles/main.dir/lib/no-OS-FatFS-SD-SPI-RPi-Pico/FatFs_SPI/sd_driver/demo_logging.c.s
-.PHONY : lib/no-OS-FatFS-SD-SPI-RPi-Pico/FatFs_SPI/sd_driver/demo_logging.c.s
+lib/no-OS-FatFs/src/sd_driver/SDIO/sd_card_sdio.c.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/main.dir/build.make CMakeFiles/main.dir/lib/no-OS-FatFs/src/sd_driver/SDIO/sd_card_sdio.c.s
+.PHONY : lib/no-OS-FatFs/src/sd_driver/SDIO/sd_card_sdio.c.s
 
-lib/no-OS-FatFS-SD-SPI-RPi-Pico/FatFs_SPI/sd_driver/sd_card.o: lib/no-OS-FatFS-SD-SPI-RPi-Pico/FatFs_SPI/sd_driver/sd_card.c.o
-.PHONY : lib/no-OS-FatFS-SD-SPI-RPi-Pico/FatFs_SPI/sd_driver/sd_card.o
+lib/no-OS-FatFs/src/sd_driver/SPI/my_spi.o: lib/no-OS-FatFs/src/sd_driver/SPI/my_spi.c.o
+.PHONY : lib/no-OS-FatFs/src/sd_driver/SPI/my_spi.o
 
 # target to build an object file
-lib/no-OS-FatFS-SD-SPI-RPi-Pico/FatFs_SPI/sd_driver/sd_card.c.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/main.dir/build.make CMakeFiles/main.dir/lib/no-OS-FatFS-SD-SPI-RPi-Pico/FatFs_SPI/sd_driver/sd_card.c.o
-.PHONY : lib/no-OS-FatFS-SD-SPI-RPi-Pico/FatFs_SPI/sd_driver/sd_card.c.o
+lib/no-OS-FatFs/src/sd_driver/SPI/my_spi.c.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/main.dir/build.make CMakeFiles/main.dir/lib/no-OS-FatFs/src/sd_driver/SPI/my_spi.c.o
+.PHONY : lib/no-OS-FatFs/src/sd_driver/SPI/my_spi.c.o
 
-lib/no-OS-FatFS-SD-SPI-RPi-Pico/FatFs_SPI/sd_driver/sd_card.i: lib/no-OS-FatFS-SD-SPI-RPi-Pico/FatFs_SPI/sd_driver/sd_card.c.i
-.PHONY : lib/no-OS-FatFS-SD-SPI-RPi-Pico/FatFs_SPI/sd_driver/sd_card.i
+lib/no-OS-FatFs/src/sd_driver/SPI/my_spi.i: lib/no-OS-FatFs/src/sd_driver/SPI/my_spi.c.i
+.PHONY : lib/no-OS-FatFs/src/sd_driver/SPI/my_spi.i
 
 # target to preprocess a source file
-lib/no-OS-FatFS-SD-SPI-RPi-Pico/FatFs_SPI/sd_driver/sd_card.c.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/main.dir/build.make CMakeFiles/main.dir/lib/no-OS-FatFS-SD-SPI-RPi-Pico/FatFs_SPI/sd_driver/sd_card.c.i
-.PHONY : lib/no-OS-FatFS-SD-SPI-RPi-Pico/FatFs_SPI/sd_driver/sd_card.c.i
+lib/no-OS-FatFs/src/sd_driver/SPI/my_spi.c.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/main.dir/build.make CMakeFiles/main.dir/lib/no-OS-FatFs/src/sd_driver/SPI/my_spi.c.i
+.PHONY : lib/no-OS-FatFs/src/sd_driver/SPI/my_spi.c.i
 
-lib/no-OS-FatFS-SD-SPI-RPi-Pico/FatFs_SPI/sd_driver/sd_card.s: lib/no-OS-FatFS-SD-SPI-RPi-Pico/FatFs_SPI/sd_driver/sd_card.c.s
-.PHONY : lib/no-OS-FatFS-SD-SPI-RPi-Pico/FatFs_SPI/sd_driver/sd_card.s
+lib/no-OS-FatFs/src/sd_driver/SPI/my_spi.s: lib/no-OS-FatFs/src/sd_driver/SPI/my_spi.c.s
+.PHONY : lib/no-OS-FatFs/src/sd_driver/SPI/my_spi.s
 
 # target to generate assembly for a file
-lib/no-OS-FatFS-SD-SPI-RPi-Pico/FatFs_SPI/sd_driver/sd_card.c.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/main.dir/build.make CMakeFiles/main.dir/lib/no-OS-FatFS-SD-SPI-RPi-Pico/FatFs_SPI/sd_driver/sd_card.c.s
-.PHONY : lib/no-OS-FatFS-SD-SPI-RPi-Pico/FatFs_SPI/sd_driver/sd_card.c.s
+lib/no-OS-FatFs/src/sd_driver/SPI/my_spi.c.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/main.dir/build.make CMakeFiles/main.dir/lib/no-OS-FatFs/src/sd_driver/SPI/my_spi.c.s
+.PHONY : lib/no-OS-FatFs/src/sd_driver/SPI/my_spi.c.s
 
-lib/no-OS-FatFS-SD-SPI-RPi-Pico/FatFs_SPI/sd_driver/sd_spi.o: lib/no-OS-FatFS-SD-SPI-RPi-Pico/FatFs_SPI/sd_driver/sd_spi.c.o
-.PHONY : lib/no-OS-FatFS-SD-SPI-RPi-Pico/FatFs_SPI/sd_driver/sd_spi.o
+lib/no-OS-FatFs/src/sd_driver/SPI/sd_card_spi.o: lib/no-OS-FatFs/src/sd_driver/SPI/sd_card_spi.c.o
+.PHONY : lib/no-OS-FatFs/src/sd_driver/SPI/sd_card_spi.o
 
 # target to build an object file
-lib/no-OS-FatFS-SD-SPI-RPi-Pico/FatFs_SPI/sd_driver/sd_spi.c.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/main.dir/build.make CMakeFiles/main.dir/lib/no-OS-FatFS-SD-SPI-RPi-Pico/FatFs_SPI/sd_driver/sd_spi.c.o
-.PHONY : lib/no-OS-FatFS-SD-SPI-RPi-Pico/FatFs_SPI/sd_driver/sd_spi.c.o
+lib/no-OS-FatFs/src/sd_driver/SPI/sd_card_spi.c.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/main.dir/build.make CMakeFiles/main.dir/lib/no-OS-FatFs/src/sd_driver/SPI/sd_card_spi.c.o
+.PHONY : lib/no-OS-FatFs/src/sd_driver/SPI/sd_card_spi.c.o
 
-lib/no-OS-FatFS-SD-SPI-RPi-Pico/FatFs_SPI/sd_driver/sd_spi.i: lib/no-OS-FatFS-SD-SPI-RPi-Pico/FatFs_SPI/sd_driver/sd_spi.c.i
-.PHONY : lib/no-OS-FatFS-SD-SPI-RPi-Pico/FatFs_SPI/sd_driver/sd_spi.i
+lib/no-OS-FatFs/src/sd_driver/SPI/sd_card_spi.i: lib/no-OS-FatFs/src/sd_driver/SPI/sd_card_spi.c.i
+.PHONY : lib/no-OS-FatFs/src/sd_driver/SPI/sd_card_spi.i
 
 # target to preprocess a source file
-lib/no-OS-FatFS-SD-SPI-RPi-Pico/FatFs_SPI/sd_driver/sd_spi.c.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/main.dir/build.make CMakeFiles/main.dir/lib/no-OS-FatFS-SD-SPI-RPi-Pico/FatFs_SPI/sd_driver/sd_spi.c.i
-.PHONY : lib/no-OS-FatFS-SD-SPI-RPi-Pico/FatFs_SPI/sd_driver/sd_spi.c.i
+lib/no-OS-FatFs/src/sd_driver/SPI/sd_card_spi.c.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/main.dir/build.make CMakeFiles/main.dir/lib/no-OS-FatFs/src/sd_driver/SPI/sd_card_spi.c.i
+.PHONY : lib/no-OS-FatFs/src/sd_driver/SPI/sd_card_spi.c.i
 
-lib/no-OS-FatFS-SD-SPI-RPi-Pico/FatFs_SPI/sd_driver/sd_spi.s: lib/no-OS-FatFS-SD-SPI-RPi-Pico/FatFs_SPI/sd_driver/sd_spi.c.s
-.PHONY : lib/no-OS-FatFS-SD-SPI-RPi-Pico/FatFs_SPI/sd_driver/sd_spi.s
+lib/no-OS-FatFs/src/sd_driver/SPI/sd_card_spi.s: lib/no-OS-FatFs/src/sd_driver/SPI/sd_card_spi.c.s
+.PHONY : lib/no-OS-FatFs/src/sd_driver/SPI/sd_card_spi.s
 
 # target to generate assembly for a file
-lib/no-OS-FatFS-SD-SPI-RPi-Pico/FatFs_SPI/sd_driver/sd_spi.c.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/main.dir/build.make CMakeFiles/main.dir/lib/no-OS-FatFS-SD-SPI-RPi-Pico/FatFs_SPI/sd_driver/sd_spi.c.s
-.PHONY : lib/no-OS-FatFS-SD-SPI-RPi-Pico/FatFs_SPI/sd_driver/sd_spi.c.s
+lib/no-OS-FatFs/src/sd_driver/SPI/sd_card_spi.c.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/main.dir/build.make CMakeFiles/main.dir/lib/no-OS-FatFs/src/sd_driver/SPI/sd_card_spi.c.s
+.PHONY : lib/no-OS-FatFs/src/sd_driver/SPI/sd_card_spi.c.s
 
-lib/no-OS-FatFS-SD-SPI-RPi-Pico/FatFs_SPI/sd_driver/spi.o: lib/no-OS-FatFS-SD-SPI-RPi-Pico/FatFs_SPI/sd_driver/spi.c.o
-.PHONY : lib/no-OS-FatFS-SD-SPI-RPi-Pico/FatFs_SPI/sd_driver/spi.o
+lib/no-OS-FatFs/src/sd_driver/SPI/sd_spi.o: lib/no-OS-FatFs/src/sd_driver/SPI/sd_spi.c.o
+.PHONY : lib/no-OS-FatFs/src/sd_driver/SPI/sd_spi.o
 
 # target to build an object file
-lib/no-OS-FatFS-SD-SPI-RPi-Pico/FatFs_SPI/sd_driver/spi.c.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/main.dir/build.make CMakeFiles/main.dir/lib/no-OS-FatFS-SD-SPI-RPi-Pico/FatFs_SPI/sd_driver/spi.c.o
-.PHONY : lib/no-OS-FatFS-SD-SPI-RPi-Pico/FatFs_SPI/sd_driver/spi.c.o
+lib/no-OS-FatFs/src/sd_driver/SPI/sd_spi.c.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/main.dir/build.make CMakeFiles/main.dir/lib/no-OS-FatFs/src/sd_driver/SPI/sd_spi.c.o
+.PHONY : lib/no-OS-FatFs/src/sd_driver/SPI/sd_spi.c.o
 
-lib/no-OS-FatFS-SD-SPI-RPi-Pico/FatFs_SPI/sd_driver/spi.i: lib/no-OS-FatFS-SD-SPI-RPi-Pico/FatFs_SPI/sd_driver/spi.c.i
-.PHONY : lib/no-OS-FatFS-SD-SPI-RPi-Pico/FatFs_SPI/sd_driver/spi.i
+lib/no-OS-FatFs/src/sd_driver/SPI/sd_spi.i: lib/no-OS-FatFs/src/sd_driver/SPI/sd_spi.c.i
+.PHONY : lib/no-OS-FatFs/src/sd_driver/SPI/sd_spi.i
 
 # target to preprocess a source file
-lib/no-OS-FatFS-SD-SPI-RPi-Pico/FatFs_SPI/sd_driver/spi.c.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/main.dir/build.make CMakeFiles/main.dir/lib/no-OS-FatFS-SD-SPI-RPi-Pico/FatFs_SPI/sd_driver/spi.c.i
-.PHONY : lib/no-OS-FatFS-SD-SPI-RPi-Pico/FatFs_SPI/sd_driver/spi.c.i
+lib/no-OS-FatFs/src/sd_driver/SPI/sd_spi.c.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/main.dir/build.make CMakeFiles/main.dir/lib/no-OS-FatFs/src/sd_driver/SPI/sd_spi.c.i
+.PHONY : lib/no-OS-FatFs/src/sd_driver/SPI/sd_spi.c.i
 
-lib/no-OS-FatFS-SD-SPI-RPi-Pico/FatFs_SPI/sd_driver/spi.s: lib/no-OS-FatFS-SD-SPI-RPi-Pico/FatFs_SPI/sd_driver/spi.c.s
-.PHONY : lib/no-OS-FatFS-SD-SPI-RPi-Pico/FatFs_SPI/sd_driver/spi.s
+lib/no-OS-FatFs/src/sd_driver/SPI/sd_spi.s: lib/no-OS-FatFs/src/sd_driver/SPI/sd_spi.c.s
+.PHONY : lib/no-OS-FatFs/src/sd_driver/SPI/sd_spi.s
 
 # target to generate assembly for a file
-lib/no-OS-FatFS-SD-SPI-RPi-Pico/FatFs_SPI/sd_driver/spi.c.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/main.dir/build.make CMakeFiles/main.dir/lib/no-OS-FatFS-SD-SPI-RPi-Pico/FatFs_SPI/sd_driver/spi.c.s
-.PHONY : lib/no-OS-FatFS-SD-SPI-RPi-Pico/FatFs_SPI/sd_driver/spi.c.s
+lib/no-OS-FatFs/src/sd_driver/SPI/sd_spi.c.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/main.dir/build.make CMakeFiles/main.dir/lib/no-OS-FatFs/src/sd_driver/SPI/sd_spi.c.s
+.PHONY : lib/no-OS-FatFs/src/sd_driver/SPI/sd_spi.c.s
 
-lib/no-OS-FatFS-SD-SPI-RPi-Pico/FatFs_SPI/src/f_util.o: lib/no-OS-FatFS-SD-SPI-RPi-Pico/FatFs_SPI/src/f_util.c.o
-.PHONY : lib/no-OS-FatFS-SD-SPI-RPi-Pico/FatFs_SPI/src/f_util.o
+lib/no-OS-FatFs/src/sd_driver/dma_interrupts.o: lib/no-OS-FatFs/src/sd_driver/dma_interrupts.c.o
+.PHONY : lib/no-OS-FatFs/src/sd_driver/dma_interrupts.o
 
 # target to build an object file
-lib/no-OS-FatFS-SD-SPI-RPi-Pico/FatFs_SPI/src/f_util.c.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/main.dir/build.make CMakeFiles/main.dir/lib/no-OS-FatFS-SD-SPI-RPi-Pico/FatFs_SPI/src/f_util.c.o
-.PHONY : lib/no-OS-FatFS-SD-SPI-RPi-Pico/FatFs_SPI/src/f_util.c.o
+lib/no-OS-FatFs/src/sd_driver/dma_interrupts.c.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/main.dir/build.make CMakeFiles/main.dir/lib/no-OS-FatFs/src/sd_driver/dma_interrupts.c.o
+.PHONY : lib/no-OS-FatFs/src/sd_driver/dma_interrupts.c.o
 
-lib/no-OS-FatFS-SD-SPI-RPi-Pico/FatFs_SPI/src/f_util.i: lib/no-OS-FatFS-SD-SPI-RPi-Pico/FatFs_SPI/src/f_util.c.i
-.PHONY : lib/no-OS-FatFS-SD-SPI-RPi-Pico/FatFs_SPI/src/f_util.i
+lib/no-OS-FatFs/src/sd_driver/dma_interrupts.i: lib/no-OS-FatFs/src/sd_driver/dma_interrupts.c.i
+.PHONY : lib/no-OS-FatFs/src/sd_driver/dma_interrupts.i
 
 # target to preprocess a source file
-lib/no-OS-FatFS-SD-SPI-RPi-Pico/FatFs_SPI/src/f_util.c.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/main.dir/build.make CMakeFiles/main.dir/lib/no-OS-FatFS-SD-SPI-RPi-Pico/FatFs_SPI/src/f_util.c.i
-.PHONY : lib/no-OS-FatFS-SD-SPI-RPi-Pico/FatFs_SPI/src/f_util.c.i
+lib/no-OS-FatFs/src/sd_driver/dma_interrupts.c.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/main.dir/build.make CMakeFiles/main.dir/lib/no-OS-FatFs/src/sd_driver/dma_interrupts.c.i
+.PHONY : lib/no-OS-FatFs/src/sd_driver/dma_interrupts.c.i
 
-lib/no-OS-FatFS-SD-SPI-RPi-Pico/FatFs_SPI/src/f_util.s: lib/no-OS-FatFS-SD-SPI-RPi-Pico/FatFs_SPI/src/f_util.c.s
-.PHONY : lib/no-OS-FatFS-SD-SPI-RPi-Pico/FatFs_SPI/src/f_util.s
+lib/no-OS-FatFs/src/sd_driver/dma_interrupts.s: lib/no-OS-FatFs/src/sd_driver/dma_interrupts.c.s
+.PHONY : lib/no-OS-FatFs/src/sd_driver/dma_interrupts.s
 
 # target to generate assembly for a file
-lib/no-OS-FatFS-SD-SPI-RPi-Pico/FatFs_SPI/src/f_util.c.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/main.dir/build.make CMakeFiles/main.dir/lib/no-OS-FatFS-SD-SPI-RPi-Pico/FatFs_SPI/src/f_util.c.s
-.PHONY : lib/no-OS-FatFS-SD-SPI-RPi-Pico/FatFs_SPI/src/f_util.c.s
+lib/no-OS-FatFs/src/sd_driver/dma_interrupts.c.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/main.dir/build.make CMakeFiles/main.dir/lib/no-OS-FatFs/src/sd_driver/dma_interrupts.c.s
+.PHONY : lib/no-OS-FatFs/src/sd_driver/dma_interrupts.c.s
 
-lib/no-OS-FatFS-SD-SPI-RPi-Pico/FatFs_SPI/src/ff_stdio.o: lib/no-OS-FatFS-SD-SPI-RPi-Pico/FatFs_SPI/src/ff_stdio.c.o
-.PHONY : lib/no-OS-FatFS-SD-SPI-RPi-Pico/FatFs_SPI/src/ff_stdio.o
+lib/no-OS-FatFs/src/sd_driver/sd_card.o: lib/no-OS-FatFs/src/sd_driver/sd_card.c.o
+.PHONY : lib/no-OS-FatFs/src/sd_driver/sd_card.o
 
 # target to build an object file
-lib/no-OS-FatFS-SD-SPI-RPi-Pico/FatFs_SPI/src/ff_stdio.c.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/main.dir/build.make CMakeFiles/main.dir/lib/no-OS-FatFS-SD-SPI-RPi-Pico/FatFs_SPI/src/ff_stdio.c.o
-.PHONY : lib/no-OS-FatFS-SD-SPI-RPi-Pico/FatFs_SPI/src/ff_stdio.c.o
+lib/no-OS-FatFs/src/sd_driver/sd_card.c.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/main.dir/build.make CMakeFiles/main.dir/lib/no-OS-FatFs/src/sd_driver/sd_card.c.o
+.PHONY : lib/no-OS-FatFs/src/sd_driver/sd_card.c.o
 
-lib/no-OS-FatFS-SD-SPI-RPi-Pico/FatFs_SPI/src/ff_stdio.i: lib/no-OS-FatFS-SD-SPI-RPi-Pico/FatFs_SPI/src/ff_stdio.c.i
-.PHONY : lib/no-OS-FatFS-SD-SPI-RPi-Pico/FatFs_SPI/src/ff_stdio.i
+lib/no-OS-FatFs/src/sd_driver/sd_card.i: lib/no-OS-FatFs/src/sd_driver/sd_card.c.i
+.PHONY : lib/no-OS-FatFs/src/sd_driver/sd_card.i
 
 # target to preprocess a source file
-lib/no-OS-FatFS-SD-SPI-RPi-Pico/FatFs_SPI/src/ff_stdio.c.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/main.dir/build.make CMakeFiles/main.dir/lib/no-OS-FatFS-SD-SPI-RPi-Pico/FatFs_SPI/src/ff_stdio.c.i
-.PHONY : lib/no-OS-FatFS-SD-SPI-RPi-Pico/FatFs_SPI/src/ff_stdio.c.i
+lib/no-OS-FatFs/src/sd_driver/sd_card.c.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/main.dir/build.make CMakeFiles/main.dir/lib/no-OS-FatFs/src/sd_driver/sd_card.c.i
+.PHONY : lib/no-OS-FatFs/src/sd_driver/sd_card.c.i
 
-lib/no-OS-FatFS-SD-SPI-RPi-Pico/FatFs_SPI/src/ff_stdio.s: lib/no-OS-FatFS-SD-SPI-RPi-Pico/FatFs_SPI/src/ff_stdio.c.s
-.PHONY : lib/no-OS-FatFS-SD-SPI-RPi-Pico/FatFs_SPI/src/ff_stdio.s
+lib/no-OS-FatFs/src/sd_driver/sd_card.s: lib/no-OS-FatFs/src/sd_driver/sd_card.c.s
+.PHONY : lib/no-OS-FatFs/src/sd_driver/sd_card.s
 
 # target to generate assembly for a file
-lib/no-OS-FatFS-SD-SPI-RPi-Pico/FatFs_SPI/src/ff_stdio.c.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/main.dir/build.make CMakeFiles/main.dir/lib/no-OS-FatFS-SD-SPI-RPi-Pico/FatFs_SPI/src/ff_stdio.c.s
-.PHONY : lib/no-OS-FatFS-SD-SPI-RPi-Pico/FatFs_SPI/src/ff_stdio.c.s
+lib/no-OS-FatFs/src/sd_driver/sd_card.c.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/main.dir/build.make CMakeFiles/main.dir/lib/no-OS-FatFs/src/sd_driver/sd_card.c.s
+.PHONY : lib/no-OS-FatFs/src/sd_driver/sd_card.c.s
 
-lib/no-OS-FatFS-SD-SPI-RPi-Pico/FatFs_SPI/src/glue.o: lib/no-OS-FatFS-SD-SPI-RPi-Pico/FatFs_SPI/src/glue.c.o
-.PHONY : lib/no-OS-FatFS-SD-SPI-RPi-Pico/FatFs_SPI/src/glue.o
+lib/no-OS-FatFs/src/sd_driver/sd_timeouts.o: lib/no-OS-FatFs/src/sd_driver/sd_timeouts.c.o
+.PHONY : lib/no-OS-FatFs/src/sd_driver/sd_timeouts.o
 
 # target to build an object file
-lib/no-OS-FatFS-SD-SPI-RPi-Pico/FatFs_SPI/src/glue.c.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/main.dir/build.make CMakeFiles/main.dir/lib/no-OS-FatFS-SD-SPI-RPi-Pico/FatFs_SPI/src/glue.c.o
-.PHONY : lib/no-OS-FatFS-SD-SPI-RPi-Pico/FatFs_SPI/src/glue.c.o
+lib/no-OS-FatFs/src/sd_driver/sd_timeouts.c.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/main.dir/build.make CMakeFiles/main.dir/lib/no-OS-FatFs/src/sd_driver/sd_timeouts.c.o
+.PHONY : lib/no-OS-FatFs/src/sd_driver/sd_timeouts.c.o
 
-lib/no-OS-FatFS-SD-SPI-RPi-Pico/FatFs_SPI/src/glue.i: lib/no-OS-FatFS-SD-SPI-RPi-Pico/FatFs_SPI/src/glue.c.i
-.PHONY : lib/no-OS-FatFS-SD-SPI-RPi-Pico/FatFs_SPI/src/glue.i
+lib/no-OS-FatFs/src/sd_driver/sd_timeouts.i: lib/no-OS-FatFs/src/sd_driver/sd_timeouts.c.i
+.PHONY : lib/no-OS-FatFs/src/sd_driver/sd_timeouts.i
 
 # target to preprocess a source file
-lib/no-OS-FatFS-SD-SPI-RPi-Pico/FatFs_SPI/src/glue.c.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/main.dir/build.make CMakeFiles/main.dir/lib/no-OS-FatFS-SD-SPI-RPi-Pico/FatFs_SPI/src/glue.c.i
-.PHONY : lib/no-OS-FatFS-SD-SPI-RPi-Pico/FatFs_SPI/src/glue.c.i
+lib/no-OS-FatFs/src/sd_driver/sd_timeouts.c.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/main.dir/build.make CMakeFiles/main.dir/lib/no-OS-FatFs/src/sd_driver/sd_timeouts.c.i
+.PHONY : lib/no-OS-FatFs/src/sd_driver/sd_timeouts.c.i
 
-lib/no-OS-FatFS-SD-SPI-RPi-Pico/FatFs_SPI/src/glue.s: lib/no-OS-FatFS-SD-SPI-RPi-Pico/FatFs_SPI/src/glue.c.s
-.PHONY : lib/no-OS-FatFS-SD-SPI-RPi-Pico/FatFs_SPI/src/glue.s
+lib/no-OS-FatFs/src/sd_driver/sd_timeouts.s: lib/no-OS-FatFs/src/sd_driver/sd_timeouts.c.s
+.PHONY : lib/no-OS-FatFs/src/sd_driver/sd_timeouts.s
 
 # target to generate assembly for a file
-lib/no-OS-FatFS-SD-SPI-RPi-Pico/FatFs_SPI/src/glue.c.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/main.dir/build.make CMakeFiles/main.dir/lib/no-OS-FatFS-SD-SPI-RPi-Pico/FatFs_SPI/src/glue.c.s
-.PHONY : lib/no-OS-FatFS-SD-SPI-RPi-Pico/FatFs_SPI/src/glue.c.s
+lib/no-OS-FatFs/src/sd_driver/sd_timeouts.c.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/main.dir/build.make CMakeFiles/main.dir/lib/no-OS-FatFs/src/sd_driver/sd_timeouts.c.s
+.PHONY : lib/no-OS-FatFs/src/sd_driver/sd_timeouts.c.s
 
-lib/no-OS-FatFS-SD-SPI-RPi-Pico/FatFs_SPI/src/my_debug.o: lib/no-OS-FatFS-SD-SPI-RPi-Pico/FatFs_SPI/src/my_debug.c.o
-.PHONY : lib/no-OS-FatFS-SD-SPI-RPi-Pico/FatFs_SPI/src/my_debug.o
+lib/no-OS-FatFs/src/src/crash.o: lib/no-OS-FatFs/src/src/crash.c.o
+.PHONY : lib/no-OS-FatFs/src/src/crash.o
 
 # target to build an object file
-lib/no-OS-FatFS-SD-SPI-RPi-Pico/FatFs_SPI/src/my_debug.c.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/main.dir/build.make CMakeFiles/main.dir/lib/no-OS-FatFS-SD-SPI-RPi-Pico/FatFs_SPI/src/my_debug.c.o
-.PHONY : lib/no-OS-FatFS-SD-SPI-RPi-Pico/FatFs_SPI/src/my_debug.c.o
+lib/no-OS-FatFs/src/src/crash.c.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/main.dir/build.make CMakeFiles/main.dir/lib/no-OS-FatFs/src/src/crash.c.o
+.PHONY : lib/no-OS-FatFs/src/src/crash.c.o
 
-lib/no-OS-FatFS-SD-SPI-RPi-Pico/FatFs_SPI/src/my_debug.i: lib/no-OS-FatFS-SD-SPI-RPi-Pico/FatFs_SPI/src/my_debug.c.i
-.PHONY : lib/no-OS-FatFS-SD-SPI-RPi-Pico/FatFs_SPI/src/my_debug.i
+lib/no-OS-FatFs/src/src/crash.i: lib/no-OS-FatFs/src/src/crash.c.i
+.PHONY : lib/no-OS-FatFs/src/src/crash.i
 
 # target to preprocess a source file
-lib/no-OS-FatFS-SD-SPI-RPi-Pico/FatFs_SPI/src/my_debug.c.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/main.dir/build.make CMakeFiles/main.dir/lib/no-OS-FatFS-SD-SPI-RPi-Pico/FatFs_SPI/src/my_debug.c.i
-.PHONY : lib/no-OS-FatFS-SD-SPI-RPi-Pico/FatFs_SPI/src/my_debug.c.i
+lib/no-OS-FatFs/src/src/crash.c.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/main.dir/build.make CMakeFiles/main.dir/lib/no-OS-FatFs/src/src/crash.c.i
+.PHONY : lib/no-OS-FatFs/src/src/crash.c.i
 
-lib/no-OS-FatFS-SD-SPI-RPi-Pico/FatFs_SPI/src/my_debug.s: lib/no-OS-FatFS-SD-SPI-RPi-Pico/FatFs_SPI/src/my_debug.c.s
-.PHONY : lib/no-OS-FatFS-SD-SPI-RPi-Pico/FatFs_SPI/src/my_debug.s
+lib/no-OS-FatFs/src/src/crash.s: lib/no-OS-FatFs/src/src/crash.c.s
+.PHONY : lib/no-OS-FatFs/src/src/crash.s
 
 # target to generate assembly for a file
-lib/no-OS-FatFS-SD-SPI-RPi-Pico/FatFs_SPI/src/my_debug.c.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/main.dir/build.make CMakeFiles/main.dir/lib/no-OS-FatFS-SD-SPI-RPi-Pico/FatFs_SPI/src/my_debug.c.s
-.PHONY : lib/no-OS-FatFS-SD-SPI-RPi-Pico/FatFs_SPI/src/my_debug.c.s
+lib/no-OS-FatFs/src/src/crash.c.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/main.dir/build.make CMakeFiles/main.dir/lib/no-OS-FatFs/src/src/crash.c.s
+.PHONY : lib/no-OS-FatFs/src/src/crash.c.s
 
-lib/no-OS-FatFS-SD-SPI-RPi-Pico/FatFs_SPI/src/rtc.o: lib/no-OS-FatFS-SD-SPI-RPi-Pico/FatFs_SPI/src/rtc.c.o
-.PHONY : lib/no-OS-FatFS-SD-SPI-RPi-Pico/FatFs_SPI/src/rtc.o
+lib/no-OS-FatFs/src/src/crc.o: lib/no-OS-FatFs/src/src/crc.c.o
+.PHONY : lib/no-OS-FatFs/src/src/crc.o
 
 # target to build an object file
-lib/no-OS-FatFS-SD-SPI-RPi-Pico/FatFs_SPI/src/rtc.c.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/main.dir/build.make CMakeFiles/main.dir/lib/no-OS-FatFS-SD-SPI-RPi-Pico/FatFs_SPI/src/rtc.c.o
-.PHONY : lib/no-OS-FatFS-SD-SPI-RPi-Pico/FatFs_SPI/src/rtc.c.o
+lib/no-OS-FatFs/src/src/crc.c.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/main.dir/build.make CMakeFiles/main.dir/lib/no-OS-FatFs/src/src/crc.c.o
+.PHONY : lib/no-OS-FatFs/src/src/crc.c.o
 
-lib/no-OS-FatFS-SD-SPI-RPi-Pico/FatFs_SPI/src/rtc.i: lib/no-OS-FatFS-SD-SPI-RPi-Pico/FatFs_SPI/src/rtc.c.i
-.PHONY : lib/no-OS-FatFS-SD-SPI-RPi-Pico/FatFs_SPI/src/rtc.i
+lib/no-OS-FatFs/src/src/crc.i: lib/no-OS-FatFs/src/src/crc.c.i
+.PHONY : lib/no-OS-FatFs/src/src/crc.i
 
 # target to preprocess a source file
-lib/no-OS-FatFS-SD-SPI-RPi-Pico/FatFs_SPI/src/rtc.c.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/main.dir/build.make CMakeFiles/main.dir/lib/no-OS-FatFS-SD-SPI-RPi-Pico/FatFs_SPI/src/rtc.c.i
-.PHONY : lib/no-OS-FatFS-SD-SPI-RPi-Pico/FatFs_SPI/src/rtc.c.i
+lib/no-OS-FatFs/src/src/crc.c.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/main.dir/build.make CMakeFiles/main.dir/lib/no-OS-FatFs/src/src/crc.c.i
+.PHONY : lib/no-OS-FatFs/src/src/crc.c.i
 
-lib/no-OS-FatFS-SD-SPI-RPi-Pico/FatFs_SPI/src/rtc.s: lib/no-OS-FatFS-SD-SPI-RPi-Pico/FatFs_SPI/src/rtc.c.s
-.PHONY : lib/no-OS-FatFS-SD-SPI-RPi-Pico/FatFs_SPI/src/rtc.s
+lib/no-OS-FatFs/src/src/crc.s: lib/no-OS-FatFs/src/src/crc.c.s
+.PHONY : lib/no-OS-FatFs/src/src/crc.s
 
 # target to generate assembly for a file
-lib/no-OS-FatFS-SD-SPI-RPi-Pico/FatFs_SPI/src/rtc.c.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/main.dir/build.make CMakeFiles/main.dir/lib/no-OS-FatFS-SD-SPI-RPi-Pico/FatFs_SPI/src/rtc.c.s
-.PHONY : lib/no-OS-FatFS-SD-SPI-RPi-Pico/FatFs_SPI/src/rtc.c.s
+lib/no-OS-FatFs/src/src/crc.c.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/main.dir/build.make CMakeFiles/main.dir/lib/no-OS-FatFs/src/src/crc.c.s
+.PHONY : lib/no-OS-FatFs/src/src/crc.c.s
+
+lib/no-OS-FatFs/src/src/f_util.o: lib/no-OS-FatFs/src/src/f_util.c.o
+.PHONY : lib/no-OS-FatFs/src/src/f_util.o
+
+# target to build an object file
+lib/no-OS-FatFs/src/src/f_util.c.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/main.dir/build.make CMakeFiles/main.dir/lib/no-OS-FatFs/src/src/f_util.c.o
+.PHONY : lib/no-OS-FatFs/src/src/f_util.c.o
+
+lib/no-OS-FatFs/src/src/f_util.i: lib/no-OS-FatFs/src/src/f_util.c.i
+.PHONY : lib/no-OS-FatFs/src/src/f_util.i
+
+# target to preprocess a source file
+lib/no-OS-FatFs/src/src/f_util.c.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/main.dir/build.make CMakeFiles/main.dir/lib/no-OS-FatFs/src/src/f_util.c.i
+.PHONY : lib/no-OS-FatFs/src/src/f_util.c.i
+
+lib/no-OS-FatFs/src/src/f_util.s: lib/no-OS-FatFs/src/src/f_util.c.s
+.PHONY : lib/no-OS-FatFs/src/src/f_util.s
+
+# target to generate assembly for a file
+lib/no-OS-FatFs/src/src/f_util.c.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/main.dir/build.make CMakeFiles/main.dir/lib/no-OS-FatFs/src/src/f_util.c.s
+.PHONY : lib/no-OS-FatFs/src/src/f_util.c.s
+
+lib/no-OS-FatFs/src/src/ff_stdio.o: lib/no-OS-FatFs/src/src/ff_stdio.c.o
+.PHONY : lib/no-OS-FatFs/src/src/ff_stdio.o
+
+# target to build an object file
+lib/no-OS-FatFs/src/src/ff_stdio.c.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/main.dir/build.make CMakeFiles/main.dir/lib/no-OS-FatFs/src/src/ff_stdio.c.o
+.PHONY : lib/no-OS-FatFs/src/src/ff_stdio.c.o
+
+lib/no-OS-FatFs/src/src/ff_stdio.i: lib/no-OS-FatFs/src/src/ff_stdio.c.i
+.PHONY : lib/no-OS-FatFs/src/src/ff_stdio.i
+
+# target to preprocess a source file
+lib/no-OS-FatFs/src/src/ff_stdio.c.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/main.dir/build.make CMakeFiles/main.dir/lib/no-OS-FatFs/src/src/ff_stdio.c.i
+.PHONY : lib/no-OS-FatFs/src/src/ff_stdio.c.i
+
+lib/no-OS-FatFs/src/src/ff_stdio.s: lib/no-OS-FatFs/src/src/ff_stdio.c.s
+.PHONY : lib/no-OS-FatFs/src/src/ff_stdio.s
+
+# target to generate assembly for a file
+lib/no-OS-FatFs/src/src/ff_stdio.c.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/main.dir/build.make CMakeFiles/main.dir/lib/no-OS-FatFs/src/src/ff_stdio.c.s
+.PHONY : lib/no-OS-FatFs/src/src/ff_stdio.c.s
+
+lib/no-OS-FatFs/src/src/file_stream.o: lib/no-OS-FatFs/src/src/file_stream.c.o
+.PHONY : lib/no-OS-FatFs/src/src/file_stream.o
+
+# target to build an object file
+lib/no-OS-FatFs/src/src/file_stream.c.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/main.dir/build.make CMakeFiles/main.dir/lib/no-OS-FatFs/src/src/file_stream.c.o
+.PHONY : lib/no-OS-FatFs/src/src/file_stream.c.o
+
+lib/no-OS-FatFs/src/src/file_stream.i: lib/no-OS-FatFs/src/src/file_stream.c.i
+.PHONY : lib/no-OS-FatFs/src/src/file_stream.i
+
+# target to preprocess a source file
+lib/no-OS-FatFs/src/src/file_stream.c.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/main.dir/build.make CMakeFiles/main.dir/lib/no-OS-FatFs/src/src/file_stream.c.i
+.PHONY : lib/no-OS-FatFs/src/src/file_stream.c.i
+
+lib/no-OS-FatFs/src/src/file_stream.s: lib/no-OS-FatFs/src/src/file_stream.c.s
+.PHONY : lib/no-OS-FatFs/src/src/file_stream.s
+
+# target to generate assembly for a file
+lib/no-OS-FatFs/src/src/file_stream.c.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/main.dir/build.make CMakeFiles/main.dir/lib/no-OS-FatFs/src/src/file_stream.c.s
+.PHONY : lib/no-OS-FatFs/src/src/file_stream.c.s
+
+lib/no-OS-FatFs/src/src/glue.o: lib/no-OS-FatFs/src/src/glue.c.o
+.PHONY : lib/no-OS-FatFs/src/src/glue.o
+
+# target to build an object file
+lib/no-OS-FatFs/src/src/glue.c.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/main.dir/build.make CMakeFiles/main.dir/lib/no-OS-FatFs/src/src/glue.c.o
+.PHONY : lib/no-OS-FatFs/src/src/glue.c.o
+
+lib/no-OS-FatFs/src/src/glue.i: lib/no-OS-FatFs/src/src/glue.c.i
+.PHONY : lib/no-OS-FatFs/src/src/glue.i
+
+# target to preprocess a source file
+lib/no-OS-FatFs/src/src/glue.c.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/main.dir/build.make CMakeFiles/main.dir/lib/no-OS-FatFs/src/src/glue.c.i
+.PHONY : lib/no-OS-FatFs/src/src/glue.c.i
+
+lib/no-OS-FatFs/src/src/glue.s: lib/no-OS-FatFs/src/src/glue.c.s
+.PHONY : lib/no-OS-FatFs/src/src/glue.s
+
+# target to generate assembly for a file
+lib/no-OS-FatFs/src/src/glue.c.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/main.dir/build.make CMakeFiles/main.dir/lib/no-OS-FatFs/src/src/glue.c.s
+.PHONY : lib/no-OS-FatFs/src/src/glue.c.s
+
+lib/no-OS-FatFs/src/src/my_debug.o: lib/no-OS-FatFs/src/src/my_debug.c.o
+.PHONY : lib/no-OS-FatFs/src/src/my_debug.o
+
+# target to build an object file
+lib/no-OS-FatFs/src/src/my_debug.c.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/main.dir/build.make CMakeFiles/main.dir/lib/no-OS-FatFs/src/src/my_debug.c.o
+.PHONY : lib/no-OS-FatFs/src/src/my_debug.c.o
+
+lib/no-OS-FatFs/src/src/my_debug.i: lib/no-OS-FatFs/src/src/my_debug.c.i
+.PHONY : lib/no-OS-FatFs/src/src/my_debug.i
+
+# target to preprocess a source file
+lib/no-OS-FatFs/src/src/my_debug.c.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/main.dir/build.make CMakeFiles/main.dir/lib/no-OS-FatFs/src/src/my_debug.c.i
+.PHONY : lib/no-OS-FatFs/src/src/my_debug.c.i
+
+lib/no-OS-FatFs/src/src/my_debug.s: lib/no-OS-FatFs/src/src/my_debug.c.s
+.PHONY : lib/no-OS-FatFs/src/src/my_debug.s
+
+# target to generate assembly for a file
+lib/no-OS-FatFs/src/src/my_debug.c.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/main.dir/build.make CMakeFiles/main.dir/lib/no-OS-FatFs/src/src/my_debug.c.s
+.PHONY : lib/no-OS-FatFs/src/src/my_debug.c.s
+
+lib/no-OS-FatFs/src/src/my_rtc.o: lib/no-OS-FatFs/src/src/my_rtc.c.o
+.PHONY : lib/no-OS-FatFs/src/src/my_rtc.o
+
+# target to build an object file
+lib/no-OS-FatFs/src/src/my_rtc.c.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/main.dir/build.make CMakeFiles/main.dir/lib/no-OS-FatFs/src/src/my_rtc.c.o
+.PHONY : lib/no-OS-FatFs/src/src/my_rtc.c.o
+
+lib/no-OS-FatFs/src/src/my_rtc.i: lib/no-OS-FatFs/src/src/my_rtc.c.i
+.PHONY : lib/no-OS-FatFs/src/src/my_rtc.i
+
+# target to preprocess a source file
+lib/no-OS-FatFs/src/src/my_rtc.c.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/main.dir/build.make CMakeFiles/main.dir/lib/no-OS-FatFs/src/src/my_rtc.c.i
+.PHONY : lib/no-OS-FatFs/src/src/my_rtc.c.i
+
+lib/no-OS-FatFs/src/src/my_rtc.s: lib/no-OS-FatFs/src/src/my_rtc.c.s
+.PHONY : lib/no-OS-FatFs/src/src/my_rtc.s
+
+# target to generate assembly for a file
+lib/no-OS-FatFs/src/src/my_rtc.c.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/main.dir/build.make CMakeFiles/main.dir/lib/no-OS-FatFs/src/src/my_rtc.c.s
+.PHONY : lib/no-OS-FatFs/src/src/my_rtc.c.s
+
+lib/no-OS-FatFs/src/src/util.o: lib/no-OS-FatFs/src/src/util.c.o
+.PHONY : lib/no-OS-FatFs/src/src/util.o
+
+# target to build an object file
+lib/no-OS-FatFs/src/src/util.c.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/main.dir/build.make CMakeFiles/main.dir/lib/no-OS-FatFs/src/src/util.c.o
+.PHONY : lib/no-OS-FatFs/src/src/util.c.o
+
+lib/no-OS-FatFs/src/src/util.i: lib/no-OS-FatFs/src/src/util.c.i
+.PHONY : lib/no-OS-FatFs/src/src/util.i
+
+# target to preprocess a source file
+lib/no-OS-FatFs/src/src/util.c.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/main.dir/build.make CMakeFiles/main.dir/lib/no-OS-FatFs/src/src/util.c.i
+.PHONY : lib/no-OS-FatFs/src/src/util.c.i
+
+lib/no-OS-FatFs/src/src/util.s: lib/no-OS-FatFs/src/src/util.c.s
+.PHONY : lib/no-OS-FatFs/src/src/util.s
+
+# target to generate assembly for a file
+lib/no-OS-FatFs/src/src/util.c.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/main.dir/build.make CMakeFiles/main.dir/lib/no-OS-FatFs/src/src/util.c.s
+.PHONY : lib/no-OS-FatFs/src/src/util.c.s
 
 main.o: main.cpp.o
 .PHONY : main.o
@@ -2596,6 +2833,7 @@ help:
 	@echo "... rebuild_cache"
 	@echo "... bs2_default_bin"
 	@echo "... cyw43_driver_picow_cyw43_bus_pio_spi_pio_h"
+	@echo "... no-OS-FatFS-SD-SDIO-SPI-RPi-Pico_rp2040_sdio_pio_h"
 	@echo "... pioasmBuild"
 	@echo "... bs2_default"
 	@echo "... bs2_default_library"
@@ -2705,9 +2943,12 @@ help:
 	@echo "... home/raven/pico/pico-sdk/src/common/pico_util/queue.o"
 	@echo "... home/raven/pico/pico-sdk/src/common/pico_util/queue.i"
 	@echo "... home/raven/pico/pico-sdk/src/common/pico_util/queue.s"
-	@echo "... home/raven/pico/pico-sdk/src/rp2040/pico_platform/platform.o"
-	@echo "... home/raven/pico/pico-sdk/src/rp2040/pico_platform/platform.i"
-	@echo "... home/raven/pico/pico-sdk/src/rp2040/pico_platform/platform.s"
+	@echo "... home/raven/pico/pico-sdk/src/rp2350/pico_platform/platform.o"
+	@echo "... home/raven/pico/pico-sdk/src/rp2350/pico_platform/platform.i"
+	@echo "... home/raven/pico/pico-sdk/src/rp2350/pico_platform/platform.s"
+	@echo "... home/raven/pico/pico-sdk/src/rp2_common/cmsis/stub/CMSIS/Device/RP2350/Source/system_RP2350.o"
+	@echo "... home/raven/pico/pico-sdk/src/rp2_common/cmsis/stub/CMSIS/Device/RP2350/Source/system_RP2350.i"
+	@echo "... home/raven/pico/pico-sdk/src/rp2_common/cmsis/stub/CMSIS/Device/RP2350/Source/system_RP2350.s"
 	@echo "... home/raven/pico/pico-sdk/src/rp2_common/hardware_boot_lock/boot_lock.o"
 	@echo "... home/raven/pico/pico-sdk/src/rp2_common/hardware_boot_lock/boot_lock.i"
 	@echo "... home/raven/pico/pico-sdk/src/rp2_common/hardware_boot_lock/boot_lock.s"
@@ -2715,6 +2956,8 @@ help:
 	@echo "... home/raven/pico/pico-sdk/src/rp2_common/hardware_clocks/clocks.i"
 	@echo "... home/raven/pico/pico-sdk/src/rp2_common/hardware_clocks/clocks.s"
 	@echo "... home/raven/pico/pico-sdk/src/rp2_common/hardware_divider/divider.o"
+	@echo "... home/raven/pico/pico-sdk/src/rp2_common/hardware_divider/divider.i"
+	@echo "... home/raven/pico/pico-sdk/src/rp2_common/hardware_divider/divider.s"
 	@echo "... home/raven/pico/pico-sdk/src/rp2_common/hardware_dma/dma.o"
 	@echo "... home/raven/pico/pico-sdk/src/rp2_common/hardware_dma/dma.i"
 	@echo "... home/raven/pico/pico-sdk/src/rp2_common/hardware_dma/dma.s"
@@ -2731,12 +2974,15 @@ help:
 	@echo "... home/raven/pico/pico-sdk/src/rp2_common/hardware_irq/irq.i"
 	@echo "... home/raven/pico/pico-sdk/src/rp2_common/hardware_irq/irq.s"
 	@echo "... home/raven/pico/pico-sdk/src/rp2_common/hardware_irq/irq_handler_chain.o"
+	@echo "... home/raven/pico/pico-sdk/src/rp2_common/hardware_pio/pio.o"
+	@echo "... home/raven/pico/pico-sdk/src/rp2_common/hardware_pio/pio.i"
+	@echo "... home/raven/pico/pico-sdk/src/rp2_common/hardware_pio/pio.s"
 	@echo "... home/raven/pico/pico-sdk/src/rp2_common/hardware_pll/pll.o"
 	@echo "... home/raven/pico/pico-sdk/src/rp2_common/hardware_pll/pll.i"
 	@echo "... home/raven/pico/pico-sdk/src/rp2_common/hardware_pll/pll.s"
-	@echo "... home/raven/pico/pico-sdk/src/rp2_common/hardware_rtc/rtc.o"
-	@echo "... home/raven/pico/pico-sdk/src/rp2_common/hardware_rtc/rtc.i"
-	@echo "... home/raven/pico/pico-sdk/src/rp2_common/hardware_rtc/rtc.s"
+	@echo "... home/raven/pico/pico-sdk/src/rp2_common/hardware_powman/powman.o"
+	@echo "... home/raven/pico/pico-sdk/src/rp2_common/hardware_powman/powman.i"
+	@echo "... home/raven/pico/pico-sdk/src/rp2_common/hardware_powman/powman.s"
 	@echo "... home/raven/pico/pico-sdk/src/rp2_common/hardware_spi/spi.o"
 	@echo "... home/raven/pico/pico-sdk/src/rp2_common/hardware_spi/spi.i"
 	@echo "... home/raven/pico/pico-sdk/src/rp2_common/hardware_spi/spi.s"
@@ -2767,6 +3013,9 @@ help:
 	@echo "... home/raven/pico/pico-sdk/src/rp2_common/hardware_xosc/xosc.o"
 	@echo "... home/raven/pico/pico-sdk/src/rp2_common/hardware_xosc/xosc.i"
 	@echo "... home/raven/pico/pico-sdk/src/rp2_common/hardware_xosc/xosc.s"
+	@echo "... home/raven/pico/pico-sdk/src/rp2_common/pico_aon_timer/aon_timer.o"
+	@echo "... home/raven/pico/pico-sdk/src/rp2_common/pico_aon_timer/aon_timer.i"
+	@echo "... home/raven/pico/pico-sdk/src/rp2_common/pico_aon_timer/aon_timer.s"
 	@echo "... home/raven/pico/pico-sdk/src/rp2_common/pico_atomic/atomic.o"
 	@echo "... home/raven/pico/pico-sdk/src/rp2_common/pico_atomic/atomic.i"
 	@echo "... home/raven/pico/pico-sdk/src/rp2_common/pico_atomic/atomic.s"
@@ -2784,34 +3033,30 @@ help:
 	@echo "... home/raven/pico/pico-sdk/src/rp2_common/pico_cxx_options/new_delete.o"
 	@echo "... home/raven/pico/pico-sdk/src/rp2_common/pico_cxx_options/new_delete.i"
 	@echo "... home/raven/pico/pico-sdk/src/rp2_common/pico_cxx_options/new_delete.s"
-	@echo "... home/raven/pico/pico-sdk/src/rp2_common/pico_divider/divider_hardware.o"
-	@echo "... home/raven/pico/pico-sdk/src/rp2_common/pico_double/double_aeabi_rp2040.o"
-	@echo "... home/raven/pico/pico-sdk/src/rp2_common/pico_double/double_init_rom_rp2040.o"
-	@echo "... home/raven/pico/pico-sdk/src/rp2_common/pico_double/double_init_rom_rp2040.i"
-	@echo "... home/raven/pico/pico-sdk/src/rp2_common/pico_double/double_init_rom_rp2040.s"
+	@echo "... home/raven/pico/pico-sdk/src/rp2_common/pico_divider/divider_compiler.o"
+	@echo "... home/raven/pico/pico-sdk/src/rp2_common/pico_divider/divider_compiler.i"
+	@echo "... home/raven/pico/pico-sdk/src/rp2_common/pico_divider/divider_compiler.s"
+	@echo "... home/raven/pico/pico-sdk/src/rp2_common/pico_double/double_aeabi_dcp.o"
+	@echo "... home/raven/pico/pico-sdk/src/rp2_common/pico_double/double_conv_m33.o"
+	@echo "... home/raven/pico/pico-sdk/src/rp2_common/pico_double/double_fma_dcp.o"
 	@echo "... home/raven/pico/pico-sdk/src/rp2_common/pico_double/double_math.o"
 	@echo "... home/raven/pico/pico-sdk/src/rp2_common/pico_double/double_math.i"
 	@echo "... home/raven/pico/pico-sdk/src/rp2_common/pico_double/double_math.s"
-	@echo "... home/raven/pico/pico-sdk/src/rp2_common/pico_double/double_v1_rom_shim_rp2040.o"
+	@echo "... home/raven/pico/pico-sdk/src/rp2_common/pico_double/double_sci_m33.o"
 	@echo "... home/raven/pico/pico-sdk/src/rp2_common/pico_fix/rp2040_usb_device_enumeration/rp2040_usb_device_enumeration.o"
 	@echo "... home/raven/pico/pico-sdk/src/rp2_common/pico_fix/rp2040_usb_device_enumeration/rp2040_usb_device_enumeration.i"
 	@echo "... home/raven/pico/pico-sdk/src/rp2_common/pico_fix/rp2040_usb_device_enumeration/rp2040_usb_device_enumeration.s"
 	@echo "... home/raven/pico/pico-sdk/src/rp2_common/pico_flash/flash.o"
 	@echo "... home/raven/pico/pico-sdk/src/rp2_common/pico_flash/flash.i"
 	@echo "... home/raven/pico/pico-sdk/src/rp2_common/pico_flash/flash.s"
-	@echo "... home/raven/pico/pico-sdk/src/rp2_common/pico_float/float_aeabi_rp2040.o"
-	@echo "... home/raven/pico/pico-sdk/src/rp2_common/pico_float/float_init_rom_rp2040.o"
-	@echo "... home/raven/pico/pico-sdk/src/rp2_common/pico_float/float_init_rom_rp2040.i"
-	@echo "... home/raven/pico/pico-sdk/src/rp2_common/pico_float/float_init_rom_rp2040.s"
+	@echo "... home/raven/pico/pico-sdk/src/rp2_common/pico_float/float_conv_m33.o"
 	@echo "... home/raven/pico/pico-sdk/src/rp2_common/pico_float/float_math.o"
 	@echo "... home/raven/pico/pico-sdk/src/rp2_common/pico_float/float_math.i"
 	@echo "... home/raven/pico/pico-sdk/src/rp2_common/pico_float/float_math.s"
-	@echo "... home/raven/pico/pico-sdk/src/rp2_common/pico_float/float_v1_rom_shim_rp2040.o"
-	@echo "... home/raven/pico/pico-sdk/src/rp2_common/pico_int64_ops/pico_int64_ops_aeabi.o"
+	@echo "... home/raven/pico/pico-sdk/src/rp2_common/pico_float/float_sci_m33_vfp.o"
 	@echo "... home/raven/pico/pico-sdk/src/rp2_common/pico_malloc/malloc.o"
 	@echo "... home/raven/pico/pico-sdk/src/rp2_common/pico_malloc/malloc.i"
 	@echo "... home/raven/pico/pico-sdk/src/rp2_common/pico_malloc/malloc.s"
-	@echo "... home/raven/pico/pico-sdk/src/rp2_common/pico_mem_ops/mem_ops_aeabi.o"
 	@echo "... home/raven/pico/pico-sdk/src/rp2_common/pico_multicore/multicore.o"
 	@echo "... home/raven/pico/pico-sdk/src/rp2_common/pico_multicore/multicore.i"
 	@echo "... home/raven/pico/pico-sdk/src/rp2_common/pico_multicore/multicore.s"
@@ -2857,45 +3102,66 @@ help:
 	@echo "... hw_config.o"
 	@echo "... hw_config.i"
 	@echo "... hw_config.s"
-	@echo "... lib/no-OS-FatFS-SD-SPI-RPi-Pico/FatFs_SPI/ff15/source/ff.o"
-	@echo "... lib/no-OS-FatFS-SD-SPI-RPi-Pico/FatFs_SPI/ff15/source/ff.i"
-	@echo "... lib/no-OS-FatFS-SD-SPI-RPi-Pico/FatFs_SPI/ff15/source/ff.s"
-	@echo "... lib/no-OS-FatFS-SD-SPI-RPi-Pico/FatFs_SPI/ff15/source/ffsystem.o"
-	@echo "... lib/no-OS-FatFS-SD-SPI-RPi-Pico/FatFs_SPI/ff15/source/ffsystem.i"
-	@echo "... lib/no-OS-FatFS-SD-SPI-RPi-Pico/FatFs_SPI/ff15/source/ffsystem.s"
-	@echo "... lib/no-OS-FatFS-SD-SPI-RPi-Pico/FatFs_SPI/ff15/source/ffunicode.o"
-	@echo "... lib/no-OS-FatFS-SD-SPI-RPi-Pico/FatFs_SPI/ff15/source/ffunicode.i"
-	@echo "... lib/no-OS-FatFS-SD-SPI-RPi-Pico/FatFs_SPI/ff15/source/ffunicode.s"
-	@echo "... lib/no-OS-FatFS-SD-SPI-RPi-Pico/FatFs_SPI/sd_driver/crc.o"
-	@echo "... lib/no-OS-FatFS-SD-SPI-RPi-Pico/FatFs_SPI/sd_driver/crc.i"
-	@echo "... lib/no-OS-FatFS-SD-SPI-RPi-Pico/FatFs_SPI/sd_driver/crc.s"
-	@echo "... lib/no-OS-FatFS-SD-SPI-RPi-Pico/FatFs_SPI/sd_driver/demo_logging.o"
-	@echo "... lib/no-OS-FatFS-SD-SPI-RPi-Pico/FatFs_SPI/sd_driver/demo_logging.i"
-	@echo "... lib/no-OS-FatFS-SD-SPI-RPi-Pico/FatFs_SPI/sd_driver/demo_logging.s"
-	@echo "... lib/no-OS-FatFS-SD-SPI-RPi-Pico/FatFs_SPI/sd_driver/sd_card.o"
-	@echo "... lib/no-OS-FatFS-SD-SPI-RPi-Pico/FatFs_SPI/sd_driver/sd_card.i"
-	@echo "... lib/no-OS-FatFS-SD-SPI-RPi-Pico/FatFs_SPI/sd_driver/sd_card.s"
-	@echo "... lib/no-OS-FatFS-SD-SPI-RPi-Pico/FatFs_SPI/sd_driver/sd_spi.o"
-	@echo "... lib/no-OS-FatFS-SD-SPI-RPi-Pico/FatFs_SPI/sd_driver/sd_spi.i"
-	@echo "... lib/no-OS-FatFS-SD-SPI-RPi-Pico/FatFs_SPI/sd_driver/sd_spi.s"
-	@echo "... lib/no-OS-FatFS-SD-SPI-RPi-Pico/FatFs_SPI/sd_driver/spi.o"
-	@echo "... lib/no-OS-FatFS-SD-SPI-RPi-Pico/FatFs_SPI/sd_driver/spi.i"
-	@echo "... lib/no-OS-FatFS-SD-SPI-RPi-Pico/FatFs_SPI/sd_driver/spi.s"
-	@echo "... lib/no-OS-FatFS-SD-SPI-RPi-Pico/FatFs_SPI/src/f_util.o"
-	@echo "... lib/no-OS-FatFS-SD-SPI-RPi-Pico/FatFs_SPI/src/f_util.i"
-	@echo "... lib/no-OS-FatFS-SD-SPI-RPi-Pico/FatFs_SPI/src/f_util.s"
-	@echo "... lib/no-OS-FatFS-SD-SPI-RPi-Pico/FatFs_SPI/src/ff_stdio.o"
-	@echo "... lib/no-OS-FatFS-SD-SPI-RPi-Pico/FatFs_SPI/src/ff_stdio.i"
-	@echo "... lib/no-OS-FatFS-SD-SPI-RPi-Pico/FatFs_SPI/src/ff_stdio.s"
-	@echo "... lib/no-OS-FatFS-SD-SPI-RPi-Pico/FatFs_SPI/src/glue.o"
-	@echo "... lib/no-OS-FatFS-SD-SPI-RPi-Pico/FatFs_SPI/src/glue.i"
-	@echo "... lib/no-OS-FatFS-SD-SPI-RPi-Pico/FatFs_SPI/src/glue.s"
-	@echo "... lib/no-OS-FatFS-SD-SPI-RPi-Pico/FatFs_SPI/src/my_debug.o"
-	@echo "... lib/no-OS-FatFS-SD-SPI-RPi-Pico/FatFs_SPI/src/my_debug.i"
-	@echo "... lib/no-OS-FatFS-SD-SPI-RPi-Pico/FatFs_SPI/src/my_debug.s"
-	@echo "... lib/no-OS-FatFS-SD-SPI-RPi-Pico/FatFs_SPI/src/rtc.o"
-	@echo "... lib/no-OS-FatFS-SD-SPI-RPi-Pico/FatFs_SPI/src/rtc.i"
-	@echo "... lib/no-OS-FatFS-SD-SPI-RPi-Pico/FatFs_SPI/src/rtc.s"
+	@echo "... lib/no-OS-FatFs/src/ff15/source/ff.o"
+	@echo "... lib/no-OS-FatFs/src/ff15/source/ff.i"
+	@echo "... lib/no-OS-FatFs/src/ff15/source/ff.s"
+	@echo "... lib/no-OS-FatFs/src/ff15/source/ffsystem.o"
+	@echo "... lib/no-OS-FatFs/src/ff15/source/ffsystem.i"
+	@echo "... lib/no-OS-FatFs/src/ff15/source/ffsystem.s"
+	@echo "... lib/no-OS-FatFs/src/ff15/source/ffunicode.o"
+	@echo "... lib/no-OS-FatFs/src/ff15/source/ffunicode.i"
+	@echo "... lib/no-OS-FatFs/src/ff15/source/ffunicode.s"
+	@echo "... lib/no-OS-FatFs/src/sd_driver/SDIO/rp2040_sdio.o"
+	@echo "... lib/no-OS-FatFs/src/sd_driver/SDIO/rp2040_sdio.i"
+	@echo "... lib/no-OS-FatFs/src/sd_driver/SDIO/rp2040_sdio.s"
+	@echo "... lib/no-OS-FatFs/src/sd_driver/SDIO/sd_card_sdio.o"
+	@echo "... lib/no-OS-FatFs/src/sd_driver/SDIO/sd_card_sdio.i"
+	@echo "... lib/no-OS-FatFs/src/sd_driver/SDIO/sd_card_sdio.s"
+	@echo "... lib/no-OS-FatFs/src/sd_driver/SPI/my_spi.o"
+	@echo "... lib/no-OS-FatFs/src/sd_driver/SPI/my_spi.i"
+	@echo "... lib/no-OS-FatFs/src/sd_driver/SPI/my_spi.s"
+	@echo "... lib/no-OS-FatFs/src/sd_driver/SPI/sd_card_spi.o"
+	@echo "... lib/no-OS-FatFs/src/sd_driver/SPI/sd_card_spi.i"
+	@echo "... lib/no-OS-FatFs/src/sd_driver/SPI/sd_card_spi.s"
+	@echo "... lib/no-OS-FatFs/src/sd_driver/SPI/sd_spi.o"
+	@echo "... lib/no-OS-FatFs/src/sd_driver/SPI/sd_spi.i"
+	@echo "... lib/no-OS-FatFs/src/sd_driver/SPI/sd_spi.s"
+	@echo "... lib/no-OS-FatFs/src/sd_driver/dma_interrupts.o"
+	@echo "... lib/no-OS-FatFs/src/sd_driver/dma_interrupts.i"
+	@echo "... lib/no-OS-FatFs/src/sd_driver/dma_interrupts.s"
+	@echo "... lib/no-OS-FatFs/src/sd_driver/sd_card.o"
+	@echo "... lib/no-OS-FatFs/src/sd_driver/sd_card.i"
+	@echo "... lib/no-OS-FatFs/src/sd_driver/sd_card.s"
+	@echo "... lib/no-OS-FatFs/src/sd_driver/sd_timeouts.o"
+	@echo "... lib/no-OS-FatFs/src/sd_driver/sd_timeouts.i"
+	@echo "... lib/no-OS-FatFs/src/sd_driver/sd_timeouts.s"
+	@echo "... lib/no-OS-FatFs/src/src/crash.o"
+	@echo "... lib/no-OS-FatFs/src/src/crash.i"
+	@echo "... lib/no-OS-FatFs/src/src/crash.s"
+	@echo "... lib/no-OS-FatFs/src/src/crc.o"
+	@echo "... lib/no-OS-FatFs/src/src/crc.i"
+	@echo "... lib/no-OS-FatFs/src/src/crc.s"
+	@echo "... lib/no-OS-FatFs/src/src/f_util.o"
+	@echo "... lib/no-OS-FatFs/src/src/f_util.i"
+	@echo "... lib/no-OS-FatFs/src/src/f_util.s"
+	@echo "... lib/no-OS-FatFs/src/src/ff_stdio.o"
+	@echo "... lib/no-OS-FatFs/src/src/ff_stdio.i"
+	@echo "... lib/no-OS-FatFs/src/src/ff_stdio.s"
+	@echo "... lib/no-OS-FatFs/src/src/file_stream.o"
+	@echo "... lib/no-OS-FatFs/src/src/file_stream.i"
+	@echo "... lib/no-OS-FatFs/src/src/file_stream.s"
+	@echo "... lib/no-OS-FatFs/src/src/glue.o"
+	@echo "... lib/no-OS-FatFs/src/src/glue.i"
+	@echo "... lib/no-OS-FatFs/src/src/glue.s"
+	@echo "... lib/no-OS-FatFs/src/src/my_debug.o"
+	@echo "... lib/no-OS-FatFs/src/src/my_debug.i"
+	@echo "... lib/no-OS-FatFs/src/src/my_debug.s"
+	@echo "... lib/no-OS-FatFs/src/src/my_rtc.o"
+	@echo "... lib/no-OS-FatFs/src/src/my_rtc.i"
+	@echo "... lib/no-OS-FatFs/src/src/my_rtc.s"
+	@echo "... lib/no-OS-FatFs/src/src/util.o"
+	@echo "... lib/no-OS-FatFs/src/src/util.i"
+	@echo "... lib/no-OS-FatFs/src/src/util.s"
 	@echo "... main.o"
 	@echo "... main.i"
 	@echo "... main.s"
