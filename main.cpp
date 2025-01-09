@@ -65,7 +65,7 @@ bool logWriteFlag = false;
 bool onBoardLED = true;
 bool inputAccept = true;
 
-const double kp=0.5;
+const double kp=0.01;
 const double ki=0.0;
 const double kd=0.0;
 double depthError=0.0;
@@ -398,17 +398,24 @@ int main(){
 		
 		currentDepth = (logData.outPress-pSurface)/1013.0*10;
 		depthError = targetDepth - logData.outPress;
-		thrusterOutput[0] = depthError * kp;
-		thrusterOutput[2] = depthError * kp;
-		thrusterOutput[0] = clamp<double>(thrusterOutput[0], 0.0f, 1.0f);
-		thrusterOutput[2] = clamp<double>(thrusterOutput[2], 0.0f, 1.0f);
+		thrusterOutput[LEFT_VERTICAL] = depthError * kp;
+		thrusterOutput[RIGHT_VERTICAL] = depthError * kp;
+		thrusterOutput[LEFT_VERTICAL] = clamp<double>(thrusterOutput[LEFT_VERTICAL], -1.0f, 1.0f);
+		thrusterOutput[RIGHT_VERTICAL] = clamp<double>(thrusterOutput[RIGHT_VERTICAL], -1.0f, 1.0f);
 
+		printf("LEFT_VERTICAL_COUT:%lf, RIGHT_VERTICAL_COUT:%lf\n", thrusterOutput[LEFT_VERTICAL], thrusterOutput[RIGHT_VERTICAL]);
+		printf("LEFT_HORIZONTAL_COUT:%lf, RIGHT_HORIZONTAL_COUT:%lf\n", thrusterOutput[LEFT_HORIZONTAL], thrusterOutput[RIGHT_HORIZONTAL]);
+		
 		for(int i=0;i<4;i++){
+			thrusterOutput[i] = (thrusterOutput[i] + 1.0) * 0.5;
 			pwm.duty(i, pwm.dutyFit(thrusterOutput[i], 0.55, 0.95));
 		}
-
+		
 		printf("Target Depth[cm]: %lf\n", targetDepth*100);
-		printf("Depth[cm]: %lf\n\n", currentDepth*100);
+		printf("Depth[cm]: %lf\n", currentDepth*100);
+		printf("LEFT_VERTICAL_DUTY:%lf, RIGHT_VERTICAL_DUTY:%lf\n", thrusterOutput[LEFT_VERTICAL], thrusterOutput[RIGHT_VERTICAL]);
+		printf("LEFT_HORIZONTAL_DUTY:%lf, RIGHT_HORIZONTAL_DUTY:%lf\n", thrusterOutput[LEFT_HORIZONTAL], thrusterOutput[RIGHT_HORIZONTAL]);
+
 
 		multicore_fifo_push_blocking(LOG_WRITE_COM);
 		exeFlag = false;
