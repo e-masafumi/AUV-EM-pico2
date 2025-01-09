@@ -40,7 +40,9 @@
 #define RIGHT_VERTICAL 2
 #define RIGHT_HORIZONTAL 3
 
-#define VOLTAGE_LOWER_LIMIT 
+#define CELL_NUMBER 3
+#define VOLTAGE_LOWER_LIMIT_PER_CELL 3.5
+#define VOLTAGE_UPPER_LIMIT_PER_CELL 4.5
 
 using namespace std;
 
@@ -65,7 +67,7 @@ bool logWriteFlag = false;
 bool onBoardLED = true;
 bool inputAccept = true;
 
-const double kp=0.01;
+const double kp=0.0001;
 const double ki=0.0;
 const double kd=0.0;
 double depthError=0.0;
@@ -317,7 +319,26 @@ int main(){
 	while(!(core1HelloMsg == CORE1_HELLO)){
 	}
 	printf("hello: %d\n", core1HelloMsg);
+	
 
+	uint32_t volErrorCnt;
+	while(1){
+		INA228.readCurVolPow(i2c0, &logData.mainCur, &logData.mainVol, &logData.mainPow);
+		if(logData.mainVol*1e-6 > CELL_NUMBER * VOLTAGE_UPPER_LIMIT_PER_CELL){
+			printf("Voltage NG(TOO HIGH): %lf [V],  %d\n", logData.mainVol*1e-6, volErrorCnt);
+			volErrorCnt++;
+			sleep_ms(3000);
+		}
+		else if(logData.mainVol*1e-6 < CELL_NUMBER * VOLTAGE_LOWER_LIMIT_PER_CELL){
+			printf("Voltage NG(TOO LOW): %lf [V],  %d\n", logData.mainVol*1e-6, volErrorCnt);
+			volErrorCnt++;
+			sleep_ms(3000);
+		}
+		else{
+			printf("Voltage OK: %lf [V]\n", logData.mainVol*1e-6);
+			break;
+		}
+	}
 	for(int i=0; i<4; i++){
 		for(int j=0; j<20; j++){
 			pwm.duty(i, pwm.dutyFit(0.5+j*0.01, 0.55, 0.95));
@@ -388,6 +409,37 @@ int main(){
 //		printf("Outer Temp: %lf [Deg.C.] \n", logData.outTemp);
 //		printf("\n");
 
+
+		if(logData.mainVol*1e-6 < CELL_NUMBER * VOLTAGE_LOWER_LIMIT_PER_CELL){
+			for(int i=0;i<4;i++){
+				pwm.duty(i, pwm.dutyFit(0.5, 0.55, 0.95));
+			}
+			printf("Voltage NG(BECAME TOO LOW): %lf [V]\n", logData.mainVol*1e-6);
+			while(1){
+				for(int i=0;i<3;i++){
+					gpio_put(LED_PIN, 1);
+					sleep_ms(200);
+					gpio_put(LED_PIN, 0);
+					sleep_ms(200);
+				}
+				sleep_ms(100);
+				for(int i=0;i<3;i++){
+					gpio_put(LED_PIN, 1);
+					sleep_ms(400);
+					gpio_put(LED_PIN, 0);
+					sleep_ms(400);
+				}
+				sleep_ms(100);
+				for(int i=0;i<3;i++){
+					gpio_put(LED_PIN, 1);
+					sleep_ms(200);
+					gpio_put(LED_PIN, 0);
+					sleep_ms(200);
+				}
+				sleep_ms(1000);
+			}
+		}
+
 		if(inputAccept){
 			targetDepth = usbuart.receive_usbuart_data();
 		}
@@ -408,14 +460,14 @@ int main(){
 		
 		for(int i=0;i<4;i++){
 			thrusterOutput[i] = (thrusterOutput[i] + 1.0) * 0.5;
-			pwm.duty(i, pwm.dutyFit(thrusterOutput[i], 0.55, 0.95));
+//			pwm.duty(i, pwm.dutyFit(thrusterOutput[i], 0.55, 0.95));
 		}
 		
 		printf("Target Depth[cm]: %lf\n", targetDepth*100);
 		printf("Depth[cm]: %lf\n", currentDepth*100);
 		printf("LEFT_VERTICAL_DUTY:%lf, RIGHT_VERTICAL_DUTY:%lf\n", thrusterOutput[LEFT_VERTICAL], thrusterOutput[RIGHT_VERTICAL]);
 		printf("LEFT_HORIZONTAL_DUTY:%lf, RIGHT_HORIZONTAL_DUTY:%lf\n", thrusterOutput[LEFT_HORIZONTAL], thrusterOutput[RIGHT_HORIZONTAL]);
-
+//		printf("Main Voltage: %lf[V]\n", logData.mainVol);
 
 		multicore_fifo_push_blocking(LOG_WRITE_COM);
 		exeFlag = false;

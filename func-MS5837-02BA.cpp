@@ -110,7 +110,7 @@ int MS5837_02BA::readTempPress(i2c_inst_t *i2cPort, double *temp, double *press)
 	sens2 = sens - sensi;
 	*temp = (tempBuff - ti) /100.0;
 	*press = (((d1Data * sens2) / pow(2,21) - off2) / pow(2,15)) / 100;
-	printf("\n");
+//	printf("\n");
 
 //	printf("Temp = %f [C]\n", temp);
 //	printf("Press = %f [mbar]\n", press);
