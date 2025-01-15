@@ -11,6 +11,7 @@ class pico_pwm{
 		int setup(void);
 		int duty(int pinNum, double duty);
 		double dutyFit(double input, double minDuty, double maxDuty);
+		double dutyFitPct(double input, double minDuty, double maxDuty);
 };
 
 #endif

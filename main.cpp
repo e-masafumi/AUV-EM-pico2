@@ -78,7 +78,7 @@ FIL fil;
 int ret;
 char buf[100];
 char filename[] = "log.txt";
-double thrusterOutput[4] = {0.5, 0.5, 0.5, 0.5};
+double thrusterOutput[4] = {0, 0, 0, 0};
 double targetDepth = DEFAULT_TARGET_DEPTH_M;
 
 struct str_sensorsData logData;
@@ -325,12 +325,12 @@ int main(){
 	while(1){
 		INA228.readCurVolPow(i2c0, &logData.mainCur, &logData.mainVol, &logData.mainPow);
 		if(logData.mainVol*1e-6 > CELL_NUMBER * VOLTAGE_UPPER_LIMIT_PER_CELL){
-			printf("Voltage NG(TOO HIGH): %lf [V],  %d\n", logData.mainVol*1e-6, volErrorCnt);
+			printf("Voltage NG (TOO HIGH): %lf [V],  %d\n", logData.mainVol*1e-6, volErrorCnt);
 			volErrorCnt++;
 			sleep_ms(3000);
 		}
 		else if(logData.mainVol*1e-6 < CELL_NUMBER * VOLTAGE_LOWER_LIMIT_PER_CELL){
-			printf("Voltage NG(TOO LOW): %lf [V],  %d\n", logData.mainVol*1e-6, volErrorCnt);
+			printf("Voltage NG (TOO LOW): %lf [V],  %d\n", logData.mainVol*1e-6, volErrorCnt);
 			volErrorCnt++;
 			sleep_ms(3000);
 		}
@@ -341,15 +341,15 @@ int main(){
 	}
 	for(int i=0; i<4; i++){
 		for(int j=0; j<20; j++){
-			pwm.duty(i, pwm.dutyFit(0.5+j*0.01, 0.55, 0.95));
+			pwm.duty(i, pwm.dutyFitPct(j, 0.55, 0.95));
 			printf("Motor: %d,  ", i);
-			printf("Duty: %lf\n", 0.5+j*0.01);
+			printf("Duty[%%]: %d\n", j);
 			sleep_ms(50);
 		}
 		for(int j=20; j>-1; j--){
-			pwm.duty(i, pwm.dutyFit(0.5+j*0.01, 0.55, 0.95));
+			pwm.duty(i, pwm.dutyFitPct(j, 0.55, 0.95));
 			printf("Motor: %d,  ", i);
-			printf("Duty: %lf\n", 0.5+j*0.01);
+			printf("Duty[%%]: %d\n", j);
 			sleep_ms(50);
 		}
 		sleep_ms(500);
@@ -452,15 +452,15 @@ int main(){
 		depthError = targetDepth - logData.outPress;
 		thrusterOutput[LEFT_VERTICAL] = depthError * kp;
 		thrusterOutput[RIGHT_VERTICAL] = depthError * kp;
-		thrusterOutput[LEFT_VERTICAL] = clamp<double>(thrusterOutput[LEFT_VERTICAL], -1.0f, 1.0f);
-		thrusterOutput[RIGHT_VERTICAL] = clamp<double>(thrusterOutput[RIGHT_VERTICAL], -1.0f, 1.0f);
+		thrusterOutput[LEFT_VERTICAL] = clamp<double>(thrusterOutput[LEFT_VERTICAL], -100.0f, 100.0f);
+		thrusterOutput[RIGHT_VERTICAL] = clamp<double>(thrusterOutput[RIGHT_VERTICAL], -100.0f, 100.0f);
 
 		printf("LEFT_VERTICAL_COUT:%lf, RIGHT_VERTICAL_COUT:%lf\n", thrusterOutput[LEFT_VERTICAL], thrusterOutput[RIGHT_VERTICAL]);
 		printf("LEFT_HORIZONTAL_COUT:%lf, RIGHT_HORIZONTAL_COUT:%lf\n", thrusterOutput[LEFT_HORIZONTAL], thrusterOutput[RIGHT_HORIZONTAL]);
 		
 		for(int i=0;i<4;i++){
-			thrusterOutput[i] = (thrusterOutput[i] + 1.0) * 0.5;
-//			pwm.duty(i, pwm.dutyFit(thrusterOutput[i], 0.55, 0.95));
+			thrusterOutput[i] = (thrusterOutput[i] + 100.0) * 0.5;
+			pwm.duty(i, pwm.dutyFitPct(thrusterOutput[i], 0.55, 0.95));
 		}
 		
 		printf("Target Depth[cm]: %lf\n", targetDepth*100);
@@ -473,4 +473,3 @@ int main(){
 		exeFlag = false;
 	}
 }
-

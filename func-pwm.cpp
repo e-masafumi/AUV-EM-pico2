@@ -56,6 +56,12 @@ double pico_pwm::dutyFit(double input, double minDuty, double maxDuty){
 	return (minDuty + (maxDuty-minDuty)*input);
 }
 
+double pico_pwm::dutyFitPct(double input, double minDuty, double maxDuty){
+	double duty;
+	duty = (input + 100.0) * 0.5 * 0.01;
+	return dutyFit(duty, minDuty, maxDuty);
+//	return (minDuty + (maxDuty-minDuty)*input);
+}
 
 int pico_pwm::duty(int pinNum, double duty){
 	if(duty > 1 || duty < 0){
