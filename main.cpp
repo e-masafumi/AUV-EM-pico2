@@ -67,7 +67,7 @@ bool logWriteFlag = false;
 bool onBoardLED = true;
 bool inputAccept = true;
 
-const double kp=0.0001;
+double kp=0.0001;
 const double ki=0.0;
 const double kd=0.0;
 double depthError=0.0;
@@ -80,6 +80,7 @@ char buf[100];
 char filename[] = "log.txt";
 double thrusterOutput[4] = {0, 0, 0, 0};
 double targetDepth = DEFAULT_TARGET_DEPTH_M;
+double uartReceiveData;
 
 struct str_sensorsData logData;
 struct str_NMEA decodedNMEA;
@@ -322,7 +323,8 @@ int main(){
 	
 
 	uint32_t volErrorCnt;
-	while(1){
+
+	while(1){		//Battery check loop
 		INA228.readCurVolPow(i2c0, &logData.mainCur, &logData.mainVol, &logData.mainPow);
 		if(logData.mainVol*1e-6 > CELL_NUMBER * VOLTAGE_UPPER_LIMIT_PER_CELL){
 			printf("Voltage NG (TOO HIGH): %lf [V],  %d\n", logData.mainVol*1e-6, volErrorCnt);
@@ -355,11 +357,15 @@ int main(){
 		sleep_ms(500);
 	}
 
+	
+	printf("Thruster Check Done");
+
 	double targetPress = (DEFAULT_TARGET_DEPTH_M*1013*10)+pSurface;
 	double currentDepth = 0;
 	static uint32_t preTime = time_us_32();
 	static uint32_t nowTime = time_us_32();
-	while(1) {
+
+	while(1) {	//main loop
 
 		if(messageFinishFlag == true){
 			messageFinishFlag = false;
@@ -441,10 +447,29 @@ int main(){
 		}
 
 		if(inputAccept){
-			targetDepth = usbuart.receive_usbuart_data();
+			uartReceiveData = usbuart.receive_usbuart_data();
+			if(uartReceiveData > 1.0e9){
+				for(int i=0;i<4;i++){
+					thrusterOutput[i] = (0 + 100.0) * 0.5;
+					pwm.duty(i, pwm.dutyFitPct(thrusterOutput[i], 0.55, 0.95));
+				}
+				printf("STOP, input: %lf\n", uartReceiveData);
+				while(1);
+			}
+			else if(uartReceiveData > 0){
+				targetDepth = usbuart.receive_usbuart_data();
+			}
+			else if(uartReceiveData < 0){
+				kp = usbuart.receive_usbuart_data() * (-1.0);
+			}
+			else{
+				targetDepth = targetDepth;
+				kp = kp;
+			}
 		}
 		else{
 			targetDepth = DEFAULT_TARGET_DEPTH_M;
+			kp = kp;
 		}	
 		
 		
@@ -454,19 +479,22 @@ int main(){
 		thrusterOutput[RIGHT_VERTICAL] = depthError * kp;
 		thrusterOutput[LEFT_VERTICAL] = clamp<double>(thrusterOutput[LEFT_VERTICAL], -100.0f, 100.0f);
 		thrusterOutput[RIGHT_VERTICAL] = clamp<double>(thrusterOutput[RIGHT_VERTICAL], -100.0f, 100.0f);
+		
+		thrusterOutput[RIGHT_HORIZONTAL] = 0;
+		thrusterOutput[LEFT_HORIZONTAL] = 0;
 
 		printf("LEFT_VERTICAL_COUT:%lf, RIGHT_VERTICAL_COUT:%lf\n", thrusterOutput[LEFT_VERTICAL], thrusterOutput[RIGHT_VERTICAL]);
-		printf("LEFT_HORIZONTAL_COUT:%lf, RIGHT_HORIZONTAL_COUT:%lf\n", thrusterOutput[LEFT_HORIZONTAL], thrusterOutput[RIGHT_HORIZONTAL]);
+		printf("LEFT_HORIZONTAL_COUT:%lf, RIGHT_HORIZONTAL_COUT:%lf\n\n", thrusterOutput[LEFT_HORIZONTAL], thrusterOutput[RIGHT_HORIZONTAL]);
 		
 		for(int i=0;i<4;i++){
 			thrusterOutput[i] = (thrusterOutput[i] + 100.0) * 0.5;
 			pwm.duty(i, pwm.dutyFitPct(thrusterOutput[i], 0.55, 0.95));
 		}
 		
-		printf("Target Depth[cm]: %lf\n", targetDepth*100);
-		printf("Depth[cm]: %lf\n", currentDepth*100);
+		printf("Target Depth[cm]: %lf, Current P gain: %lf\n", targetDepth*100, kp);
+		printf("Current Depth[cm]: %lf\n", currentDepth*100);
 		printf("LEFT_VERTICAL_DUTY:%lf, RIGHT_VERTICAL_DUTY:%lf\n", thrusterOutput[LEFT_VERTICAL], thrusterOutput[RIGHT_VERTICAL]);
-		printf("LEFT_HORIZONTAL_DUTY:%lf, RIGHT_HORIZONTAL_DUTY:%lf\n", thrusterOutput[LEFT_HORIZONTAL], thrusterOutput[RIGHT_HORIZONTAL]);
+		printf("LEFT_HORIZONTAL_DUTY:%lf, RIGHT_HORIZONTAL_DUTY:%lf\n\n", thrusterOutput[LEFT_HORIZONTAL], thrusterOutput[RIGHT_HORIZONTAL]);
 //		printf("Main Voltage: %lf[V]\n", logData.mainVol);
 
 		multicore_fifo_push_blocking(LOG_WRITE_COM);
