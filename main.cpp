@@ -13,6 +13,7 @@
 #include "pico/binary_info.h"
 #include "extern.h"
 #include "struct.h"
+#include "math.h"
 
 #include "func-pwm.h"
 #include "func-i2c.h"
@@ -32,13 +33,13 @@
 #define DO_COMMAND  (1)
 #define EXIT_LOOP   (2)
 
-#define DEFAULT_TARGET_DEPTH_M (0.50)
+#define DEFAULT_TARGET_DEPTH_M (0.00)
 #define EXE_FREC (10.00)	//Hz
 
-#define LEFT_VERTICAL 0
-#define LEFT_HORIZONTAL 1
-#define RIGHT_VERTICAL 2
-#define RIGHT_HORIZONTAL 3
+#define LEFT_VERTICAL 1
+#define LEFT_HORIZONTAL 0
+#define RIGHT_VERTICAL 3
+#define RIGHT_HORIZONTAL 2
 
 #define CELL_NUMBER 3
 #define VOLTAGE_LOWER_LIMIT_PER_CELL 3.5
@@ -66,11 +67,13 @@ bool nmeaDecodedFlag = false;
 bool logWriteFlag = false;
 bool onBoardLED = true;
 bool inputAccept = true;
+bool ManualModeFlag = false;	//-1111,ON, -8888, OFF
 
 double kp=0.0001;
 const double ki=0.0;
 const double kd=0.0;
 double depthError=0.0;
+int startCnt = 0;
 
 FRESULT fr;
 FATFS fs;
@@ -163,7 +166,7 @@ void core1_main(void){
   }
 
 
-	ret = f_printf(&fil, "Internal Time, Voltage, Current, Outer Temperature,Outer Pressure,Accel X,Accel Y,Accel Z,Mag X,Mag Y,Mag Z,GPS Time,Time_seconds,NorS,Latitude,EorW,Longitude,Qual,Sats,Hdop,Altitude ASL,Altitude Geoid\r\n");
+	ret = f_printf(&fil, "Internal Time, Voltage, Current, Outer Temperature,Outer Pressure,Accel X,Accel Y,Accel Z,Mag X,Mag Y,Mag Z,GPS Time,Time_seconds,NorS,Latitude,EorW,Longitude,Qual,Sats,Hdop,Altitude ASL,Altitude Geoid, dutyLH, dutyLV, dutyRH, dutyRV\r\n");
 
 	// Close file
 	fr = f_close(&fil);
@@ -200,7 +203,7 @@ void core1_main(void){
 			}
 				//Move to end
 			ret = f_lseek(&fil, f_size(&fil));
-			ret = f_printf(&fil, "%lu,%lf, %lf, %lf,%lf,%lf,%lf,%lf,%lf,%lf,%lf, %lf,%lf,%c,%lf,%c,%lf,%d,%d,%lf,%lf,%lf\r\n", logData.timeBuff_64, logData.mainVol, logData.mainCur,logData.outTemp, logData.outPress,logData.xAccel,logData.yAccel,logData.zAccel,logData.xMag,logData.yMag,logData.zMag, decodedNMEA.time, decodedNMEA.seconds, decodedNMEA.nOrS, decodedNMEA.latitude, decodedNMEA.eOrW, decodedNMEA.longitude, decodedNMEA.qual, decodedNMEA.sats, decodedNMEA.hdop, decodedNMEA.altitudeASL, decodedNMEA.altitudeGeoid);
+			ret = f_printf(&fil, "%lu,%lf, %lf, %lf,%lf,%lf,%lf,%lf,%lf,%lf,%lf, %lf,%lf,%c,%lf,%c,%lf,%d,%d,%lf,%lf,%lf, %lf, %lf, %lf, %lf\r\n", logData.timeBuff_64, logData.mainVol, logData.mainCur,logData.outTemp, logData.outPress,logData.xAccel,logData.yAccel,logData.zAccel,logData.xMag,logData.yMag,logData.zMag, decodedNMEA.time, decodedNMEA.seconds, decodedNMEA.nOrS, decodedNMEA.latitude, decodedNMEA.eOrW, decodedNMEA.longitude, decodedNMEA.qual, decodedNMEA.sats, decodedNMEA.hdop, decodedNMEA.altitudeASL, decodedNMEA.altitudeGeoid, thrusterOutput[LEFT_HORIZONTAL], thrusterOutput[LEFT_VERTICAL], thrusterOutput[RIGHT_HORIZONTAL], thrusterOutput[LEFT_VERTICAL]);
 			if (ret < 0) {
 				printf("ERROR: Could not write to file (%d)\r\n", ret);
 	     f_close(&fil);
@@ -358,7 +361,34 @@ int main(){
 	}
 
 	
-	printf("Thruster Check Done");
+	printf("Thruster Check Done\n");
+	printf("Waiting");
+	while(1){
+		if(inputAccept){
+			uartReceiveData = usbuart.receive_usbuart_data();
+		}
+		if(uartReceiveData == 12345){
+			printf("start with %lf\n", uartReceiveData);
+			startCnt++;
+			printf("If you want to start: type 0\n");
+			while(1){
+				uartReceiveData = usbuart.receive_usbuart_data();
+				if(uartReceiveData == 0){
+					startCnt++;
+					break;
+				}
+				sleep_ms(100);
+			}
+		}
+		else if(startCnt >= 2){
+			break;
+		}
+		else{
+			printf(".");
+			startCnt = 0;
+			sleep_ms(300);
+		}
+	}
 
 	double targetPress = (DEFAULT_TARGET_DEPTH_M*1013*10)+pSurface;
 	double currentDepth = 0;
@@ -448,23 +478,55 @@ int main(){
 
 		if(inputAccept){
 			uartReceiveData = usbuart.receive_usbuart_data();
-			if(uartReceiveData > 1.0e9){
-				for(int i=0;i<4;i++){
-					thrusterOutput[i] = (0 + 100.0) * 0.5;
-					pwm.duty(i, pwm.dutyFitPct(thrusterOutput[i], 0.55, 0.95));
+			switch((int)uartReceiveData){
+				case -9999:
+					for(int i=0;i<4;i++){
+						thrusterOutput[i] = 0.0;
+						pwm.duty(i, pwm.dutyFitPct(thrusterOutput[i], 0.55, 0.95));
+					}
+					printf("STOP, input: %lf\n", uartReceiveData);
+					while(1);
+					break;
+				
+				case -1111:
+					ManualModeFlag = true;
+					for(int i=0;i<4;i++){
+						thrusterOutput[i] = 0;
+						pwm.duty(i, pwm.dutyFitPct(thrusterOutput[i], 0.55, 0.95));
+					}
+					printf("INTO Manual Mode\n");
+					break;
+				case -8888:
+					ManualModeFlag = false;
+					break;
+				default:
+					break;
+			}
+			
+
+			if(ManualModeFlag){
+				if(uartReceiveData > 0){
+					int motorNum = 0;
+					double dutyPct = 50.0;
+					motorNum = (int) ((int)uartReceiveData / 1000);
+					dutyPct = (int)(uartReceiveData - motorNum*1000) % 1000;
+					thrusterOutput[motorNum] = dutyPct;
+					printf("motorNum(MAN):%d, dutyPct(MAN):%d\n", motorNum, dutyPct);
 				}
-				printf("STOP, input: %lf\n", uartReceiveData);
-				while(1);
 			}
-			else if(uartReceiveData > 0){
-				targetDepth = usbuart.receive_usbuart_data();
-			}
-			else if(uartReceiveData < 0){
-				kp = usbuart.receive_usbuart_data() * (-1.0);
+			else if(!ManualModeFlag){
+				if(uartReceiveData > 0){
+					targetDepth = usbuart.receive_usbuart_data();
+				}
+				else if(uartReceiveData < 0 && uartReceiveData > -500){
+					kp = usbuart.receive_usbuart_data() * (-1.0);
+				}
+				else{
+					targetDepth = targetDepth;
+					kp = kp;
+				}
 			}
 			else{
-				targetDepth = targetDepth;
-				kp = kp;
 			}
 		}
 		else{
@@ -475,22 +537,31 @@ int main(){
 		
 		currentDepth = (logData.outPress-pSurface)/1013.0*10;
 		depthError = targetDepth - logData.outPress;
-		thrusterOutput[LEFT_VERTICAL] = depthError * kp;
-		thrusterOutput[RIGHT_VERTICAL] = depthError * kp;
-		thrusterOutput[LEFT_VERTICAL] = clamp<double>(thrusterOutput[LEFT_VERTICAL], -100.0f, 100.0f);
-		thrusterOutput[RIGHT_VERTICAL] = clamp<double>(thrusterOutput[RIGHT_VERTICAL], -100.0f, 100.0f);
-		
-		thrusterOutput[RIGHT_HORIZONTAL] = 0;
-		thrusterOutput[LEFT_HORIZONTAL] = 0;
 
-		printf("LEFT_VERTICAL_COUT:%lf, RIGHT_VERTICAL_COUT:%lf\n", thrusterOutput[LEFT_VERTICAL], thrusterOutput[RIGHT_VERTICAL]);
-		printf("LEFT_HORIZONTAL_COUT:%lf, RIGHT_HORIZONTAL_COUT:%lf\n\n", thrusterOutput[LEFT_HORIZONTAL], thrusterOutput[RIGHT_HORIZONTAL]);
+		if(!ManualModeFlag){
+			thrusterOutput[LEFT_VERTICAL] = depthError * kp;
+			thrusterOutput[RIGHT_VERTICAL] = depthError * kp;
+			thrusterOutput[LEFT_VERTICAL] = clamp<double>(thrusterOutput[LEFT_VERTICAL], -100.0f, 100.0f);
+			thrusterOutput[RIGHT_VERTICAL] = clamp<double>(thrusterOutput[RIGHT_VERTICAL], -100.0f, 100.0f);
 		
-		for(int i=0;i<4;i++){
-			thrusterOutput[i] = (thrusterOutput[i] + 100.0) * 0.5;
-			pwm.duty(i, pwm.dutyFitPct(thrusterOutput[i], 0.55, 0.95));
+			thrusterOutput[RIGHT_HORIZONTAL] = 0;
+			thrusterOutput[LEFT_HORIZONTAL] = 0;
+
+			printf("LEFT_VERTICAL_COUT:%lf, RIGHT_VERTICAL_COUT:%lf\n", thrusterOutput[LEFT_VERTICAL], thrusterOutput[RIGHT_VERTICAL]);
+			printf("LEFT_HORIZONTAL_COUT:%lf, RIGHT_HORIZONTAL_COUT:%lf\n\n", thrusterOutput[LEFT_HORIZONTAL], thrusterOutput[RIGHT_HORIZONTAL]);
+			for(int i=0;i<4;i++){
+//				thrausterOutput[i] = (thrusterOutput[i] + 100.0) * 0.5;
+				pwm.duty(i, pwm.dutyFitPct(thrusterOutput[i], 0.55, 0.95));
+				printf("Duty%d: %lf\n", i, pwm.dutyFitPct(thrusterOutput[i], 0.55, 0.95));
+			}
 		}
-		
+
+		if(ManualModeFlag){
+			for(int i=0;i<4;i++){
+				pwm.duty(i, pwm.dutyFitPct(thrusterOutput[i], 0.55, 0.95));
+			}
+		}
+		printf("MAN Mode %d\n", ManualModeFlag);
 		printf("Target Depth[cm]: %lf, Current P gain: %lf\n", targetDepth*100, kp);
 		printf("Current Depth[cm]: %lf\n", currentDepth*100);
 		printf("LEFT_VERTICAL_DUTY:%lf, RIGHT_VERTICAL_DUTY:%lf\n", thrusterOutput[LEFT_VERTICAL], thrusterOutput[RIGHT_VERTICAL]);
