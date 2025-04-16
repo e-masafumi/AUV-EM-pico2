@@ -68,6 +68,7 @@ bool logWriteFlag = false;
 bool onBoardLED = true;
 bool inputAccept = true;
 bool ManualModeFlag = false;	//-1111,ON, -8888, OFF
+double currentDepth = 0;
 
 double kp=0.0001;
 const double ki=0.0;
@@ -166,7 +167,7 @@ void core1_main(void){
   }
 
 
-	ret = f_printf(&fil, "Internal Time, Voltage, Current, Outer Temperature,Outer Pressure,Accel X,Accel Y,Accel Z,Mag X,Mag Y,Mag Z,GPS Time,Time_seconds,NorS,Latitude,EorW,Longitude,Qual,Sats,Hdop,Altitude ASL,Altitude Geoid, dutyLH, dutyLV, dutyRH, dutyRV\r\n");
+	ret = f_printf(&fil, "Internal Time, Voltage, Current, Outer Temperature,Outer Pressure,Accel X,Accel Y,Accel Z,Mag X,Mag Y,Mag Z,GPS Time,Time_seconds,NorS,Latitude,EorW,Longitude,Qual,Sats,Hdop,Altitude ASL,Altitude Geoid, dutyLH, dutyLV, dutyRH, dutyRV, targetDepth, currentDepth, Kp\r\n");
 
 	// Close file
 	fr = f_close(&fil);
@@ -203,7 +204,7 @@ void core1_main(void){
 			}
 				//Move to end
 			ret = f_lseek(&fil, f_size(&fil));
-			ret = f_printf(&fil, "%lu,%lf, %lf, %lf,%lf,%lf,%lf,%lf,%lf,%lf,%lf, %lf,%lf,%c,%lf,%c,%lf,%d,%d,%lf,%lf,%lf, %lf, %lf, %lf, %lf\r\n", logData.timeBuff_64, logData.mainVol, logData.mainCur,logData.outTemp, logData.outPress,logData.xAccel,logData.yAccel,logData.zAccel,logData.xMag,logData.yMag,logData.zMag, decodedNMEA.time, decodedNMEA.seconds, decodedNMEA.nOrS, decodedNMEA.latitude, decodedNMEA.eOrW, decodedNMEA.longitude, decodedNMEA.qual, decodedNMEA.sats, decodedNMEA.hdop, decodedNMEA.altitudeASL, decodedNMEA.altitudeGeoid, thrusterOutput[LEFT_HORIZONTAL], thrusterOutput[LEFT_VERTICAL], thrusterOutput[RIGHT_HORIZONTAL], thrusterOutput[LEFT_VERTICAL]);
+			ret = f_printf(&fil, "%lu,%lf,%lf,%lf,%lf,%lf,%lf,%lf,%lf,%lf,%lf,%lf,%lf,%c,%lf,%c,%lf,%d,%d,%lf,%lf,%lf,%lf,%lf,%lf,%lf,%lf,%lf,%lf\r\n", logData.timeBuff_64, logData.mainVol, logData.mainCur,logData.outTemp, logData.outPress,logData.xAccel,logData.yAccel,logData.zAccel,logData.xMag,logData.yMag,logData.zMag, decodedNMEA.time, decodedNMEA.seconds, decodedNMEA.nOrS, decodedNMEA.latitude, decodedNMEA.eOrW, decodedNMEA.longitude, decodedNMEA.qual, decodedNMEA.sats, decodedNMEA.hdop, decodedNMEA.altitudeASL, decodedNMEA.altitudeGeoid, thrusterOutput[LEFT_HORIZONTAL], thrusterOutput[LEFT_VERTICAL], thrusterOutput[RIGHT_HORIZONTAL], thrusterOutput[LEFT_VERTICAL],currentDepth, targetDepth, kp);
 			if (ret < 0) {
 				printf("ERROR: Could not write to file (%d)\r\n", ret);
 	     f_close(&fil);
@@ -391,7 +392,6 @@ int main(){
 	}
 
 	double targetPress = (DEFAULT_TARGET_DEPTH_M*1013*10)+pSurface;
-	double currentDepth = 0;
 	static uint32_t preTime = time_us_32();
 	static uint32_t nowTime = time_us_32();
 
@@ -536,7 +536,7 @@ int main(){
 		
 		
 		currentDepth = (logData.outPress-pSurface)/1013.0*10;
-		depthError = targetDepth - logData.outPress;
+		depthError = targetDepth - currentDepth;
 
 		if(!ManualModeFlag){
 			thrusterOutput[LEFT_VERTICAL] = depthError * kp;
